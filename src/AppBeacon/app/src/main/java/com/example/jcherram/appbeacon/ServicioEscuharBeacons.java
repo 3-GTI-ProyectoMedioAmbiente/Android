@@ -1,16 +1,13 @@
-package com.example.jcherram.myapplication;
+package com.example.jcherram.appbeacon;
 
 import android.app.IntentService;
-import android.app.Service;
 import android.content.Intent;
 import android.util.Log;
-
-import static android.app.Service.START_STICKY;
 
 // -------------------------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
 // -------------------------------------------------------------------------------------------------
-public class ServicioEscuharBeacons  extends IntentService {
+public class ServicioEscuharBeacons extends IntentService {
 
     private static final String ETIQUETA_LOG = ">>>>";
 

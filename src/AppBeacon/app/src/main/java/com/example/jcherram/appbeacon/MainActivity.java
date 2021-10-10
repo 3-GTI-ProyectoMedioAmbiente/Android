@@ -7,6 +7,7 @@ import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothLeScanner elEscanner;
 
     private ScanCallback callbackDelEscaneo = null;
+    private Intent elIntentDelServicio = null;
 
     /**
      * Busca los dispostivos cercanos mediante bluetooth
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(ETIQUETA_LOG, " ****** DISPOSITIVO DETECTADO BTLE ****************** ");
         Log.d(ETIQUETA_LOG, " ****************************************************");
         Log.d(ETIQUETA_LOG, " nombre = " + bluetoothDevice.getName());
+
         Log.d(ETIQUETA_LOG, " toString = " + bluetoothDevice.toString());
 
         /*
@@ -176,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         //this.buscarEsteDispositivoBTLE( Utilidades.stringToUUID( "EPSG-GTI-PROY-3A" ) );
 
         //this.buscarEsteDispositivoBTLE( "EPSG-GTI-PROY-3A" );
-        this.buscarEsteDispositivoBTLE( "fistro" );
+        this.buscarEsteDispositivoBTLE( "angle" );
 
     }
 
@@ -263,6 +266,46 @@ public class MainActivity extends AppCompatActivity {
         }
         // Other 'case' lines to check for other
         // permissions this app might request.
+    }
+
+    /**
+     *
+     * @param v
+     */
+    public void botonDetenerServicioPulsado( View v ) {
+
+        if ( this.elIntentDelServicio == null ) {
+            // no estaba arrancado
+            return;
+        }
+
+        stopService( this.elIntentDelServicio );
+
+        this.elIntentDelServicio = null;
+
+        Log.d(ETIQUETA_LOG, " boton detener servicio Pulsado" );
+
+
+    }
+
+    /**
+     * @param v
+     */
+    public void botonArrancarServicioPulsado( View v ) {
+        Log.d(ETIQUETA_LOG, " boton arrancar servicio Pulsado" );
+
+        if ( this.elIntentDelServicio != null ) {
+            // ya estaba arrancado
+            return;
+        }
+
+        Log.d(ETIQUETA_LOG, " MainActivity.constructor : voy a arrancar el servicio");
+
+        this.elIntentDelServicio = new Intent(this, ServicioEscuharBeacons.class);
+
+        this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
+        startService( this.elIntentDelServicio );
+
     }
 
 }
