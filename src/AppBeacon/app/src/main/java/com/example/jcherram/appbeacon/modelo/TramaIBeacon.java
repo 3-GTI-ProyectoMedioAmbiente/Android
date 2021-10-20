@@ -1,5 +1,5 @@
 
-package com.example.jcherram.appbeacon;
+package com.example.jcherram.appbeacon.modelo;
 
 import java.util.Arrays;
 

@@ -7,6 +7,7 @@ import java.util.UUID;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
+//Fecha: 17/10/2021
 // -----------------------------------------------------------------------------------
 public class Utilidades {
 
@@ -117,8 +118,6 @@ public class Utilidades {
             throw new Error( "demasiados bytes para pasar a int ");
         }
         int res = 0;
-
-
 
         for( byte b : bytes ) {
            /*

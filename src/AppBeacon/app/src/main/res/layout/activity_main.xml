@@ -1,50 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/botonBuscarDispositivosBTLE"
-        android:text="Buscar Dispositivos BTLE nou 4"
-        android:onClick="botonBuscarDispositivosBTLEPulsado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
-    <Button
-        android:id="@+id/botonDetenerBusquedaDispositivosBTLE"
-        android:text="Detener búsaqueda Dispositivos BTLE"
-        android:onClick="botonDetenerBusquedaDispositivosBTLEPulsado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
-    <Button
-        android:id="@+id/botonBuscarNuestroDispositivoBTLE"
-        android:text="Buscar nuestro dispositivo  BTLE"
-        android:onClick="botonBuscarNuestroDispositivoBTLEPulsado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
-    <Button
         android:id="@+id/botonArrancarServicio"
-        android:text="Arrancar Servicio"
-        android:onClick="botonArrancarServicioPulsado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="40dp"
+        android:onClick="botonArrancarServicioPulsado"
+        android:text="Arrancar Servicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/botonDetenerServicio"
-        android:text="Detener Servicio"
-        android:onClick="botonDetenerServicioPulsado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="28dp"
+        android:onClick="botonDetenerServicioPulsado"
+        android:text="Detener Servicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonArrancarServicio" />
 
-</android.widget.LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Servicio"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Medicion"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtiTextMedicion"
+        android:layout_width="288dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="ej: 15.5"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:onClick="hacerPeticionRest"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="@+id/edtiTextMedicion"
+        app:layout_constraintTop_toBottomOf="@+id/edtiTextMedicion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

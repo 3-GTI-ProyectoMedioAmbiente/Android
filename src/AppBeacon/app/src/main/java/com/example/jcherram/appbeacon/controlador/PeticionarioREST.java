@@ -1,5 +1,5 @@
 
-package com.example.jcherram.appbeacon;
+package com.example.jcherram.appbeacon.controlador;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -11,6 +11,10 @@ import java.net.URL;
 import android.os.AsyncTask;
 import android.util.Log;
 
+// -----------------------------------------------------------------------------------
+// @author: Juan Carlos Hernandez Ramirez
+//Fecha: 17/10/2021
+// -----------------------------------------------------------------------------------
 public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
     public interface RespuestaREST {
@@ -40,11 +44,6 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
         this.execute(); // otro thread ejecutará doInBackground()
     }
-
-    public PeticionarioREST() {
-        Log.d("clienterestandroid", "constructor()");
-    }
-
     /**
      * Metodo que gestionara la peticion REST como un Thread
      * @param params
@@ -55,12 +54,6 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
         Log.d("clienterestandroid", "doInBackground()");
 
         try {
-
-            // envio la peticion
-
-            // pagina web para hacer pruebas: URL url = new URL("https://httpbin.org/html");
-            // ordinador del despatx 158.42.144.126 // OK URL url = new URL("http://158.42.144.126:8080");
-
             Log.d("clienterestandroid", "doInBackground() me conecto a >" + urlDestino + "<");
 
             URL url = new URL(urlDestino);
@@ -68,23 +61,20 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestProperty( "Content-Type", "application/json; charset-utf-8" );
             connection.setRequestMethod(this.elMetodo);
-            // connection.setRequestProperty("Accept", "*/*);
-
-            // connection.setUseCaches(false);
             connection.setDoInput(true);
 
             if ( ! this.elMetodo.equals("GET") && this.elCuerpo != null ) {
                 Log.d("clienterestandroid", "doInBackground(): no es get, pongo cuerpo");
                 connection.setDoOutput(true);
-                // si no es GET, pongo el cuerpo que me den en la peticin
+                // si no es GET, pongo el cuerpo que me den en la peticion
                 DataOutputStream dos = new DataOutputStream (connection.getOutputStream());
                 dos.writeBytes(this.elCuerpo);
                 dos.flush();
                 dos.close();
             }
 
-            // ya he enviado la peticin
-            Log.d("clienterestandroid", "doInBackground(): peticin enviada ");
+            // ya he enviado la peticion
+            Log.d("clienterestandroid", "doInBackground(): peticion enviada ");
 
             // ahora obtengo la respuesta
 
