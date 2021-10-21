@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         logicaFake = new LogicaFake(DIRECCION_SERVIDOR);
     }
 
-    public void comprobarPermisosBlueetooth(){
+    private void comprobarPermisosBlueetooth(){
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): Comprobar permisos Bluetooth");
         if (
                 ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED
