@@ -24,16 +24,20 @@ import java.util.Calendar;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
-//Fecha: 17/10/2021
+// Fecha: 17/10/2021
 // -----------------------------------------------------------------------------------
 public class MainActivity extends AppCompatActivity {
 
     private static final String ETIQUETA_LOG = ">>>>";
-    private static final String DIRECCION_SERVIDOR = "http://192.168.1.14:8080/";
+    private static final String DIRECCION_SERVIDOR = "http://192.168.78.31:8080/";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
     private Intent elIntentDelServicio = null;
     private LogicaFake logicaFake;
 
+    /**
+     * Constructor de vista principal
+     * @param savedInstanceState instancia del main activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         logicaFake = new LogicaFake(DIRECCION_SERVIDOR);
     }
 
+    /**
+     * Contola la solicitud de permisos necesarios para iniciar el servicio Blueetooth
+     */
     private void comprobarPermisosBlueetooth(){
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): Comprobar permisos Bluetooth");
         if (
@@ -61,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * controlar la solicitud de permisos para uso de Blueetooth
-     * @param requestCode
-     * @param permissions
-     * @param grantResults
+     * Gestion de la solicitud de permisos
+     * @param requestCode codigo de peticion
+     * @param permissions lista con los permisos que se can a solicitar
+     * @param grantResults lista con los resultados obtenidos en cada permiso
      */
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
@@ -87,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param v
+     * Metodo que gestiona la parada del servicio
+     * @param v View desde donde se llama al metodo
      */
     public void botonDetenerServicioPulsado( View v ) {
         if ( this.elIntentDelServicio == null ) {
@@ -101,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @param v
+     * Metodo que gestiona la inicializacion del servicio
+     * @param v View desde donde se llama al metodo
      */
     public void botonArrancarServicioPulsado( View v ) {
         Log.d(ETIQUETA_LOG, " boton arrancar servicio Pulsado" );
@@ -118,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param v
+     * Crea una medida segun el dato introducido en por el Usuario
+     * @param v View desde donde se llama al metodo
      */
     public void hacerPeticionRest(View v){
         Date currentTime = Calendar.getInstance().getTime();
@@ -127,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
         ArrayList<Medicion> mediciones = new ArrayList<>();
         mediciones.add(medicion);
-        logicaFake.insetarMediciones(mediciones, getApplicationContext());
+        logicaFake.insetarMediciones(mediciones);
     }
 }
 

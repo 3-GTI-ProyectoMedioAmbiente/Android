@@ -17,6 +17,9 @@ import android.util.Log;
 // -----------------------------------------------------------------------------------
 public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
+    /**
+     * Interfaz que se utilizara para gestionar la respuesta mediante Callback de las peticiones REST
+     */
     public interface RespuestaREST {
         void callback (int codigo, String cuerpo);
     }
@@ -31,10 +34,10 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
     /**
      * Metodo para realizar peticiones REST
-     * @param metodo
-     * @param urlDestino
-     * @param cuerpo
-     * @param laRespuesta
+     * @param metodo identificador del tipo de operacion que se va a realizar
+     * @param urlDestino url a la que se realziara la peticion
+     * @param cuerpo cuerpo donde se pasaran los parametros en caso de que la peticion se tipo POST
+     * @param laRespuesta respuesta de la peticion REST
      */
     public void hacerPeticionREST (String metodo, String urlDestino, String cuerpo, RespuestaREST  laRespuesta) {
         this.elMetodo = metodo;
@@ -46,8 +49,8 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
     }
     /**
      * Metodo que gestionara la peticion REST como un Thread
-     * @param params
-     * @return
+     * @param params distinots parametros que pueudo resivir la peticion
+     * @return Boolean que indica si la ejecucion de la peticion ha sido correcta o no
      */
     @Override
     protected Boolean doInBackground(Void... params) {
@@ -119,7 +122,7 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
     /**
      * Metodo que se llamara cuando finaliza la peticionRest
-     * @param comoFue
+     * @param comoFue boolean que indica cual fuel el resultado de la PeticionRest
      */
     protected void onPostExecute(Boolean comoFue) {
         // llamado tras doInBackground()

@@ -36,6 +36,9 @@ public class ServicioEscuharBeacons extends IntentService {
     private ArrayList<Medicion> mediciones;
     private static int MEDICIONES_A_ENVIAR=2;
 
+    /**
+     * Constructor del servicio para escuchar IBeacons
+     */
     public ServicioEscuharBeacons(  ) {
         super("HelloIntentService");
         mediciones = new ArrayList<>();
@@ -44,7 +47,7 @@ public class ServicioEscuharBeacons extends IntentService {
     }
 
     /**
-     * Parada del servicio
+     * Metodo que gestiona la parada del servio
      */
     public void parar () {
 
@@ -62,17 +65,17 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
+    /**
+     * Metodo que se lanzara siempre que se destruya el servicio
+     */
     public void onDestroy() {
-
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onDestroy() " );
-
-
         this.parar(); // posiblemente no haga falta, si stopService() ya se carga el servicio y su worker thread
     }
 
     /**
      * Funcionamiento del servicio
-     * @param intent
+     * @param intent Intetent donde nos vendran los parametros que queremos enviar
      */
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -92,7 +95,7 @@ public class ServicioEscuharBeacons extends IntentService {
                 buscarEsteDispositivoBTLE();
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
                 if(mediciones.size() >=MEDICIONES_A_ENVIAR){
-                    logicaFake.insetarMediciones(new ArrayList<>(mediciones), this);
+                    logicaFake.insetarMediciones(new ArrayList<>(mediciones));
                     mediciones= new ArrayList<>();
                 }
                 contador++;
@@ -112,7 +115,7 @@ public class ServicioEscuharBeacons extends IntentService {
     }
 
     /**
-     * Busca un dispostivo Bluetooth concreto
+     * Metodo que inicia la busqueda de dispositivos Blueetoh
      */
     private void buscarEsteDispositivoBTLE() {
     if (callbackDelEscaneo==null){
@@ -143,6 +146,7 @@ public class ServicioEscuharBeacons extends IntentService {
         filters.add(sf);
 
         this.elEscanner.startScan(filters, scan.build(), callbackDelEscaneo);
+        //this.elEscanner.startScan(callbackDelEscaneo);
 
         Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): empezamos a escanear buscando: " + NOMBRE_DISPOSITIVO_BL );
     }else{
@@ -151,6 +155,9 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
+    /**
+     * Metdo para pque gestiona la parada de la busqueda de dispositvos Blueetooth
+     */
     private void detenerBusquedaDispositivosBTLE() {
 
         if ( this.callbackDelEscaneo == null ) {
@@ -164,20 +171,23 @@ public class ServicioEscuharBeacons extends IntentService {
 
     /**
      * Mostramos la informacion por el lo y guardamos la informacion de las mediciones en un Array de mediciones
-     * @param resultado
+     * @param resultado objeto que contiene la informacion que se ha de mostrar en el LOG
      */
     private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
 
-        Date currentTime = Calendar.getInstance().getTime();
-        Random randomGenerator = new Random();
-        float dato = randomGenerator.nextInt(100);
-        Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
-        mediciones.add(medicion);
+
 
         BluetoothDevice bluetoothDevice = resultado.getDevice();
         byte[] bytes = resultado.getScanRecord().getBytes();
         int rssi = resultado.getRssi();
         if(bluetoothDevice.getName()!=null){
+            Date currentTime = Calendar.getInstance().getTime();
+            TramaIBeacon tib = new TramaIBeacon(bytes);
+            float dato = Utilidades.bytesToInt(tib.getMinor());
+            Log.d(ETIQUETA_LOG, "dato------------------->"+Utilidades.bytesToInt(tib.getMinor()));
+            Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
+            mediciones.add(medicion);
+
             Log.d(ETIQUETA_LOG, " ****************************************************");
             Log.d(ETIQUETA_LOG, " ****** DISPOSITIVO DETECTADO BTLE ****************** ");
             Log.d(ETIQUETA_LOG, " ****************************************************");
@@ -192,7 +202,7 @@ public class ServicioEscuharBeacons extends IntentService {
             Log.d(ETIQUETA_LOG, " bytes = " + new String(bytes));
             Log.d(ETIQUETA_LOG, " bytes (" + bytes.length + ") = " + Utilidades.bytesToHexString(bytes));
 
-            TramaIBeacon tib = new TramaIBeacon(bytes);
+
 
             Log.d(ETIQUETA_LOG, " ----------------------------------------------------");
             Log.d(ETIQUETA_LOG, " prefijo  = " + Utilidades.bytesToHexString(tib.getPrefijo()));
@@ -210,6 +220,8 @@ public class ServicioEscuharBeacons extends IntentService {
                     + Utilidades.bytesToInt(tib.getMinor()) + " ) ");
             Log.d(ETIQUETA_LOG, " txPower  = " + Integer.toHexString(tib.getTxPower()) + " ( " + tib.getTxPower() + " )");
             Log.d(ETIQUETA_LOG, " ****************************************************");
+
+
         }
     }
 

@@ -17,9 +17,9 @@ public class Utilidades {
     }
 
     /**
-     *
-     * @param uuid
-     * @return UUID
+     * Utilidad para pasar de String a UUID
+     * @param uuid String de la UUID que queremos transformar
+     * @return UUID Resultrado de la transformacion de la String
      */
     public static UUID stringToUUID( String uuid ) {
         if ( uuid.length() != 16 ) {
@@ -39,27 +39,27 @@ public class Utilidades {
     }
 
     /**
-     *
-     * @param uuid
-     * @return String
+     * Utilidad para pasar de UUID a String
+     * @param uuid Objeto UUID que queremos transformar
+     * @return String Resultado de la transformacion proveniente de la string
      */
     public static String uuidToString ( UUID uuid ) {
         return bytesToString( dosLongToBytes( uuid.getMostSignificantBits(), uuid.getLeastSignificantBits() ) );
     }
 
     /**
-     *
-     * @param uuid
-     * @return String
+     * Utilidad para pasar de UUID a Hexadecimal en String
+     * @param uuid Objeto UUID que queremos transformar
+     * @return String Resultado en Hexadecimal de la transformacion de UUID
      */
     public static String uuidToHexString ( UUID uuid ) {
         return bytesToHexString( dosLongToBytes( uuid.getMostSignificantBits(), uuid.getLeastSignificantBits() ) );
     }
 
     /**
-     *
-     * @param bytes
-     * @return String
+     *  Utilidad para pasar de una lista de Bytes a String
+     * @param bytes Lista de bytes que queremos transformar
+     * @return String Resultado de la transformacion de la lista de Bytes
      */
     public static String bytesToString( byte[] bytes ) {
         if (bytes == null ) {
@@ -75,7 +75,7 @@ public class Utilidades {
 
     /**
      * Forma una array de bytes, según los 2 numeros de tipo long. Primero se pondra el numero mas significativo y luego el menos
-     * @param masSignificativos
+     * @param masSignificativos long mas significada que se alamacenar en la lista de bytes
      * @param menosSignificativos
      * @return byte[]
      */
@@ -87,18 +87,18 @@ public class Utilidades {
     }
 
     /**
-     *
-     * @param bytes
-     * @return int
+     * Utilidad para pasar de una lista de Bytes a un tipo Int
+     * @param bytes lista de bytes a transformar
+     * @return int resultado de la transformacion
      */
     public static int bytesToInt( byte[] bytes ) {
         return new BigInteger(bytes).intValue();
     }
 
     /**
-     *
-     * @param bytes
-     * @return long
+     * Utilidad para trasnformar una lista de bytes a un long
+     * @param bytes lista de bytes a transformar
+     * @return long resultado ded la transformacion
      */
     public static long bytesToLong( byte[] bytes ) {
         return new BigInteger(bytes).longValue();
@@ -106,8 +106,8 @@ public class Utilidades {
 
     /**
      * Compruebas si el byte que recibimos es valido
-     * @param bytes
-     * @return int
+     * @param bytes lista de bytes a comprobar
+     * @return int resultado de la transformacion
      */
     public static int bytesToIntOK( byte[] bytes ) {
         if (bytes == null ) {
@@ -144,9 +144,9 @@ public class Utilidades {
     }
 
     /**
-     *
-     * @param bytes
-     * @return
+     * Utilidad para pasr de una lista de bytes a un String con formato hexadecimal
+     * @param bytes lista de bytes a transformar
+     * @return String resultado de la transformacion en formato hexadeciamal
      */
     public static String bytesToHexString( byte[] bytes ) {
 
