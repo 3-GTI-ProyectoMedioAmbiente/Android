@@ -120,8 +120,14 @@ public class NotificacionesFragment extends Fragment  {
         fragment.setArguments(args);
         return fragment;
     }
+
+
+    /**
+     * La funcion createNotificationChannel() es una funcion la cual maneja la creacion de la notificacion.
+     * createNotificationChannel()
+     */
     private void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){ //verifica la version del SDK
             CharSequence name = "Noticacion";
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(getContext().NOTIFICATION_SERVICE);
@@ -130,40 +136,35 @@ public class NotificacionesFragment extends Fragment  {
     }
 
     /**
-     *
+     * La funcion setPendingIntent() es una funcion la cual utilizarems en un futuro, redirigir al usuario a un fragment al pulsar la notificacion.
+     * setPendingIntent()
      */
-    private void setPendingIntent(){
-
+    /*private void setPendingIntent(){
         Intent intent = new Intent(getContext(), NotificacionesFragment.class );
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(getContext());
         //stackBuilder.addParentStack(NotificacionesFragment.class);
         stackBuilder.addNextIntent(intent);
         pendingIntent = stackBuilder.getPendingIntent(1, PendingIntent.FLAG_UPDATE_CURRENT);
-
         //Log.d("pene","pending");
+    }*/
 
 
-    }
-
-
+    /**
+     * La funcion createNotification() crea la notificacion.
+     * createNotification()
+     */
+    createNotificationChannel
     private void createNotification(){
-
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity().getApplicationContext(), CHANNEL_ID);
         builder.setSmallIcon(R.drawable.logo);
         builder.setContentTitle("Angle Corp:");
         builder.setContentText("Bateria baja del sensor");
         builder.setColor(Color.BLUE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
         //builder.setContentIntent(pendingIntent);
-
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getActivity().getApplicationContext());
         notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
-
-
-
-
-        Log.d("pene","createNotification");
+        //Log.d("pene","createNotification");
     }
 
 
@@ -181,7 +182,10 @@ public class NotificacionesFragment extends Fragment  {
 
 
 
-
+    /**
+     * La funcion llenarLista() es el recicler view.
+     * llenarLista()
+     */
     private void llenarLista(){
 
         listaNotificacion.add(new Notificacion("Bateria baja", "Hace 2 horas",R.drawable.battery));
