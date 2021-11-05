@@ -5,34 +5,49 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.jcherram.appbeacon.adapter.Notificacion;
+import com.example.jcherram.appbeacon.adapter.NotificacionesAdapter;
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
 import com.example.jcherram.appbeacon.controlador.ServicioEscuharBeacons;
 import com.example.jcherram.appbeacon.modelo.Medicion;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.Time;
 import java.util.Calendar;
+import java.util.List;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
 // Fecha: 17/10/2021
 // -----------------------------------------------------------------------------------
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private static final String ETIQUETA_LOG = ">>>>";
     private static final String DIRECCION_SERVIDOR = "http://192.168.78.31:8080/";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
     private Intent elIntentDelServicio = null;
     private LogicaFake logicaFake;
+    BottomNavigationView navigationView;
+
+
 
     /**
      * Constructor de vista principal
@@ -41,10 +56,63 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
+
         comprobarPermisosBlueetooth();
         logicaFake = new LogicaFake(DIRECCION_SERVIDOR);
+
+
+        setContentView(R.layout.activity_main);
+
+
+
+        navigationView = findViewById(R.id.bottom_navigation);
+
+        setFragment(new MedicionesFragment());
+
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
+                switch (item.getItemId()) {
+
+                    case R.id.nav_user:
+                        fragment = new UserFragment();
+                        break;
+
+                    case R.id.nav_notificaciones:
+                        fragment = new NotificacionesFragment();
+                        break;
+
+                    case R.id.nav_mediciones:
+                        fragment = new MedicionesFragment();
+                        break;
+
+
+                    case R.id.nav_beacons:
+                        fragment = new BeaconsFragment();
+                        break;
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+                return true;
+            }
+        });
+
     }
+
+
+
+
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
+    }
+
 
     /**
      * Contola la solicitud de permisos necesarios para iniciar el servicio Blueetooth

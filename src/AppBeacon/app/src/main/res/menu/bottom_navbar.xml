@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:id="@+id/nav_mediciones"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Mediciones"/>
+
+    <item
+
+        android:id="@+id/nav_notificaciones"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="Notificaciones"/>
+
+
+
+
+
+    <item
+
+        android:id="@+id/nav_user"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="Usuario"/>
+
+    <item
+
+        android:id="@+id/nav_beacons"
+        android:icon="@drawable/ic_baseline_phonelink_ring_24"
+        android:title="Escuchar beacons"/>
+
+</menu>
