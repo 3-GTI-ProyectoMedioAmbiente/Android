@@ -153,7 +153,7 @@ public class NotificacionesFragment extends Fragment  {
      * La funcion createNotification() crea la notificacion.
      * createNotification()
      */
-    createNotificationChannel
+    
     private void createNotification(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity().getApplicationContext(), CHANNEL_ID);
         builder.setSmallIcon(R.drawable.logo);
