@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEF7F8"
+    android:background="#FFFFFF"
     tools:context=".NotificacionesFragment">
 
     <Button
         android:id="@+id/btNotificacion"
         android:layout_width="109dp"
         android:layout_height="48dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#5f9ea0"
         android:text="Notificacion"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
@@ -37,19 +38,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="47dp"
-        android:layout_height="48dp"
-        android:src="@drawable/alertt"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNotis"
-        android:layout_width="411dp"
-        android:layout_height="697dp"
+        android:layout_width="417dp"
+        android:layout_height="581dp"
         android:layout_marginTop="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"

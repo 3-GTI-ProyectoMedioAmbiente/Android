@@ -27,6 +27,6 @@
 
         android:id="@+id/nav_beacons"
         android:icon="@drawable/ic_baseline_phonelink_ring_24"
-        android:title="Escuchar beacons"/>
+        android:title="Mi nodo"/>
 
 </menu>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/busfondo"
+    android:elevation="10dip"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/abel"
+        android:text="Registrarse"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="218dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="309dp"
+        android:layout_height="405dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:elevation="10dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/abel"
+                android:text="Nombre:"
+                android:textColor="#024A44"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                android:layout_width="260dp"
+                android:layout_height="31dp"
+                android:layout_below="@+id/textView11"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/register"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextTextPersonName3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/abel"
+                android:text="Correo:"
+                android:textColor="#024A44"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="260dp"
+                android:layout_height="31dp"
+                android:layout_below="@+id/textView12"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/register"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="26dp"
+                android:layout_below="@+id/editTextTextPersonName4"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/abel"
+                android:text="Contraseña:"
+                android:textColor="#024A44"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="260dp"
+                android:layout_height="31dp"
+                android:layout_below="@+id/textView14"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/register"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_below="@+id/editTextTextPassword"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/abel"
+                android:text="Edad:"
+                android:textColor="#024A44"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName5"
+                android:layout_width="260dp"
+                android:layout_height="31dp"
+                android:layout_below="@+id/textView15"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/register"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_below="@+id/editTextTextPersonName5"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/abel"
+                android:text="Ubicación:"
+                android:textColor="#024A44"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName6"
+                android:layout_width="260dp"
+                android:layout_height="31dp"
+                android:layout_below="@+id/textView16"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/register"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="113dp"
+                android:layout_height="38dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="97dp"
+                android:layout_marginEnd="98dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="#5f9ea0"
+                android:fontFamily="@font/abel"
+                android:text="Regístrate"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,8 +31,8 @@
         app:elevation="10dp"
         app:itemBackground="@drawable/nav_item_drawable"
         app:itemIconSize="27dp"
-        app:itemIconTint="@android:color/holo_blue_dark"
-        app:itemTextColor="#071D5C"
+        app:itemIconTint="#5f9ea0"
+        app:itemTextColor="#5f9ea0"
         app:menu="@menu/bottom_navbar" />
 
 

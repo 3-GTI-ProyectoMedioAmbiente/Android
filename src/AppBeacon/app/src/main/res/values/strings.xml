@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">AppBeacon</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">ExposedDropDown</string>
+
+
+    <string-array name="lista_gases">
+        <item>CO2</item>
+        <item>CSE</item>
+        <item>GNC</item>
+    </string-array>
+
 </resources>

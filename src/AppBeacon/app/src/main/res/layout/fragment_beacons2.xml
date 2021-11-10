@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFF7F8"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#5f9ea0"
         android:elevation="15dp"
         android:onClick="botonArrancarServicioPulsado"
         android:text="Arrancar Servicio"
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:backgroundTint="#2196F3"
+        android:backgroundTint="#5f9ea0"
         android:elevation="15dp"
         android:onClick="botonDetenerServicioPulsado"
         android:text="Detener Servicio"
@@ -44,60 +44,30 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/abel"
         android:text="Servicio"
         android:textColor="#013A42"
         android:textSize="24sp"
-        android:textStyle="bold"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/abel"
-        android:text="Medicion"
-        android:textColor="#013A42"
-        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edtiTextMedicion"
-        android:layout_width="288dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="ej: 15.5"
-        android:inputType="numberDecimal"
-        android:textColor="#013A42"
-        app:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Button
-        android:id="@+id/buttonIniciarSesion"
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#2196F3"
-        android:elevation="15dp"
-        android:onClick="hacerPeticionRest"
-        android:text="Enviar"
-        android:textColor="#FFFFFF"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/edtiTextMedicion"
-        app:layout_constraintTop_toBottomOf="@+id/edtiTextMedicion" />
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/abel"
+        android:text="Historial de mediciones"
+        android:textColor="#013A42"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonDetenerServicio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fondo">
+        android:background="@drawable/busfondo">
 
         <ImageView
             android:id="@+id/imageView6"
@@ -30,7 +30,7 @@
             android:layout_marginBottom="50dp"
             android:fontFamily="@font/abel"
             android:text="¿Olvidaste tu contraseña?"
-            android:textColor="#8BCCEA"
+            android:textColor="#FFFFFF"
             android:textColorHighlight="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="14sp"
@@ -65,13 +65,13 @@
             android:layout_width="270dp"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
-            android:backgroundTint="#A4E0E8"
+            android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:fontFamily="@font/abel"
             android:inputType="textPersonName"
             android:text="Contraseña"
 
-            android:textColor="#A2DAE1"
+            android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,12 +83,12 @@
             android:layout_width="270dp"
             android:layout_height="48dp"
             android:layout_marginTop="70dp"
-            android:backgroundTint="#A4E0E8"
+            android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:fontFamily="@font/abel"
             android:inputType="textPersonName"
             android:text="Usuario"
-            android:textColor="#A2DAE1"
+            android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -111,6 +111,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView6"
             tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/btnregister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#5f9ea0"
+            android:fontFamily="@font/abel"
+            android:text="Crear cuenta"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:cornerRadius="7dip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </android.widget.RelativeLayout>

@@ -1,8 +1,11 @@
 
 package com.example.jcherram.appbeacon;
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -10,8 +13,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
+
+;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -46,8 +53,8 @@ public class MainActivity extends AppCompatActivity  {
     private Intent elIntentDelServicio = null;
     private LogicaFake logicaFake;
     BottomNavigationView navigationView;
-
-
+    Dialog mydialog;
+    TextView txtclose;
 
     /**
      * Constructor de vista principal
@@ -64,7 +71,6 @@ public class MainActivity extends AppCompatActivity  {
 
 
         setContentView(R.layout.activity_main);
-
 
 
         navigationView = findViewById(R.id.bottom_navigation);
@@ -99,6 +105,7 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             }
         });
+
 
     }
 
@@ -161,6 +168,8 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+
+
     /**
      * Metodo que gestiona la parada del servicio
      * @param v View desde donde se llama al metodo
@@ -197,6 +206,8 @@ public class MainActivity extends AppCompatActivity  {
      * Crea una medida segun el dato introducido en por el Usuario
      * @param v View desde donde se llama al metodo
      */
+
+    /**
     public void hacerPeticionRest(View v){
         Date currentTime = Calendar.getInstance().getTime();
         float dato = Float.parseFloat(((EditText)findViewById(R.id.edtiTextMedicion)).getText().toString());
@@ -205,5 +216,6 @@ public class MainActivity extends AppCompatActivity  {
         mediciones.add(medicion);
         logicaFake.insetarMediciones(mediciones);
     }
+     */
 }
 

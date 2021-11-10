@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="322dp"
-        android:layout_height="425dp"
+        android:layout_height="435dp"
         android:layout_marginTop="30dp"
 
         app:cardCornerRadius="9dp"
@@ -21,8 +21,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="425dp"
-            android:background="#ECF7F8">
+            android:layout_height="435dp"
+            android:background="#E2F2F3">
 
             <TextView
                 android:id="@+id/textView18"
@@ -31,11 +31,11 @@
                 android:layout_below="@+id/textView4"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/abel"
-                android:text="Localización:"
+                android:text="Nombre de usuario:"
                 android:textColor="#064D75"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -45,11 +45,11 @@
                 android:layout_below="@+id/textView7"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/abel"
                 android:text="Edad:"
                 android:textColor="#064D75"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -63,25 +63,25 @@
                 android:fontFamily="@font/abel"
                 android:text="Correo:"
                 android:textColor="#064D75"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="167dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView8"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="76dp"
-                android:layout_marginTop="53dp"
                 android:layout_marginEnd="75dp"
-                android:backgroundTint="#2196F3"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#5f9ea0"
                 android:fontFamily="@font/abel"
                 android:shadowRadius="3"
                 android:text="Editar información"
                 android:textAllCaps="false"
-                android:textColor="#D5E3FB"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:cornerRadius="7dip" />
 
@@ -94,9 +94,9 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/abel"
-                android:text="Valencia"
+                android:text="User123"
                 android:textColor="#2A6688"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -109,7 +109,7 @@
                 android:fontFamily="@font/abel"
                 android:text="29 años"
                 android:textColor="#2A6688"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -122,7 +122,35 @@
                 android:fontFamily="@font/abel"
                 android:text=" usuario@correo.com"
                 android:textColor="#2A6688"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView8"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/abel"
+                android:text="Contraseña:"
+                android:textColor="#064D75"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView23"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/abel"
+                android:text="User123"
+                android:textColor="#2A6688"
+                android:textSize="16sp" />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

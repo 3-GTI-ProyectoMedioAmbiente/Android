@@ -1,11 +1,19 @@
 package com.example.jcherram.appbeacon;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jcherram.appbeacon.adapter.Notificacion;
 import com.example.jcherram.appbeacon.adapter.NotificacionesAdapter;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +32,9 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MedicionesFragment extends Fragment {
+
+    Dialog mydialog;
+    TextView txtclose;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,23 +78,67 @@ public class MedicionesFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
+    String[] items={"CO2", "NO2", "CST"};
 
-
-
+    AutoCompleteTextView autoCompleteTextView;
+    ArrayAdapter<String> adpterItems;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mediciones,
                 container, false);
 
+        autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView2);
+
+        adpterItems = new ArrayAdapter<String>(getContext(), R.layout.list_gas, items);
+
+        autoCompleteTextView.setAdapter(adpterItems);
+        mydialog = new Dialog(getContext());
+        mydialog.setContentView(R.layout.popupgas);
+        txtclose=(TextView) mydialog.findViewById(R.id.txtclose);
+
+        ImageButton btninfo =  view.findViewById(R.id.btninfo);
+        btninfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup(v);
+            }
+        });
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(), "Gas: "+item,Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
         return view;
+    }
+
+    public void showPopup(View v){
+        TextView txtclose;
+
+        mydialog.setContentView(R.layout.popupgas);
+        txtclose=(TextView) mydialog.findViewById(R.id.txtclose);
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mydialog.dismiss();
+            }
+        });
+        mydialog.show();
+
     }
 
 
