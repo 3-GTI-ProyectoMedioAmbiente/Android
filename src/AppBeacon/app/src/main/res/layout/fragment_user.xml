@@ -34,7 +34,7 @@
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/abel"
                 android:text="Nombre de usuario:"
-                android:textColor="#064D75"
+                android:textColor="#36696A"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/abel"
                 android:text="Edad:"
-                android:textColor="#064D75"
+                android:textColor="#36696A"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/abel"
                 android:text="Correo:"
-                android:textColor="#064D75"
+                android:textColor="#36696A"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -73,9 +73,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="76dp"
-                android:layout_marginEnd="75dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="74dp"
+                android:layout_marginEnd="77dp"
+                android:layout_marginBottom="39dp"
                 android:backgroundTint="#5f9ea0"
                 android:fontFamily="@font/abel"
                 android:shadowRadius="3"
@@ -95,7 +95,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/abel"
                 android:text="User123"
-                android:textColor="#2A6688"
+                android:textColor="#5f9ea0"
                 android:textSize="16sp" />
 
             <TextView
@@ -108,7 +108,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/abel"
                 android:text="29 años"
-                android:textColor="#2A6688"
+                android:textColor="#5f9ea0"
                 android:textSize="16sp" />
 
             <TextView
@@ -121,34 +121,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/abel"
                 android:text=" usuario@correo.com"
-                android:textColor="#2A6688"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView8"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/abel"
-                android:text="Contraseña:"
-                android:textColor="#064D75"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="226dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView23"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/abel"
-                android:text="User123"
-                android:textColor="#2A6688"
+                android:textColor="#5f9ea0"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -157,7 +130,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="413dp"
-        android:layout_height="184dp"
+        android:layout_height="164dp"
         android:background="@drawable/fondouser"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -165,12 +138,12 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="189dp"
-            android:layout_height="96dp"
+            android:layout_width="187dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginBottom="56dp"
             android:fontFamily="@font/abel"
             android:text="Nombre de usuario"
             android:textColor="#FFFFFF"
@@ -178,16 +151,16 @@
             android:textStyle="bold" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="130dp"
-            android:layout_height="111dp"
+            android:layout_width="121dp"
+            android:layout_height="90dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="202dp"
-            android:layout_marginTop="39dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="34dp"
+            android:layout_marginStart="245dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="47dp"
+            android:layout_marginBottom="33dp"
             android:src="@drawable/fotoperf" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

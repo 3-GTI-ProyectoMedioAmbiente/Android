@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/bottomrad.xml" value="0.12905405405405404" />
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/buttonradius.xml" value="0.2483108108108108" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/highlight_color.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/nav_item_drawable.xml" value="0.2140625" />
@@ -12,17 +14,18 @@
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/bottomrad.xml" value="0.11858108108108108" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/card_bateria.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/card_co2.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/card_notificaciones.xml" value="0.33" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/card_prueba.xml" value="1.5082236842105263" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons2.xml" value="0.33" />
-        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_mediciones.xml" value="0.33" />
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_mediciones.xml" value="0.5" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_notificaciones.xml" value="0.26294277929155313" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_user.xml" value="0.33" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/list_gas.xml" value="0.16145833333333334" />
-        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/login.xml" value="0.33" />
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/login.xml" value="0.475354490209318" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/popupgas.xml" value="0.25" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/styles.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/menu/bottom_navbar.xml" value="0.20520833333333333" />

@@ -12,9 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="100dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/bottomrad"
         android:minWidth="48dp"
         android:minHeight="48dp"
+        app:circularflow_radiusInDP="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/iconoleyenda"
@@ -23,7 +24,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="200dp"
-        android:layout_height="58dp"
+        android:layout_height="54dp"
         android:layout_marginTop="45dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
@@ -34,26 +35,26 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:visibility="visible">
+            android:visibility="visible"
+            app:hintTextColor="#FFFF">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="54dp"
                 android:layout_weight="1"
-                android:completionThreshold = "1"
                 android:background="#FFFFFF"
-                android:hint="Gas"
                 android:inputType="none"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:text="Seleccione gas"
                 android:textColor="#5f9ea0"
-                android:textSize="14sp"
-                android:theme="@style/Autocomplete"
-                android:visibility="visible" />
+                android:theme="@style/Autocomplete" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.cardview.widget.CardView>

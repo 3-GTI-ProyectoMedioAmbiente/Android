@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="218dp"
-        android:layout_height="130dp"
+        android:layout_width="217dp"
+        android:layout_height="107dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +37,9 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="309dp"
-        android:layout_height="405dp"
+        android:layout_height="435dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,11 +59,11 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/abel"
                 android:text="Nombre:"
                 android:textColor="#024A44"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -76,9 +76,11 @@
                 android:layout_marginTop="0dp"
                 android:background="@drawable/register"
                 android:ems="10"
-                android:gravity="center"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:paddingStart="5dp"
+                android:textColor="#5f9ea0"
+                android:textSize="16sp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -92,7 +94,7 @@
                 android:fontFamily="@font/abel"
                 android:text="Correo:"
                 android:textColor="#024A44"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -107,6 +109,9 @@
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
+                android:paddingStart="5dp"
+                android:textColor="#5f9ea0"
+                android:textSize="16sp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -120,7 +125,7 @@
                 android:fontFamily="@font/abel"
                 android:text="Contraseña:"
                 android:textColor="#024A44"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -133,7 +138,10 @@
                 android:layout_marginTop="0dp"
                 android:background="@drawable/register"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:paddingStart="5dp"
+                android:textColor="#5f9ea0"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -144,9 +152,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/abel"
-                android:text="Edad:"
+                android:text="Confirmar contraseña:"
                 android:textColor="#024A44"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -159,7 +167,10 @@
                 android:layout_marginTop="0dp"
                 android:background="@drawable/register"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="textPassword"
+                android:paddingStart="5dp"
+                android:textColor="#5f9ea0"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -170,9 +181,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/abel"
-                android:text="Ubicación:"
+                android:text="Edad:"
                 android:textColor="#024A44"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -185,7 +196,10 @@
                 android:layout_marginTop="0dp"
                 android:background="@drawable/register"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="number"
+                android:paddingStart="5dp"
+                android:textColor="#5f9ea0"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/button2"
@@ -196,7 +210,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="97dp"
                 android:layout_marginEnd="98dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="15dp"
                 android:backgroundTint="#5f9ea0"
                 android:fontFamily="@font/abel"
                 android:text="Regístrate"
