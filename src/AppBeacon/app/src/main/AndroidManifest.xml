@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jcherram.appbeacon">
+    package="com.example.jcherram.appbeacon" >
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -24,15 +24,24 @@
         android:roundIcon="@drawable/iconlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBeacon"
-        android:usesCleartextTraffic="true">
-
-
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".ActivityHistorialMediciones"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityVerHistorial"
+            android:exported="true"
+            android:label="@string/title_activity_ver_historial"
+            android:theme="@style/Theme.AppBeacon.NoActionBar" />
+        <activity
+            android:name=".ActivityConfigurarSensor"
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +51,7 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
