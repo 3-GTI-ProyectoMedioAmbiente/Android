@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity  {
 
         navigationView = findViewById(R.id.bottom_navigation);
 
-        setFragment(new MedicionesFragment());
+
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

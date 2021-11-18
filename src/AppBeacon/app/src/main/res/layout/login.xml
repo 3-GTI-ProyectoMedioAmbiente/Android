@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_login"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
 
+    android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
             android:layout_marginBottom="50dp"
-            android:fontFamily="@font/abel"
+            android:fontFamily="@font/montserrat"
             android:text="¿Olvidaste tu contraseña?"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#FFFFFF"
@@ -48,7 +49,7 @@
             android:layout_marginBottom="125dp"
             android:backgroundTint="#FFFF"
             android:elevation="10dp"
-            android:fontFamily="@font/abel"
+            android:fontFamily="@font/montserrat"
             android:text="Iniciar sesión"
             android:textAllCaps="false"
             android:textColor="#5f9ea0"
@@ -67,7 +68,7 @@
             android:layout_marginTop="40dp"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
-            android:fontFamily="@font/abel"
+            android:fontFamily="@font/montserrat"
             android:hint="Contraseña"
 
             android:inputType="textPersonName|textPassword"
@@ -85,9 +86,9 @@
             android:layout_marginTop="70dp"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
-            android:fontFamily="@font/abel"
-            android:inputType="textPersonName"
+            android:fontFamily="@font/montserrat"
             android:hint="Usuario"
+            android:inputType="textPersonName"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textStyle="bold"
@@ -101,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/abel"
+            android:fontFamily="@font/montserrat"
             android:text="Iniciar Sesión"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#FFFFFF"
@@ -120,7 +121,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/botonsecundario"
-            android:fontFamily="@font/abel"
+            android:fontFamily="@font/montserrat"
             android:text="Registrarse"
             android:textAllCaps="false"
             android:textSize="16sp"
@@ -131,4 +132,4 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</android.widget.RelativeLayout>
+</android.widget.FrameLayout>

@@ -12,8 +12,8 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/abel"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat"
         android:text="Registrarse"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
@@ -60,10 +60,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/abel"
+                android:fontFamily="@font/montserrat"
                 android:text="Nombre:"
                 android:textColor="#024A44"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -90,11 +90,11 @@
                 android:layout_below="@+id/editTextTextPersonName3"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/abel"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Correo:"
                 android:textColor="#024A44"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -121,11 +121,11 @@
                 android:layout_below="@+id/editTextTextPersonName4"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/abel"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Contraseña:"
                 android:textColor="#024A44"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -150,11 +150,11 @@
                 android:layout_below="@+id/editTextTextPassword"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/abel"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Confirmar contraseña:"
                 android:textColor="#024A44"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -179,11 +179,11 @@
                 android:layout_below="@+id/editTextTextPersonName5"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/abel"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Edad:"
                 android:textColor="#024A44"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <EditText
