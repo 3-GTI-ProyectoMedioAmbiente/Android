@@ -24,8 +24,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="200dp"
-        android:layout_height="54dp"
+        android:layout_width="215dp"
+        android:layout_height="56dp"
         android:layout_marginTop="45dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
@@ -38,7 +38,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#FFFFFF"
             android:visibility="visible"
             app:hintTextColor="#FFFF">
@@ -46,9 +46,10 @@
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView2"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
+                android:completionThreshold="1"
                 android:inputType="none"
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"

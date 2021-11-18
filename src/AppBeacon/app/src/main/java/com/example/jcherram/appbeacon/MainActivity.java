@@ -48,14 +48,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity  {
 
     private static final String ETIQUETA_LOG = ">>>>";
-    private static final String DIRECCION_SERVIDOR = "http://192.168.78.31:8080/";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
-    private Intent elIntentDelServicio = null;
-    private LogicaFake logicaFake;
-    BottomNavigationView navigationView;
-    Dialog mydialog;
-    TextView txtclose;
-
+    private BottomNavigationView navigationView;
+    private Boolean usuarioLogueado = true;
+    private Boolean usuarioConSensor = true;
     /**
      * Constructor de vista principal
      * @param savedInstanceState instancia del main activity
@@ -67,7 +63,6 @@ public class MainActivity extends AppCompatActivity  {
 
 
         comprobarPermisosBlueetooth();
-        logicaFake = new LogicaFake(DIRECCION_SERVIDOR);
 
 
         setContentView(R.layout.activity_main);
@@ -97,7 +92,14 @@ public class MainActivity extends AppCompatActivity  {
 
 
                     case R.id.nav_beacons:
-                        fragment = new BeaconsFragment();
+                        if(usuarioLogueado && usuarioConSensor){
+                            fragment = new BeaconsFragment();
+                        }else if(!usuarioConSensor){
+                            fragment = new VincularDispositivoFragment();
+                        }else{
+                            fragment = new VincularDispositivoFragment();
+                        }
+
                         break;
                 }
 
@@ -167,55 +169,5 @@ public class MainActivity extends AppCompatActivity  {
                 return;
         }
     }
-
-
-
-    /**
-     * Metodo que gestiona la parada del servicio
-     * @param v View desde donde se llama al metodo
-     */
-    public void botonDetenerServicioPulsado( View v ) {
-        if ( this.elIntentDelServicio == null ) {
-            // no estaba arrancado
-            return;
-        }
-        stopService( this.elIntentDelServicio );
-        this.elIntentDelServicio = null;
-        Log.d(ETIQUETA_LOG, " boton detener servicio Pulsado" );
-    }
-
-    /**
-     * Metodo que gestiona la inicializacion del servicio
-     * @param v View desde donde se llama al metodo
-     */
-    public void botonArrancarServicioPulsado( View v ) {
-        Log.d(ETIQUETA_LOG, " boton arrancar servicio Pulsado" );
-        if ( this.elIntentDelServicio != null ) {
-            // ya estaba arrancado
-            return;
-        }
-        Log.d(ETIQUETA_LOG, " MainActivity.constructor : voy a arrancar el servicio");
-
-        this.elIntentDelServicio = new Intent(this, ServicioEscuharBeacons.class);
-        this.elIntentDelServicio.putExtra("ipServidor", DIRECCION_SERVIDOR);
-        this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
-        startService( this.elIntentDelServicio );
-    }
-
-    /**
-     * Crea una medida segun el dato introducido en por el Usuario
-     * @param v View desde donde se llama al metodo
-     */
-
-    /**
-    public void hacerPeticionRest(View v){
-        Date currentTime = Calendar.getInstance().getTime();
-        float dato = Float.parseFloat(((EditText)findViewById(R.id.edtiTextMedicion)).getText().toString());
-        Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
-        ArrayList<Medicion> mediciones = new ArrayList<>();
-        mediciones.add(medicion);
-        logicaFake.insetarMediciones(mediciones);
-    }
-     */
 }
 

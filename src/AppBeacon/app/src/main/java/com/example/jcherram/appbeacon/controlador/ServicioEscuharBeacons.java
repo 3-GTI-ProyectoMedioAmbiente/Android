@@ -29,7 +29,7 @@ import java.util.Random;
 public class ServicioEscuharBeacons extends IntentService {
 
     private static final String ETIQUETA_LOG = ">>>>";
-    private static final String NOMBRE_DISPOSITIVO_BL = "gti_jcherram";
+    private static final String NOMBRE_DISPOSITIVO_BL = "angle-corp";
     private ScanCallback callbackDelEscaneo = null;
     private BluetoothLeScanner elEscanner;
     private boolean seguir = true;
@@ -202,8 +202,6 @@ public class ServicioEscuharBeacons extends IntentService {
             Log.d(ETIQUETA_LOG, " bytes = " + new String(bytes));
             Log.d(ETIQUETA_LOG, " bytes (" + bytes.length + ") = " + Utilidades.bytesToHexString(bytes));
 
-
-
             Log.d(ETIQUETA_LOG, " ----------------------------------------------------");
             Log.d(ETIQUETA_LOG, " prefijo  = " + Utilidades.bytesToHexString(tib.getPrefijo()));
             Log.d(ETIQUETA_LOG, "          advFlags = " + Utilidades.bytesToHexString(tib.getAdvFlags()));
@@ -220,14 +218,20 @@ public class ServicioEscuharBeacons extends IntentService {
                     + Utilidades.bytesToInt(tib.getMinor()) + " ) ");
             Log.d(ETIQUETA_LOG, " txPower  = " + Integer.toHexString(tib.getTxPower()) + " ( " + tib.getTxPower() + " )");
             Log.d(ETIQUETA_LOG, " ****************************************************");
-
-
+            Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de:  " + calculateDistance(tib.getTxPower(), rssi));
         }
     }
 
-    /**
-     * Inicializacion para poder buscar dispositivos BL
-     */
+    public static double calculateDistance(int txPower,int rssi) {
+        // La señal vale el valor absoluto.
+        int absRssi = Math.abs(rssi);
+        double power = (absRssi - txPower) / (10 * 2.0);
+        return Math.pow(10, power);
+
+    }
+        /**
+         * Inicializacion para poder buscar dispositivos BL
+         */
     private void inicializarBlueTooth() {
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): obtenemos adaptador BT ");
 
