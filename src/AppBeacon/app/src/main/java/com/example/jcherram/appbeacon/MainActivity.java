@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
         setContentView(R.layout.activity_main);
-
+        setFragment(new MedicionesFragment());
 
         navigationView = findViewById(R.id.bottom_navigation);
 

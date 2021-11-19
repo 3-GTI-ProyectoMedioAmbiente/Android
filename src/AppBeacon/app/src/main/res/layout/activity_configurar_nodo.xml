@@ -12,7 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/abel"
         android:text="Servicio"
 
@@ -20,7 +20,6 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonDetenerServicio2" />
 
@@ -59,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
 
         android:fontFamily="@font/abel"
         android:text="Modelo sensor:"
@@ -114,16 +113,17 @@
 
     <TextView
         android:id="@+id/textView31"
-        android:layout_width="368dp"
-        android:layout_height="86dp"
+        android:layout_width="310dp"
+        android:layout_height="90dp"
 
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="116dp"
         android:fontFamily="@font/abel"
         android:text="*La distancia obtendido puedo varariar considerablemente segun las interferncias y objetos que se encunetro en el móvil y el sensor"
         android:textColor="#013A42"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -176,7 +176,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#5f9ea0"
+        android:backgroundTint="#8EBEBF"
         android:elevation="15dp"
         android:text="DESVINCULAR NODO"
         android:textColor="#FFFFFF"

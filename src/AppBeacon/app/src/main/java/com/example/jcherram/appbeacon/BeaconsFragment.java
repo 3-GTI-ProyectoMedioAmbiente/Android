@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,7 +56,7 @@ public class BeaconsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_beacons2, container, false);
         Button buttonVerHistorial = v.findViewById(R.id.buttonVerHistorial);
-        Button buttonConfigurarNodo = v.findViewById(R.id.buttonConfigurarNodo);
+        ImageView buttonConfigurarNodo = v.findViewById(R.id.imageViewConfigurarNodo);
         buttonConfigurarNodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +73,7 @@ public class BeaconsFragment extends Fragment {
         return v;
     }
     private void configurarNodo(){
-        Intent intent = new Intent(getContext(), ActivityConfigurarSensor.class);
+        Intent intent = new Intent(getContext(), SettingsActivity.class);
         startActivity(intent);
     }
 

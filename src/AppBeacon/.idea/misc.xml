@@ -25,7 +25,7 @@
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_notificaciones.xml" value="0.26294277929155313" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_user.xml" value="0.33" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/list_gas.xml" value="0.16145833333333334" />
-        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/login.xml" value="0.25" />
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/login.xml" value="0.475354490209318" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/popupgas.xml" value="0.25" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/styles.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/menu/bottom_navbar.xml" value="0.20520833333333333" />
@@ -40,7 +40,7 @@
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/activity_register.xml" value="0.2890625" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/activity_splash.xml" value="0.2890625" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/card_notificaciones.xml" value="0.2890625" />
-        <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons2.xml" value="0.25" />
+        <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons2.xml" value="0.33" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_mediciones.xml" value="0.25" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_mi_nodo.xml" value="0.216796875" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_notificaciones.xml" value="0.2890625" />
@@ -49,7 +49,9 @@
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/list_gas.xml" value="0.2890625" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/login.xml" value="0.2890625" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/popupgas.xml" value="0.2890625" />
+        <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/settings_activity.xml" value="0.275" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/xml/network_security_config.xml" value="0.1609375" />
+        <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/xml/root_preferences.xml" value="0.275" />
       </map>
     </option>
   </component>

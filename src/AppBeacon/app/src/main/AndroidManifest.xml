@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jcherram.appbeacon" >
-
+    package="com.example.jcherram.appbeacon">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -24,7 +23,11 @@
         android:roundIcon="@drawable/iconlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBeacon"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".ActivityHistorialMediciones"
             android:exported="true" />
@@ -41,7 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +54,7 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/messages_header"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:enabled="false"
+            app:defaultValue="@string/modeloSensorDefault"
+            app:enabled="true"
+            app:key="keyModeloDispositivo"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:enabled="false"
+            app:enabled="true"
+            app:defaultValue="@string/macSensorDefault"
+            app:key="keyMacDispositivo"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
