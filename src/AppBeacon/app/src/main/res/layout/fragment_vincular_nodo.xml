@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonvincular"
         android:layout_width="208dp"
         android:layout_height="58dp"
         android:layout_alignParentStart="true"
@@ -34,6 +34,7 @@
         android:text="Vincula tu dispositivo"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
+        android:onClick="escanear"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,5 +58,14 @@
         app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonvincular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

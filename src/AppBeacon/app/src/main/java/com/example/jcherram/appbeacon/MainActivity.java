@@ -1,45 +1,23 @@
 
 package com.example.jcherram.appbeacon;
 import android.Manifest;
-import android.app.Dialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.TextView;
 
 
 ;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.jcherram.appbeacon.adapter.Notificacion;
-import com.example.jcherram.appbeacon.adapter.NotificacionesAdapter;
-import com.example.jcherram.appbeacon.controlador.LogicaFake;
-import com.example.jcherram.appbeacon.controlador.ServicioEscuharBeacons;
-import com.example.jcherram.appbeacon.modelo.Medicion;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.sql.Time;
-import java.util.Calendar;
-import java.util.List;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
@@ -50,7 +28,6 @@ public class MainActivity extends AppCompatActivity  {
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
     private BottomNavigationView navigationView;
-    private Boolean usuarioLogueado = true;
     private Boolean usuarioConSensor = true;
     /**
      * Constructor de vista principal
@@ -92,10 +69,8 @@ public class MainActivity extends AppCompatActivity  {
 
 
                     case R.id.nav_beacons:
-                        if(usuarioLogueado && usuarioConSensor){
+                        if( usuarioConSensor) {
                             fragment = new BeaconsFragment();
-                        }else if(!usuarioConSensor){
-                            fragment = new VincularDispositivoFragment();
                         }else{
                             fragment = new VincularDispositivoFragment();
                         }
