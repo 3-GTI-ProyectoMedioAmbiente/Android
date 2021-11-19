@@ -10,13 +10,14 @@ import com.example.jcherram.appbeacon.adapter.Medicion;
 import com.example.jcherram.appbeacon.adapter.MedicionAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityHistorialMediciones extends AppCompatActivity {
 
 
 
-    
-    ArrayList<Medicion> listaMedicion;
+    List<Medicion> elements;
+
 
 
 
@@ -27,22 +28,24 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
         init();
 
+
+
     }
 
 
     public void init(){
 
+    elements=new ArrayList<>();
+    elements.add(new Medicion("No perjudicial","13:43","CO2",34));
+    elements.add(new Medicion("No perjudicial","13:43","CO2",34));
+    elements.add(new Medicion("No perjudicial","13:43","CO2",34));
 
-        listaMedicion.add(new Medicion("dasd","sdadsa", "adsasas", 23));
-        listaMedicion.add(new Medicion("dasd","sdadsa", "adsasas", 23));
-        listaMedicion.add(new Medicion("dasd","sdadsa", "adsasas", 23));
-        listaMedicion.add(new Medicion("dasd","sdadsa", "adsasas", 23));
-
-        MedicionAdapter medicionAdapter = new MedicionAdapter(listaMedicion, this);
-        RecyclerView recyclerView =findViewById(R.id.recyclerMediciones);
+        MedicionAdapter medicionAdapter= new MedicionAdapter(elements, this);
+        RecyclerView recyclerView=findViewById(R.id.recyclermedis);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(medicionAdapter);
+
 
     }
 
