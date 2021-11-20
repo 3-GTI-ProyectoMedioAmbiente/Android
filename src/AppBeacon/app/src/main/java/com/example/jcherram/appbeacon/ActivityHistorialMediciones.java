@@ -37,8 +37,8 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
     elements=new ArrayList<>();
     elements.add(new Medicion("No perjudicial","13:43","CO2",34));
-    elements.add(new Medicion("No perjudicial","13:43","CO2",34));
-    elements.add(new Medicion("No perjudicial","13:43","CO2",34));
+    elements.add(new Medicion("No perjudicial","13:53","CO2",44));
+    elements.add(new Medicion("No perjudicial","14:03","CO2",38));
 
         MedicionAdapter medicionAdapter= new MedicionAdapter(elements, this);
         RecyclerView recyclerView=findViewById(R.id.recyclermedis);

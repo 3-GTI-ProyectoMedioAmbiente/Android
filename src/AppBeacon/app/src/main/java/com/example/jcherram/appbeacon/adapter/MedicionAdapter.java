@@ -4,76 +4,110 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jcherram.appbeacon.R;
 
+import java.util.ArrayList;
 import java.util.List;
+
+/**
+ Clase NotificacionesAdapter para el recyclerView
+ */
 
 public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHolder> {
 
-    private List<Medicion> mData;
-    private LayoutInflater mInflater;
+
+
+    List<Medicion> medicionList;
     private Context context;
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
-    public MedicionAdapter(List<Medicion> itemList, Context context)
-    {
 
-        this.mInflater=LayoutInflater.from(context);
-        this.context=context;
-        this.mData=itemList;
+    public MedicionAdapter(List<Medicion> medicionList, Context context) {
+        this.medicionList = medicionList;
+        this.context = context;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+
+
+    public MedicionAdapter(ArrayList<Medicion> listaMedicion) {
+        this.medicionList = listaMedicion;
+    }
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_medicion, parent, false);
+
+        return new ViewHolder(view);
+    }
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
 
     @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.txtvalor.setText(medicionList.get(position).getValor());
+        holder.txtfecha.setText(medicionList.get(position).getFecha());
+        holder.txttipo.setText(medicionList.get(position).getTipo());
+        holder.txtmedicion.setText(String.valueOf(medicionList.get(position).getMedida()));
+        //Glide.with(context).load(notificacionesList.get(position).getFoto()).circleCrop().into(holder.imgIcon);
+    }
 
-    public int getItemCount(){return mData.size();}
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
+
+    /**
+     * Metodo getItemCount para establecer el tamaño de la lista
+     * @return devolvemos el tamaño de la lista de notificaciones
+     *
+     * getItemCount()->Z
+     */
     @Override
-    public MedicionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-
-        View view=mInflater.inflate(R.layout.card_medicion, null);
-        return new MedicionAdapter.ViewHolder(view);
+    public int getItemCount() {
+        return medicionList.size();
     }
 
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
-    @Override
-    public void onBindViewHolder(final MedicionAdapter.ViewHolder holder, final int position){
-        holder.bindData(mData.get(position));
-    }
 
-    public void setItems(List<Medicion>items){mData=items;}
+    /**
+     * Metodo ViewHolder para el recyclerView
+     */
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtvalor;
-        TextView txtmedicion;
-        TextView txtfecha;
-        TextView txttipo;
 
-        ViewHolder(View itemView){
+        private TextView txtvalor;
+        private TextView txtmedicion;
+        private TextView txtfecha;
+        private TextView txttipo;
+
+        public ViewHolder(@NonNull View itemView) {
+
+            //Referenciamos los items
             super(itemView);
-            txtvalor.findViewById(R.id.txtvalor);
-            txtmedicion.findViewById(R.id.txtmedicion);
-            txtfecha.findViewById(R.id.txthora);
-            txttipo.findViewById(R.id.txttipo);
+            txttipo = itemView.findViewById(R.id.txttipo);
+            txtfecha = itemView.findViewById(R.id.txthora);
+            txtvalor = itemView.findViewById(R.id.txtvalor);
+            txtmedicion = itemView.findViewById(R.id.txtmedicion);
+
         }
-
-
-        void bindData(final Medicion item){
-
-            txttipo.setText(item.getTipo());
-            txtfecha.setText(item.getFecha());
-            txtmedicion.setText(item.getMedida());
-            txtvalor.setText(item.getValor());
-        }
-
-
     }
-
 }
+

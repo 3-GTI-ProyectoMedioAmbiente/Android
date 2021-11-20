@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/fondohis">
 
     <TextView
         android:id="@+id/textView"
@@ -13,7 +13,7 @@
         android:layout_marginTop="45dp"
         android:fontFamily="@font/montserrat"
         android:text="Historial de mediciones"
-        android:textColor="#02424A"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:drawableTint="#F8F4F4"
@@ -27,6 +27,7 @@
         android:layout_width="412dp"
         android:layout_height="734dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/fondohis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
