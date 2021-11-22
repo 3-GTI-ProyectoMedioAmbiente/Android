@@ -42,8 +42,6 @@ public class VincularDispositivoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vincular_nodo,
                 container, false);
-
-
         return view;
     }
 }

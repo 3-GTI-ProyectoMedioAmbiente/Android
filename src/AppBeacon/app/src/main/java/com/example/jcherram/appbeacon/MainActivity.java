@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity  {
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
     private BottomNavigationView navigationView;
-    private Boolean usuarioLogueado = true;
     private Boolean usuarioConSensor = true;
     /**
      * Constructor de vista principal
@@ -92,10 +91,8 @@ public class MainActivity extends AppCompatActivity  {
 
 
                     case R.id.nav_beacons:
-                        if(usuarioLogueado && usuarioConSensor){
+                        if( usuarioConSensor){
                             fragment = new BeaconsFragment();
-                        }else if(!usuarioConSensor){
-                            fragment = new VincularDispositivoFragment();
                         }else{
                             fragment = new VincularDispositivoFragment();
                         }

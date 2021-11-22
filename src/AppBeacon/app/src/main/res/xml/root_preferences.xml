@@ -4,6 +4,7 @@
     <PreferenceCategory app:title="@string/messages_header"
         app:iconSpaceReserved="false">
 
+
         <EditTextPreference
             android:enabled="false"
             app:defaultValue="@string/modeloSensorDefault"
@@ -31,6 +32,25 @@
             app:key="sync"
             app:title="@string/sync_title"
             app:iconSpaceReserved="false"/>
+
+        <SeekBarPreference
+            android:key="pref_gasNoPerjudicial"
+            app:key="seekBarContaminacionBuena"
+            app:title="@string/limite_gas_no_perjudicial_header"
+            app:iconSpaceReserved="false"
+            android:max="50"
+            app:summary="Modifica el valor a partir del cual se considera un gas no perjudicial"
+            app:showSeekBarValue="true"
+            />
+        <SeekBarPreference
+            android:key="pref_gasPerjudicial"
+            app:key="seekBarContaminacion"
+            app:title="@string/limite_gas_perjudicial_header"
+            app:iconSpaceReserved="false"
+            android:max="50"
+            app:summary="Modifica el valor a partir del cual se considera un gas perjudicial"
+            app:showSeekBarValue="true"
+            />
 
     </PreferenceCategory>
 

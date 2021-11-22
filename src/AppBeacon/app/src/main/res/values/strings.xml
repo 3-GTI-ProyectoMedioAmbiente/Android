@@ -23,6 +23,10 @@
     <!-- Preference Titles -->
     <string name="messages_header">Mi nodo</string>
     <string name="sync_header">Servicios</string>
+    <string name="limite_gas_no_perjudicial_header">Limite gas no perjudicial</string>
+    <string name="limite_gas_perjudicial_header">Limite gas perjudicial</string>
+    <string name="limite_gas_muy_perjudicial_header">Limite gas muy perjudicial</string>
+
 
     <!-- Messages Preferences -->
     <string name="signature_title">Modelo:</string>
