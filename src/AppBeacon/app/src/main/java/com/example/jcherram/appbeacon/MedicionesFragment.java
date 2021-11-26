@@ -1,6 +1,7 @@
 package com.example.jcherram.appbeacon;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.jcherram.appbeacon.adapter.Notificacion;
+import com.example.jcherram.appbeacon.modelo.ActivityInfoContaminante;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,6 +91,14 @@ public class MedicionesFragment extends Fragment {
                 showPopup(v);
             }
         });
+        ImageButton btninfocontaminantes =  view.findViewById(R.id.btninfocontaminantes);
+        btninfocontaminantes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ActivityInfoContaminante.class);
+                getActivity().startActivity(intent);
+            }
+        });
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -118,6 +128,7 @@ public class MedicionesFragment extends Fragment {
         mydialog.show();
 
     }
+
 
 
 
