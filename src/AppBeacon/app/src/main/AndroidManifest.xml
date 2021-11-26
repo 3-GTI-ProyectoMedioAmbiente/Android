@@ -26,6 +26,9 @@
         android:theme="@style/Theme.AppBeacon"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".modelo.ActivityInfoContaminante"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="true"
             android:label="@string/title_activity_settings" />
@@ -43,7 +46,6 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
-       
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -63,9 +65,10 @@
         </activity>
 
         <service android:name=".controlador.ServicioEscuharBeacons" />
-        
-        <activity android:name=".QrActivity"
-            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".QrActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
