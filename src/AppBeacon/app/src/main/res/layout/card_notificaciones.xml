@@ -23,7 +23,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#5f9ea0">
+            android:background="#E5EDED">
 
             <ImageView
                 android:id="@+id/iconNoti"
@@ -45,7 +45,7 @@
                 android:layout_toEndOf="@+id/iconNoti"
                 android:fontFamily="@font/montserrat"
                 android:text="Nivel de batería bajo"
-                android:textColor="#FFFFFF"
+                android:textColor="#36696A"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
                 android:layout_toEndOf="@+id/iconNoti"
                 android:fontFamily="@font/montserrat"
                 android:text="Hace 2 horas"
-                android:textColor="#FFFFFF"
+                android:textColor="#36696A"
                 android:textSize="14sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

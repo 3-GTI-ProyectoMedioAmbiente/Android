@@ -1,13 +1,62 @@
 package com.example.jcherram.appbeacon;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.EditTextPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
+import androidx.preference.SeekBarPreference;
+import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
+
+import com.example.jcherram.appbeacon.controlador.ServicioEscuharBeacons;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private static final String ETIQUETA_LOG = ">>>>";
+    private static final String DIRECCION_SERVIDOR = "http://192.168.78.31:8080/";
+    private TextView textViewDistancia;
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+            double distance = intent.getDoubleExtra("distancia", -1.0);
+
+            if (distance == -1.0d) {
+                textViewDistancia.setText("Desconocida");
+            }else{
+                if(distance >0 && distance<1){
+                    textViewDistancia.setText("Cerca");
+                }else if (distance >=1 && distance<=2){
+                    textViewDistancia.setText("Distancia intermedia");
+                }else{
+                    textViewDistancia.setText("Lejos");
+                }
+
+            }
+        }
+    };
+
+
+    /**
+     *  Constructor de la Acticity de configuracion del sensor
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +71,92 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        textViewDistancia = findViewById(R.id.textViewDistancia);
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                mMessageReceiver, new IntentFilter("SettingsActivity"));
     }
 
+
+
+
     public static class SettingsFragment extends PreferenceFragmentCompat {
+
+        private Intent elIntentDelServicio = null;
+        /**
+         * Constructor del fragmente de configurarcion
+         * @param savedInstanceState
+         * @param rootKey
+         * Bundle savedInstanceState, String rootKey ->onCreatePreferences
+         */
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+            //SwitchPreference
+            configurarSwitchPreference(getPreferenceScreen().findPreference(getString(R.string.preferenceEstadoServicio)), getString(R.string.preferenceEstadoServicio));
+
         }
+
+        /**
+         * Vincular el SwitchPreference con su preferencia en la aplicacion
+         * @param switchPreference Preferencia a la que se le anyadira el listener
+         * @param preferenceName nombre de la preferencia a modificar
+         * SwitchPreferenceCompat switchPreference, Texto preferenceName->configurarSwitchPreference
+         */
+        private void configurarSwitchPreference(SwitchPreferenceCompat switchPreference, String preferenceName ){
+            switchPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    if(switchPreference.isChecked()){
+                        Toast.makeText(getContext(),"Servicio detenido",Toast.LENGTH_SHORT).show();
+                        editor.putBoolean(preferenceName, false);
+                        botonDetenerServicioPulsado();
+                        switchPreference.setChecked(false);
+                    }else {
+                        Toast.makeText(getContext(),"Servicio iniciado",Toast.LENGTH_SHORT).show();
+                        editor.putBoolean(preferenceName, true);
+                        botonArrancarServicioPulsado();
+                        switchPreference.setChecked(true);
+                    }
+                    editor.apply();
+                    return false;
+                }
+            });
+        }
+
+        /**
+         * Metodo que gestiona la parada del servicio
+         * */
+        public void botonDetenerServicioPulsado() {
+            if ( this.elIntentDelServicio == null ) {
+                // no estaba arrancado
+                return;
+            }
+            getActivity().stopService( this.elIntentDelServicio );
+            this.elIntentDelServicio = null;
+            Log.d(ETIQUETA_LOG, " boton detener servicio Pulsado" );
+        }
+
+        /**
+         * Metodo que gestiona la inicializacion del servicio
+         */
+        public void botonArrancarServicioPulsado() {
+            Log.d(ETIQUETA_LOG, " boton arrancar servicio Pulsado" );
+            if ( this.elIntentDelServicio != null ) {
+                // ya estaba arrancado
+                return;
+            }
+            Log.d(ETIQUETA_LOG, " MainActivity.constructor : voy a arrancar el servicio");
+
+            this.elIntentDelServicio = new Intent(getContext(), ServicioEscuharBeacons.class);
+            this.elIntentDelServicio.putExtra("ipServidor", DIRECCION_SERVIDOR);
+            this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String nombreSensor = sharedPreferences.getString(getString(R.string.preferenceIdSensor), "noId");
+            this.elIntentDelServicio.putExtra("nombreDispositivo", nombreSensor);
+            getActivity().startService( this.elIntentDelServicio );
+        }
+
     }
 }

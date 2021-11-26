@@ -7,6 +7,7 @@
         <item>CSE</item>
         <item>GNC</item>
     </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_ver_historial">ActivityVerHistorial</string>
@@ -20,20 +21,20 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
-    <!-- Preference Titles -->
     <string name="messages_header">Mi nodo</string>
-    <string name="sync_header">Servicios</string>
-    <string name="limite_gas_no_perjudicial_header">Limite gas no perjudicial</string>
-    <string name="limite_gas_perjudicial_header">Limite gas perjudicial</string>
-    <string name="limite_gas_muy_perjudicial_header">Limite gas muy perjudicial</string>
 
-
-    <!-- Messages Preferences -->
     <string name="signature_title">Modelo:</string>
     <string name="reply_title">Mac:</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Servicio detección IBeacons</string>
+    <string name="titulo_preference_servicio">Servicio detección IBeacons</string>
     <string name="modeloSensorDefault">Promax v9 PRO</string>
     <string name="macSensorDefault">00:1e:c2:9e:28:6b</string>
+    <string name="title_category_service">Servicio</string>
+    <string name="limite_gas_notificacion">Limite notificación</string>
+
+    <!-- Prefernces -->
+    <string name="preferenceLimiteNotificacion">idLimeteNotificacion</string>
+    <string name="preferenceModeloSensor">idModeloSonser</string>
+    <string name="preferenceMacSensor">idMacSensor</string>
+    <string name="preferenceEstadoServicio">idEstadoServicio</string>
+    <string name="preferenceIdSensor">idSensor</string>
 </resources>

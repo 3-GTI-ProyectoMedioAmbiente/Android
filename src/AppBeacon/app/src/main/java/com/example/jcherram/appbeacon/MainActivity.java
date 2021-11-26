@@ -1,45 +1,26 @@
 
 package com.example.jcherram.appbeacon;
 import android.Manifest;
-import android.app.Dialog;
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.EditText;
-import android.widget.TextView;
 
 
 ;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.preference.PreferenceManager;
 
 
 import com.example.jcherram.appbeacon.adapter.Notificacion;
-import com.example.jcherram.appbeacon.adapter.NotificacionesAdapter;
-import com.example.jcherram.appbeacon.controlador.LogicaFake;
-import com.example.jcherram.appbeacon.controlador.ServicioEscuharBeacons;
-import com.example.jcherram.appbeacon.modelo.Medicion;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.sql.Time;
-import java.util.Calendar;
-import java.util.List;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
@@ -50,7 +31,6 @@ public class MainActivity extends AppCompatActivity  {
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
     private BottomNavigationView navigationView;
-    private Boolean usuarioConSensor = true;
     /**
      * Constructor de vista principal
      * @param savedInstanceState instancia del main activity
@@ -58,18 +38,11 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         comprobarPermisosBlueetooth();
-
-
         setContentView(R.layout.activity_main);
         setFragment(new MedicionesFragment());
 
         navigationView = findViewById(R.id.bottom_navigation);
-
-
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -91,7 +64,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
                     case R.id.nav_beacons:
-                        if( usuarioConSensor){
+                        if( comprobarSiExisteSensorVinculado()){
                             fragment = new BeaconsFragment();
                         }else{
                             fragment = new VincularDispositivoFragment();
@@ -108,7 +81,15 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-
+    private boolean comprobarSiExisteSensorVinculado(){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String res = sharedPref.getString(getString(R.string.preferenceIdSensor), "noId");
+        boolean sensorVinculado = false;
+        if(!res.equals("noId")){
+            sensorVinculado=true;
+        }
+        return sensorVinculado;
+    }
 
 
 

@@ -9,7 +9,7 @@
             android:enabled="false"
             app:defaultValue="@string/modeloSensorDefault"
             app:enabled="true"
-            app:key="keyModeloDispositivo"
+            app:key="@string/preferenceModeloSensor"
             app:title="@string/signature_title"
             app:useSimpleSummaryProvider="true"
             app:iconSpaceReserved="false"/>
@@ -18,39 +18,29 @@
             android:enabled="false"
             app:enabled="true"
             app:defaultValue="@string/macSensorDefault"
-            app:key="keyMacDispositivo"
+            app:key="@string/preferenceMacSensor"
             app:title="@string/reply_title"
             app:useSimpleSummaryProvider="true"
             app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header"
+    <PreferenceCategory app:title="@string/title_category_service"
         app:iconSpaceReserved="false">
 
         <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title"
+            app:key="@string/preferenceEstadoServicio"
+            app:title="@string/titulo_preference_servicio"
             app:iconSpaceReserved="false"/>
 
         <SeekBarPreference
-            android:key="pref_gasNoPerjudicial"
-            app:key="seekBarContaminacionBuena"
-            app:title="@string/limite_gas_no_perjudicial_header"
             app:iconSpaceReserved="false"
-            android:max="50"
-            app:summary="Modifica el valor a partir del cual se considera un gas no perjudicial"
+            app:key="@string/preferenceLimiteNotificacion"
             app:showSeekBarValue="true"
-            />
-        <SeekBarPreference
-            android:key="pref_gasPerjudicial"
-            app:key="seekBarContaminacion"
-            app:title="@string/limite_gas_perjudicial_header"
-            app:iconSpaceReserved="false"
             android:max="50"
-            app:summary="Modifica el valor a partir del cual se considera un gas perjudicial"
-            app:showSeekBarValue="true"
-            />
+            app:summary="Modifica el valor a partir del cual quieres recibir notificaciones de una gas perjudicial"
+            app:title="@string/limite_gas_notificacion" />
+
 
     </PreferenceCategory>
 

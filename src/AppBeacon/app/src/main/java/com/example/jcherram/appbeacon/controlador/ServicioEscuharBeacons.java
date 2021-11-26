@@ -8,14 +8,22 @@ import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.PreferenceManager;
+
+import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.modelo.TramaIBeacon;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,13 +37,14 @@ import java.util.Random;
 public class ServicioEscuharBeacons extends IntentService {
 
     private static final String ETIQUETA_LOG = ">>>>";
-    private static final String NOMBRE_DISPOSITIVO_BL = "angle-corp";
     private ScanCallback callbackDelEscaneo = null;
     private BluetoothLeScanner elEscanner;
     private boolean seguir = true;
     private ArrayList<Medicion> mediciones;
     private static int MEDICIONES_A_ENVIAR=2;
-
+    private int iteracionesAntesLanzarNotificacion;
+    private ClaseLanzarNotificaciones notificaciones;
+    private boolean notificacionActiva = false;
     /**
      * Constructor del servicio para escuchar IBeacons
      */
@@ -81,8 +90,9 @@ public class ServicioEscuharBeacons extends IntentService {
     protected void onHandleIntent(Intent intent) {
         long tiempoDeEspera = intent.getLongExtra("tiempoDeEspera",50000);
         String direccionIpServidor = intent.getStringExtra("ipServidor");
+        String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
         LogicaFake logicaFake = new LogicaFake(direccionIpServidor);
-
+        notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
         long contador = 1;
@@ -92,7 +102,7 @@ public class ServicioEscuharBeacons extends IntentService {
 
             while ( this.seguir ) {
                 Thread.sleep(tiempoDeEspera);
-                buscarEsteDispositivoBTLE();
+                buscarEsteDispositivoBTLE(nombreDispositivo);
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
                 if(mediciones.size() >=MEDICIONES_A_ENVIAR){
                     logicaFake.insetarMediciones(new ArrayList<>(mediciones));
@@ -117,7 +127,7 @@ public class ServicioEscuharBeacons extends IntentService {
     /**
      * Metodo que inicia la busqueda de dispositivos Blueetoh
      */
-    private void buscarEsteDispositivoBTLE() {
+    private void buscarEsteDispositivoBTLE(String nombreBluetooth) {
     if (callbackDelEscaneo==null){
         Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): instalamos scan callback ");
         // super.onScanResult(ScanSettings.SCAN_MODE_LOW_LATENCY, result); para ahorro de energía
@@ -140,7 +150,7 @@ public class ServicioEscuharBeacons extends IntentService {
         };
 
         //filtro por nombre de beacon
-        ScanFilter sf = new ScanFilter.Builder().setDeviceName(NOMBRE_DISPOSITIVO_BL).build();
+        ScanFilter sf = new ScanFilter.Builder().setDeviceName(nombreBluetooth).build();
         List<ScanFilter> filters = new ArrayList<>();
         ScanSettings.Builder scan = new ScanSettings.Builder();
         filters.add(sf);
@@ -148,7 +158,7 @@ public class ServicioEscuharBeacons extends IntentService {
         this.elEscanner.startScan(filters, scan.build(), callbackDelEscaneo);
         //this.elEscanner.startScan(callbackDelEscaneo);
 
-        Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): empezamos a escanear buscando: " + NOMBRE_DISPOSITIVO_BL );
+        Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): empezamos a escanear buscando: " + nombreBluetooth);
     }else{
         Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): Servicio ya iniciado!" );
     }
@@ -159,14 +169,11 @@ public class ServicioEscuharBeacons extends IntentService {
      * Metdo para pque gestiona la parada de la busqueda de dispositvos Blueetooth
      */
     private void detenerBusquedaDispositivosBTLE() {
-
         if ( this.callbackDelEscaneo == null ) {
             return;
         }
-
         this.elEscanner.stopScan( this.callbackDelEscaneo );
         this.callbackDelEscaneo = null;
-
     }
 
     /**
@@ -175,8 +182,6 @@ public class ServicioEscuharBeacons extends IntentService {
      */
     private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
 
-
-
         BluetoothDevice bluetoothDevice = resultado.getDevice();
         byte[] bytes = resultado.getScanRecord().getBytes();
         int rssi = resultado.getRssi();
@@ -184,7 +189,6 @@ public class ServicioEscuharBeacons extends IntentService {
             Date currentTime = Calendar.getInstance().getTime();
             TramaIBeacon tib = new TramaIBeacon(bytes);
             float dato = Utilidades.bytesToInt(tib.getMinor());
-            Log.d(ETIQUETA_LOG, "dato------------------->"+Utilidades.bytesToInt(tib.getMinor()));
             Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
             mediciones.add(medicion);
 
@@ -218,14 +222,31 @@ public class ServicioEscuharBeacons extends IntentService {
                     + Utilidades.bytesToInt(tib.getMinor()) + " ) ");
             Log.d(ETIQUETA_LOG, " txPower  = " + Integer.toHexString(tib.getTxPower()) + " ( " + tib.getTxPower() + " )");
             Log.d(ETIQUETA_LOG, " ****************************************************");
-            Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de:  " + calculateDistance(tib.getTxPower(), rssi));
+            Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de rssi("+rssi+") txtPower("+tib.getTxPower()+"):  " + calculateDistance(tib.getTxPower(), rssi));
+            sendMessageToActivity(calculateDistance(tib.getTxPower(), rssi));
+            if(Utilidades.bytesToInt(tib.getMinor())>1000){
+                String currentDateTimeString = new SimpleDateFormat("HH:mm").format(new Date());
+                notificaciones.crearNotificacion("La alerta se ha registrado a las "+currentDateTimeString,"¡Alerta! Aire perjudicial para la salud");
+                notificacionActiva = true;
+            }else{
+                if(notificacionActiva){
+                    notificaciones.crearNotificacion("Has dejado atras una zona perjudicial para tu saluda. Revisa el historial de notificaciones para mas información.","¡Vuelves ha respirar aire no perjudicial!");
+                    notificacionActiva=false;
+                }
+            }
         }
     }
 
-    public static double calculateDistance(int txPower,int rssi) {
+    /**
+     * Calcula la distancia del iBeacon recibido segun el txPower y el rssi
+     * @param txPower
+     * @param rssi intesidad de la señal
+     * @return distancia entre el movil y el IBeacon
+     */
+    public double calculateDistance(int txPower,int rssi) {
         // La señal vale el valor absoluto.
-        int absRssi = Math.abs(rssi);
-        double power = (absRssi - txPower) / (10 * 2.0);
+
+        double power = (txPower - rssi) / (10 * 4.0);
         return Math.pow(10, power);
 
     }
@@ -252,5 +273,25 @@ public class ServicioEscuharBeacons extends IntentService {
         if ( this.elEscanner == null ) {
             Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): Socorro: NO hemos obtenido escaner btle  !!!!");
         }
+
     }
+
+    /**
+     * Obtiene del nombre a buscar segun las preferencias de la aplicacion
+     */
+    private void getBluetoothName(){
+
+    }
+
+    /**
+     * Metodo que envia  la distancia del sensor y el movil a la activity en la que se mostrara la informacion
+     * @param distanciaSensor distancia a evaluar para determinar la distancia del sensor
+     */
+    private void sendMessageToActivity(double distanciaSensor) {
+        Intent intent = new Intent("SettingsActivity");
+        // You can also include some extra data.
+        intent.putExtra("distancia", distanciaSensor);
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+    }
+
 }

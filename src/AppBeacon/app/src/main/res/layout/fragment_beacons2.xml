@@ -169,11 +169,11 @@
                 android:layout_marginStart="32dp"
                 android:text="Hora:"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/textView37"
-                app:layout_constraintTop_toTopOf="@+id/textView37" />
+                app:layout_constraintStart_toEndOf="@+id/txtmedicion"
+                app:layout_constraintTop_toTopOf="@+id/txtmedicion" />
 
             <TextView
-                android:id="@+id/textView36"
+                android:id="@+id/txthora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -183,17 +183,17 @@
                 app:layout_constraintTop_toTopOf="@+id/textView35" />
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/txtmedicion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:text="25  µg/m3"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/textView38"
-                app:layout_constraintTop_toTopOf="@+id/textView38" />
+                app:layout_constraintStart_toEndOf="@+id/txtvalor"
+                app:layout_constraintTop_toTopOf="@+id/txtvalor" />
 
             <TextView
-                android:id="@+id/textView38"
+                android:id="@+id/txtvalor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.bluetooth_le"
@@ -32,16 +33,9 @@
             android:name=".ActivityHistorialMediciones"
             android:exported="true" />
         <activity
-            android:name=".ActivityVerHistorial"
-            android:exported="true"
-            android:label="@string/title_activity_ver_historial"
-            android:theme="@style/Theme.AppBeacon.NoActionBar" />
-        <activity
-            android:name=".ActivityConfigurarSensor"
-            android:exported="true" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="true" />
+       
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -61,6 +55,9 @@
         </activity>
 
         <service android:name=".controlador.ServicioEscuharBeacons" />
+        
+        <activity android:name=".QrActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
