@@ -4,454 +4,462 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    >
 
- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-     <ScrollView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content">
+        >
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="vertical">
-
-
-             <TextView
-                 android:id="@+id/textView13"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentStart="true"
-                 android:layout_alignParentTop="true"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="16dp"
-                 android:fontFamily="@font/montserrat"
-                 android:gravity="center"
-                 android:text="Información de los gases contaminante"
-                 android:textSize="20sp"
-
-                 android:textStyle="bold"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toTopOf="parent" />
-
-             <ImageView
-                 android:id="@+id/imageView7"
-                 android:layout_width="56dp"
-                 android:layout_height="56dp"
-                 android:layout_below="@+id/textView13"
-                 android:layout_alignParentStart="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="30dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView13"
-                 app:srcCompat="@drawable/oildrill" />
-
-             <TextView
-                 android:id="@+id/textView18"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView20"
-                 android:layout_alignParentStart="true"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Monóxido de azufre (SO):"
-                 android:textSize="16sp"
-                 android:textStyle="bold"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-             <TextView
-                 android:id="@+id/textView19"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView11"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView9"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Causa: La combustión de productos petrolíferos y la quema de carbón."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-             <TextView
-                 android:id="@+id/textView119"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView11"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView9"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Efecto: Dificultad para respirar, inflamación respiratoria, y irritación ocular."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-             <TextView
-                 android:id="@+id/textView120"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView11"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView9"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Valores límite: 300 µg/m3 Riesgo para humana, y 200 µg/m3 riesgo para árboles."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView119" />
-
-             <TextView
-                 android:id="@+id/textView121"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView11"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView9"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Consejo: Instalar sistemas adecuados de depuración en procesos industriales."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView120" />
-
-             <ImageView
-                 android:id="@+id/imageView9"
-                 android:layout_width="56dp"
-                 android:layout_height="56dp"
-                 android:layout_alignParentStart="true"
-                 android:layout_alignParentTop="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="30dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView19"
-                 app:srcCompat="@drawable/trafico" />
-
-             <TextView
-                 android:id="@+id/textView14"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView19"
-                 android:layout_alignParentStart="true"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Dióxido de nitrógeno (NO2): "
-                 android:textSize="16sp"
-                 android:textStyle="bold"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-             <TextView
-                 android:id="@+id/textView122"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView14"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView7"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Causa: El tráfico rodado así como las emisiones de calefacciones de carbón."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-             <TextView
-                 android:id="@+id/textView123"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView14"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView7"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Efecto: Irritación en los pulmones,  y disminución de la función pulmonar."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView122" />
-
-             <TextView
-                 android:id="@+id/textView124"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView14"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView7"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Valores límite: Debe tener 40 µg/m3 de madia anual,y 200 µg/m3 de media horaria."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView123" />
-
-             <TextView
-                 android:id="@+id/textView125"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView14"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView7"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Consejo: Evitar uso del vehículo privado para contribuir a la mejora de la calidad del aire."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView124" />
-
-             <ImageView
-                 android:id="@+id/imageView5"
-                 android:layout_width="56dp"
-                 android:layout_height="56dp"
-                 android:layout_below="@+id/imageView7"
-                 android:layout_alignParentStart="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="30dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView20"
-                 app:srcCompat="@drawable/contaminacion" />
-
-             <TextView
-                 android:id="@+id/textView12"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView21"
-                 android:layout_alignParentStart="true"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Dióxido de carbono (CO2): "
-
-                 android:textSize="16sp"
-                 android:textStyle="bold"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-             <TextView
-                 android:id="@+id/textView126"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentEnd="true"
-                 android:layout_alignParentBottom="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView5"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Causa: Combustión de carbon, respiración aeróbica de la especie animal y los volcanes."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-             <TextView
-                 android:id="@+id/textView127"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentEnd="true"
-                 android:layout_alignParentBottom="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView5"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Efecto: Dolores de cabeza, falta de concentracióny problemas respiratorios."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView126" />
-
-             <TextView
-                 android:id="@+id/textView128"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentEnd="true"
-                 android:layout_alignParentBottom="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView5"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Valores límite: 30.000 ppm Dolores de cabeza y quejas de olores en 800 ppm."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView127" />
-
-             <TextView
-                 android:id="@+id/textView129"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_alignParentEnd="true"
-                 android:layout_alignParentBottom="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView5"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Consejo: Conducir 50 kilómetros menos reduce 450 kilogramos emisiones de CO2."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView128" />
-
-             <ImageView
-                 android:id="@+id/imageView6"
-                 android:layout_width="56dp"
-                 android:layout_height="56dp"
-                 android:layout_below="@+id/imageView7"
-                 android:layout_alignParentStart="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="30dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView21"
-                 app:srcCompat="@drawable/capadeozono" />
-
-             <TextView
-                 android:id="@+id/textView11"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView22"
-                 android:layout_alignParentStart="true"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Ozono (O3): "
-                 android:textSize="16sp"
-                 android:textStyle="bold"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/imageView6" />
-
-             <TextView
-                 android:id="@+id/textView130"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView12"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView6"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Causa: Formado en la atmósfera de los tubos de escape, extracción de petróleo."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-             <TextView
-                 android:id="@+id/textView131"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView12"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView6"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Efecto: Problemas respiratorios y del asma, tos y sequedad de garganta."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView130" />
-
-             <TextView
-                 android:id="@+id/textView132"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView12"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView6"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Valores límite: Apartir de 240 µg/m3 existe un claro riesgo para la salud."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView131" />
-
-             <TextView
-                 android:id="@+id/textView133"
-                 android:layout_width="350dp"
-                 android:layout_height="wrap_content"
-                 android:layout_above="@+id/textView12"
-                 android:layout_alignParentEnd="true"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="8dp"
-                 android:layout_toEndOf="@+id/imageView6"
-                 android:fontFamily="@font/montserrat"
-                 android:text="Consejo: Reducir el tiempo de exposición en exteriores en rupos sensibles."
-                 android:textSize="16sp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.5"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/textView132" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
 
 
-         </LinearLayout>
 
-     </ScrollView>
+            >
 
-
- </LinearLayout>
-
-    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
 
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="Información de los gases contaminante"
+                    android:textSize="20sp"
+
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_below="@+id/textView13"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    app:srcCompat="@drawable/oildrill" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView20"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Monóxido de azufre (SO):"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView11"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView9"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Causa: La combustión de productos petrolíferos y la quema de carbón."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+                <TextView
+                    android:id="@+id/textView119"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView11"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView9"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Efecto: Dificultad para respirar, inflamación respiratoria, y irritación ocular."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+                <TextView
+                    android:id="@+id/textView120"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView11"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView9"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Valores límite: 300 µg/m3 Riesgo para humana, y 200 µg/m3 riesgo para árboles."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView119" />
+
+                <TextView
+                    android:id="@+id/textView121"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView11"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView9"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Consejo: Instalar sistemas adecuados de depuración en procesos industriales."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView120" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19"
+                    app:srcCompat="@drawable/trafico" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView19"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Dióxido de nitrógeno (NO2): "
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+                <TextView
+                    android:id="@+id/textView122"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView14"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView7"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Causa: El tráfico rodado así como las emisiones de calefacciones de carbón."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                <TextView
+                    android:id="@+id/textView123"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView14"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView7"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Efecto: Irritación en los pulmones,  y disminución de la función pulmonar."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView122" />
+
+                <TextView
+                    android:id="@+id/textView124"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView14"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView7"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Valores límite: Debe tener 40 µg/m3 de madia anual,y 200 µg/m3 de media horaria."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView123" />
+
+                <TextView
+                    android:id="@+id/textView125"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView14"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView7"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Consejo: Evitar uso del vehículo privado para contribuir a la mejora de la calidad del aire."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView124" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_below="@+id/imageView7"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20"
+                    app:srcCompat="@drawable/contaminacion" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView21"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Dióxido de carbono (CO2): "
+
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+                <TextView
+                    android:id="@+id/textView126"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView5"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Causa: Combustión de carbon, respiración aeróbica de la especie animal y los volcanes."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                <TextView
+                    android:id="@+id/textView127"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView5"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Efecto: Dolores de cabeza, falta de concentracióny problemas respiratorios."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView126" />
+
+                <TextView
+                    android:id="@+id/textView128"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView5"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Valores límite: 30.000 ppm Dolores de cabeza y quejas de olores en 800 ppm."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView127" />
+
+                <TextView
+                    android:id="@+id/textView129"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView5"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Consejo: Conducir 50 kilómetros menos reduce 450 kilogramos emisiones de CO2."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView128" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_below="@+id/imageView7"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21"
+                    app:srcCompat="@drawable/capadeozono" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView22"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Ozono (O3): "
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+                <TextView
+                    android:id="@+id/textView130"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView6"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Causa: Formado en la atmósfera de los tubos de escape, extracción de petróleo."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <TextView
+                    android:id="@+id/textView131"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView6"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Efecto: Problemas respiratorios y del asma, tos y sequedad de garganta."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView130" />
+
+                <TextView
+                    android:id="@+id/textView132"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView6"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Valores límite: Apartir de 240 µg/m3 existe un claro riesgo para la salud."
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView131" />
+
+                <TextView
+                    android:id="@+id/textView133"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/imageView6"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Consejo: Reducir el tiempo de exposición en exteriores en rupos sensibles."
+                    android:textSize="16sp"
+                    android:layout_marginBottom="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView132" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

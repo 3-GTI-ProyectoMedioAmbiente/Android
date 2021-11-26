@@ -9,8 +9,8 @@
 
     <ImageButton
         android:id="@+id/btninfo"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/bottomrad"
@@ -19,13 +19,14 @@
         app:circularflow_radiusInDP="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:srcCompat="@drawable/iconoleyenda"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btninfocontaminantes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/bottomrad2"
@@ -34,6 +35,7 @@
         app:circularflow_radiusInDP="15dp"
         app:layout_constraintBottom_toTopOf="@+id/btninfo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:srcCompat="@drawable/informacion"
         tools:ignore="SpeakableTextPresentCheck" />
