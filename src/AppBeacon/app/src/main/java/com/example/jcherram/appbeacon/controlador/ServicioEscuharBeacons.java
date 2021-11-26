@@ -276,12 +276,6 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
-    /**
-     * Obtiene del nombre a buscar segun las preferencias de la aplicacion
-     */
-    private void getBluetoothName(){
-
-    }
 
     /**
      * Metodo que envia  la distancia del sensor y el movil a la activity en la que se mostrara la informacion

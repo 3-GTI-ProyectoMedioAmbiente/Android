@@ -40,14 +40,13 @@ public class SettingsActivity extends AppCompatActivity {
             if (distance == -1.0d) {
                 textViewDistancia.setText("Desconocida");
             }else{
-                if(distance >0 && distance<1){
-                    textViewDistancia.setText("Cerca");
-                }else if (distance >=1 && distance<=2){
-                    textViewDistancia.setText("Distancia intermedia");
+                if(distance >0 && distance<0.75){
+                    textViewDistancia.setText("Cerca (0-0.75m)");
+                }else if (distance >=0.75 && distance<=3){
+                    textViewDistancia.setText("Distancia intermedia (0.75-3m)"+distance);
                 }else{
-                    textViewDistancia.setText("Lejos");
+                    textViewDistancia.setText("Lejos (>3m)"+distance);
                 }
-
             }
         }
     };
