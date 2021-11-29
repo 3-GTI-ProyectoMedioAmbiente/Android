@@ -1,8 +1,17 @@
 package com.example.jcherram.appbeacon;
 
 
+import android.util.Log;
+
+import com.google.type.DateTime;
+
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 // -----------------------------------------------------------------------------------
@@ -160,6 +169,34 @@ public class Utilidades {
             sb.append(':');
         }
         return sb.toString();
+    }
+
+    public static Date stringToDate(String strDate){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        try {
+            date = format.parse(strDate);
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public static Time stringToTime(String strDate){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
+        Date date = new Date();
+        try {
+            date = dateFormat.parse(strDate);
+        } catch (ParseException e) {
+        }
+        return new Time(date.getTime());
+    }
+
+    public static String TimeToString(Time time){
+        Date date = new Date(time.getTime());
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        return dateFormat.format(date);
     }
 }
 

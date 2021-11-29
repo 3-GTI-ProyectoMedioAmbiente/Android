@@ -224,7 +224,7 @@ public class ServicioEscuharBeacons extends IntentService {
             Log.d(ETIQUETA_LOG, " ****************************************************");
             Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de rssi("+rssi+") txtPower("+tib.getTxPower()+"):  " + calculateDistance(tib.getTxPower(), rssi));
             sendMessageToActivity(calculateDistance(tib.getTxPower(), rssi));
-            if(Utilidades.bytesToInt(tib.getMinor())>1000){
+            if(Utilidades.bytesToInt(tib.getMinor())>252){
                 String currentDateTimeString = new SimpleDateFormat("HH:mm").format(new Date());
                 notificaciones.crearNotificacion("La alerta se ha registrado a las "+currentDateTimeString,"¡Alerta! Aire perjudicial para la salud");
                 notificacionActiva = true;

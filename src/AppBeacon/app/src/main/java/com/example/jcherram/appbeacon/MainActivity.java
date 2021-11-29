@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
+    private static final String DIRECCION_SERVIDOR = "http://192.168.156.31:5000/";
     private BottomNavigationView navigationView;
     /**
      * Constructor de vista principal
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity  {
         comprobarPermisosBlueetooth();
         setContentView(R.layout.activity_main);
         setFragment(new MedicionesFragment());
+
+        guardarDireccionIP();
 
         navigationView = findViewById(R.id.bottom_navigation);
 
@@ -89,6 +92,17 @@ public class MainActivity extends AppCompatActivity  {
             sensorVinculado=true;
         }
         return sensorVinculado;
+    }
+
+    /**
+     * Almacena la direccion IP en las shared Preferences
+     */
+    private void guardarDireccionIP(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.preferenceIpServidor), DIRECCION_SERVIDOR);
+        editor.apply();
     }
 
 

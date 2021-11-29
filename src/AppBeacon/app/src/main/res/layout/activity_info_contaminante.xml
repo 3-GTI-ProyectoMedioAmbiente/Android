@@ -9,24 +9,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-
-
-
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-
                 android:orientation="vertical">
 
 
@@ -44,6 +35,7 @@
                     android:gravity="center"
                     android:text="Información de los gases contaminante"
                     android:textSize="20sp"
+                    android:layout_marginLeft="16dp"
 
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -74,6 +66,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+
                     android:fontFamily="@font/montserrat"
                     android:text="Monóxido de azufre (SO):"
                     android:textSize="16sp"
@@ -95,6 +88,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Causa: La combustión de productos petrolíferos y la quema de carbón."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -108,6 +103,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView9"
                     android:fontFamily="@font/montserrat"
                     android:text="Efecto: Dificultad para respirar, inflamación respiratoria, y irritación ocular."
@@ -129,6 +126,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Valores límite: 300 µg/m3 Riesgo para humana, y 200 µg/m3 riesgo para árboles."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -137,6 +136,8 @@
                 <TextView
                     android:id="@+id/textView121"
                     android:layout_width="350dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/textView11"
                     android:layout_alignParentEnd="true"
@@ -191,6 +192,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView7"
                     android:fontFamily="@font/montserrat"
                     android:text="Causa: El tráfico rodado así como las emisiones de calefacciones de carbón."
@@ -206,6 +209,8 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/textView14"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/imageView7"
@@ -225,6 +230,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView7"
                     android:fontFamily="@font/montserrat"
                     android:text="Valores límite: Debe tener 40 µg/m3 de madia anual,y 200 µg/m3 de media horaria."
@@ -246,6 +253,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Consejo: Evitar uso del vehículo privado para contribuir a la mejora de la calidad del aire."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -292,6 +301,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView5"
                     android:fontFamily="@font/montserrat"
                     android:text="Causa: Combustión de carbon, respiración aeróbica de la especie animal y los volcanes."
@@ -309,6 +320,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView5"
                     android:fontFamily="@font/montserrat"
                     android:text="Efecto: Dolores de cabeza, falta de concentracióny problemas respiratorios."
@@ -330,6 +343,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Valores límite: 30.000 ppm Dolores de cabeza y quejas de olores en 800 ppm."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -347,6 +362,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Consejo: Conducir 50 kilómetros menos reduce 450 kilogramos emisiones de CO2."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -392,6 +409,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView6"
                     android:fontFamily="@font/montserrat"
                     android:text="Causa: Formado en la atmósfera de los tubos de escape, extracción de petróleo."
@@ -409,6 +428,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_toEndOf="@+id/imageView6"
                     android:fontFamily="@font/montserrat"
                     android:text="Efecto: Problemas respiratorios y del asma, tos y sequedad de garganta."
@@ -430,6 +451,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Valores límite: Apartir de 240 µg/m3 existe un claro riesgo para la salud."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -447,6 +470,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Consejo: Reducir el tiempo de exposición en exteriores en rupos sensibles."
                     android:textSize="16sp"
+                    android:layout_marginLeft="16dp"
+
                     android:layout_marginBottom="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -458,9 +483,8 @@
 
         </ScrollView>
 
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-

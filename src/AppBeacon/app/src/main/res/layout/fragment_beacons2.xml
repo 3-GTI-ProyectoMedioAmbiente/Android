@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="ICA Media diaria"
+        android:text="Mi Nodo"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,10 +73,10 @@
                         android:textColor="#FFFEFE"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                        app:layout_constraintTop_toBottomOf="@+id/textViewMediaCalidadAire" />
 
                     <TextView
-                        android:id="@+id/textView34"
+                        android:id="@+id/textViewMediaCalidadAire"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
@@ -102,13 +102,13 @@
                 app:tint="#266723" />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/textViewTextoMediaCalidadAire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Bueno"
+                android:text="No perjudicial"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/cardView4"
@@ -150,7 +150,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="336dp"
-        android:layout_height="41dp"
+        android:layout_height="36dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,11 +169,11 @@
                 android:layout_marginStart="32dp"
                 android:text="Hora:"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/txtmedicion"
-                app:layout_constraintTop_toTopOf="@+id/txtmedicion" />
+                app:layout_constraintStart_toEndOf="@+id/textViewMedicionUltima"
+                app:layout_constraintTop_toTopOf="@+id/textViewMedicionUltima" />
 
             <TextView
-                android:id="@+id/txthora"
+                android:id="@+id/textViewHoraUltima"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -183,24 +183,24 @@
                 app:layout_constraintTop_toTopOf="@+id/textView35" />
 
             <TextView
-                android:id="@+id/txtmedicion"
+                android:id="@+id/textViewMedicionUltima"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:text="25  µg/m3"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/txtvalor"
-                app:layout_constraintTop_toTopOf="@+id/txtvalor" />
+                app:layout_constraintStart_toEndOf="@+id/textViewValorUtima"
+                app:layout_constraintTop_toTopOf="@+id/textViewValorUtima" />
 
             <TextView
-                android:id="@+id/txtvalor"
+                android:id="@+id/textViewValorUtima"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Bueno"
+                android:text="No perjudicial"
                 android:textColor="#7FD15D"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

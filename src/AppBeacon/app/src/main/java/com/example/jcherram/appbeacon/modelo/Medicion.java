@@ -18,6 +18,8 @@ public class Medicion {
     private Time hora;
     private float localizacion_lat;
     private float localizacion_lon;
+    private String valor;
+    private String tipoMedicion;
     /**
      * Constructor de la clase Medcion
      * @param id Identificador de la medicion
@@ -34,6 +36,15 @@ public class Medicion {
         this.hora = hora;
         this.localizacion_lat = localizacion_lat;
         this.localizacion_lon = localizacion_lon;
+
+        if(medicion <=40 ){
+            valor="No perjudicial";
+        }else if (medicion>40 && medicion<200){
+            valor="Perjudicial";
+        }else{
+            valor = "Muy perjudial";
+        }
+        tipoMedicion="NO2";
     }
 
     /**
@@ -50,6 +61,14 @@ public class Medicion {
         this.hora = hora;
         this.localizacion_lat = localizacion_lat;
         this.localizacion_lon = localizacion_lon;
+        if(medicion <=40 ){
+            valor="No perjudicial";
+        }else if (medicion>40 && medicion<200){
+            valor="Perjudicial";
+        }else{
+            valor = "Muy perjudial";
+        }
+        tipoMedicion="NO2";
     }
 
     /**
@@ -67,6 +86,36 @@ public class Medicion {
         json.put("localizacion_lat", localizacion_lat);
         json.put("localizacion_lon", localizacion_lon);
         return  json;
+    }
+
+    /**
+     * Getter de la clase Medicion que devuelve el atributo tipoMedicion de la clase
+     * @return valor string resultante
+     */
+    public String getTipoMedicion() {
+        return tipoMedicion;
+    }
+    /**
+     * Setter para modificar el valor tipoMedicion
+     * @param tipoMedicion nuevo valor para el atributo que se va ha modificar
+     */
+    public void setTipoMedicion(String tipoMedicion) {
+        this.tipoMedicion = tipoMedicion;
+    }
+
+    /**
+     * Getter de la clase Medicion que devuelve el atributo valor de la clase
+     * @return valor string resultante
+     */
+    public String getValor() {
+        return valor;
+    }
+    /**
+     * Setter para modificar el valor 'valor'
+     * @param valor nuevo valor para el atributo que se va ha modificar
+     */
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
     /**

@@ -38,4 +38,6 @@
     <string name="preferenceEstadoServicio">idEstadoServicio</string>
     <string name="preferenceIdSensor">idSensor</string>
     <string name="title_deteccionDeNodo">Detección de Mi Nodo</string>
+
+    <string name="preferenceIpServidor"></string>
 </resources>

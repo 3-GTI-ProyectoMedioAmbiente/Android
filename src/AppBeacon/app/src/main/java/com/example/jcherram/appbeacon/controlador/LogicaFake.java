@@ -1,12 +1,20 @@
 package com.example.jcherram.appbeacon.controlador;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
+import com.example.jcherram.appbeacon.BeaconsFragment;
+import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 // -----------------------------------------------------------------------------------
@@ -18,7 +26,8 @@ public class LogicaFake {
     private final String direccionIpServidor;
 
     public LogicaFake(String direccionIpServidor){
-        this.direccionIpServidor = direccionIpServidor; }
+        this.direccionIpServidor = direccionIpServidor;
+    }
 
     /**
      * Realizar peticione de insercion de datos mediante peticion REST
@@ -46,6 +55,61 @@ public class LogicaFake {
                     }
                 }
         );
+    }
+
+
+    public void getMedicionesHoy(String fecha, BeaconsFragment beaconsFragment){
+
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",
+                new PeticionarioREST.RespuestaREST () {
+                    @Override
+                    public void callback(int codigo, String cuerpo) {
+                        beaconsFragment.calcularMedia(parsearJsonToArrayMediciones(cuerpo));
+                    }
+                }
+        );
+
+    }
+
+    public void getTodasLasMediciones(ActivityHistorialMediciones activity){
+
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",
+                new PeticionarioREST.RespuestaREST () {
+                    @Override
+                    public void callback(int codigo, String cuerpo) {
+                        activity.loadMediciones(parsearJsonToArrayMediciones(cuerpo));
+                    }
+                }
+        );
+    }
+
+
+    private ArrayList<Medicion> parsearJsonToArrayMediciones(String json){
+        ArrayList<Medicion> arrayListMediciones = new ArrayList<>();
+        try {
+
+
+            JSONObject reader = new JSONObject(json);
+            JSONArray mediciones  = reader.getJSONArray("mediciones");
+            for(int i= 0; i<mediciones.length();i++){
+                JSONObject m = mediciones.getJSONObject(i);
+
+                int id = m.getInt("id");
+                float medicion = (float)m.getDouble("medicion");
+                Date fecha = Utilidades.stringToDate(m.getString("fecha"));
+                Time time = Utilidades.stringToTime(m.getString("hora"));
+                float localizacion_lat = (float)m.getDouble("localizacion_lat");
+                float localizacion_lon = (float)m.getDouble("localizacion_lon");
+
+                arrayListMediciones.add(new Medicion(id,medicion,fecha,time, localizacion_lat,localizacion_lon));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return arrayListMediciones;
     }
 
 

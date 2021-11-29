@@ -4,13 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jcherram.appbeacon.R;
+import com.example.jcherram.appbeacon.Utilidades;
+import com.example.jcherram.appbeacon.modelo.Medicion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
 
 
 
-    List<Medicion> medicionList;
+    private List<Medicion> medicionList;
     private Context context;
 
     // -----------------------------------------------------------------------------------
@@ -61,9 +62,14 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtvalor.setText(medicionList.get(position).getValor());
-        holder.txtfecha.setText(medicionList.get(position).getFecha());
-        holder.txttipo.setText(medicionList.get(position).getTipo());
-        holder.txtmedicion.setText(String.valueOf(medicionList.get(position).getMedida()));
+        holder.txtfecha.setText(Utilidades.TimeToString(medicionList.get(position).getHora()));
+        holder.txttipo.setText(medicionList.get(position).getTipoMedicion());
+        holder.txtmedicion.setText(String.valueOf(medicionList.get(position).getMedicion()));
+        if(medicionList.get(position).getMedicion()>40 && medicionList.get(position).getMedicion()<200){
+            holder.txtvalor.setTextColor(context.getResources().getColor(R.color.naranja, null));
+        }else if(medicionList.get(position).getMedicion()>200){
+            holder.txtvalor.setTextColor(context.getResources().getColor(R.color.rojo, null));
+        }
         //Glide.with(context).load(notificacionesList.get(position).getFoto()).circleCrop().into(holder.imgIcon);
     }
 
@@ -103,9 +109,9 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
             //Referenciamos los items
             super(itemView);
             txttipo = itemView.findViewById(R.id.txttipo);
-            txtfecha = itemView.findViewById(R.id.txthora);
-            txtvalor = itemView.findViewById(R.id.txtvalor);
-            txtmedicion = itemView.findViewById(R.id.txtmedicion);
+            txtfecha = itemView.findViewById(R.id.textViewHoraUltima);
+            txtvalor = itemView.findViewById(R.id.textViewValorUtima);
+            txtmedicion = itemView.findViewById(R.id.textViewMedicionUltima);
 
         }
     }

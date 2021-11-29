@@ -29,7 +29,6 @@ import com.example.jcherram.appbeacon.controlador.ServicioEscuharBeacons;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String ETIQUETA_LOG = ">>>>";
-    private static final String DIRECCION_SERVIDOR = "http://192.168.78.31:8080/";
     private TextView textViewDistancia;
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
@@ -43,9 +42,9 @@ public class SettingsActivity extends AppCompatActivity {
                 if(distance >0 && distance<0.75){
                     textViewDistancia.setText("Cerca (0-0.75m)");
                 }else if (distance >=0.75 && distance<=3){
-                    textViewDistancia.setText("Distancia intermedia (0.75-3m)"+distance);
+                    textViewDistancia.setText("Distancia intermedia (0.75-3m)");
                 }else{
-                    textViewDistancia.setText("Lejos (>3m)"+distance);
+                    textViewDistancia.setText("Lejos (>3m)");
                 }
             }
         }
@@ -148,11 +147,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
             Log.d(ETIQUETA_LOG, " MainActivity.constructor : voy a arrancar el servicio");
 
-            this.elIntentDelServicio = new Intent(getContext(), ServicioEscuharBeacons.class);
-            this.elIntentDelServicio.putExtra("ipServidor", DIRECCION_SERVIDOR);
-            this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String nombreSensor = sharedPreferences.getString(getString(R.string.preferenceIdSensor), "noId");
+            String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
+
+            this.elIntentDelServicio = new Intent(getContext(), ServicioEscuharBeacons.class);
+            this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
+            this.elIntentDelServicio.putExtra("ipServidor", ipServidor);
             this.elIntentDelServicio.putExtra("nombreDispositivo", nombreSensor);
             getActivity().startService( this.elIntentDelServicio );
         }
