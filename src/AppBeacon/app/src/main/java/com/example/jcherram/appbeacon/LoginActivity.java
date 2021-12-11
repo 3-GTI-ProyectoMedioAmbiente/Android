@@ -45,11 +45,24 @@ public class LoginActivity extends AppCompatActivity
 
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para abrir la pagina de registrto
+     */
+
     public void openRegister(){
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para iniciarSesion
+     */
     public void iniciarSesion() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

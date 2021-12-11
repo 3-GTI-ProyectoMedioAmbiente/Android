@@ -26,6 +26,13 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import com.example.jcherram.appbeacon.controlador.ServicioEscuharBeacons;
 
+
+// -----------------------------------------------------------------------------------
+// @author: Juan Carlos Hernandez Ramirez
+// Fecha: 17/10/2021
+// SettingsActivity
+// Clase para gestionar el funcionamiento del sensor
+// -----------------------------------------------------------------------------------
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String ETIQUETA_LOG = ">>>>";
@@ -49,6 +56,9 @@ public class SettingsActivity extends AppCompatActivity {
             }
         }
     };
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
 
     /**
@@ -75,7 +85,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -93,6 +104,9 @@ public class SettingsActivity extends AppCompatActivity {
             configurarSwitchPreference(getPreferenceScreen().findPreference(getString(R.string.preferenceEstadoServicio)), getString(R.string.preferenceEstadoServicio));
 
         }
+
+        // -----------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------
 
         /**
          * Vincular el SwitchPreference con su preferencia en la aplicacion
@@ -123,8 +137,12 @@ public class SettingsActivity extends AppCompatActivity {
             });
         }
 
+        // -----------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------
+
         /**
          * Metodo que gestiona la parada del servicio
+         * botonDetenerServicioPulsado()
          * */
         public void botonDetenerServicioPulsado() {
             if ( this.elIntentDelServicio == null ) {
@@ -136,8 +154,12 @@ public class SettingsActivity extends AppCompatActivity {
             Log.d(ETIQUETA_LOG, " boton detener servicio Pulsado" );
         }
 
+        // -----------------------------------------------------------------------------------
+        // -----------------------------------------------------------------------------------
+
         /**
          * Metodo que gestiona la inicializacion del servicio
+         * botonArrancarServicioPulsado()
          */
         public void botonArrancarServicioPulsado() {
             Log.d(ETIQUETA_LOG, " boton arrancar servicio Pulsado" );

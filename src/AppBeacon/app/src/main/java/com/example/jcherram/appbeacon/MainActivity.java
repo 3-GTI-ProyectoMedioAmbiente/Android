@@ -84,6 +84,13 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    /**
+     * Comprueba si tenemos algún sensor vinculado
+     * @return devuelve el sensor
+     *
+     * comprobarSiExisteSensorVinculado()->V/F
+     */
+
     private boolean comprobarSiExisteSensorVinculado(){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String res = sharedPref.getString(getString(R.string.preferenceIdSensor), "noId");
@@ -94,8 +101,12 @@ public class MainActivity extends AppCompatActivity  {
         return sensorVinculado;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Almacena la direccion IP en las shared Preferences
+     * guardarDireccionIP()
      */
     private void guardarDireccionIP(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -105,7 +116,13 @@ public class MainActivity extends AppCompatActivity  {
         editor.apply();
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
+    /**
+     * Metodo para establecer un fragment como vista
+     * @param fragment recibimos el fragment para la vista
+     */
 
     public void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -114,9 +131,13 @@ public class MainActivity extends AppCompatActivity  {
                 .commit();
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
 
     /**
      * Contola la solicitud de permisos necesarios para iniciar el servicio Blueetooth
+     * comprobarPermisosBlueetooth()
      */
     private void comprobarPermisosBlueetooth(){
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): Comprobar permisos Bluetooth");
@@ -136,11 +157,15 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Gestion de la solicitud de permisos
      * @param requestCode codigo de peticion
      * @param permissions lista con los permisos que se can a solicitar
      * @param grantResults lista con los resultados obtenidos en cada permiso
+     * Z, Texto,Z->onrequestPermissionsResult()
      */
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {

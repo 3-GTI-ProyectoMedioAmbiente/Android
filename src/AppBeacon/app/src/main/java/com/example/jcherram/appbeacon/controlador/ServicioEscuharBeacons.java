@@ -32,7 +32,9 @@ import java.util.Random;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
-//Fecha: 17/10/2021
+// Fecha: 17/10/2021
+// ServicioEscucharBeacons
+// Clase para escuchar los beacons
 // -----------------------------------------------------------------------------------
 public class ServicioEscuharBeacons extends IntentService {
 
@@ -55,6 +57,10 @@ public class ServicioEscuharBeacons extends IntentService {
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.constructor: termina");
     }
 
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Metodo que gestiona la parada del servio
      */
@@ -74,6 +80,10 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Metodo que se lanzara siempre que se destruya el servicio
      */
@@ -81,6 +91,9 @@ public class ServicioEscuharBeacons extends IntentService {
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onDestroy() " );
         this.parar(); // posiblemente no haga falta, si stopService() ya se carga el servicio y su worker thread
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Funcionamiento del servicio
@@ -124,6 +137,9 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Metodo que inicia la busqueda de dispositivos Blueetoh
      */
@@ -165,6 +181,9 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Metdo para pque gestiona la parada de la busqueda de dispositvos Blueetooth
      */
@@ -175,6 +194,9 @@ public class ServicioEscuharBeacons extends IntentService {
         this.elEscanner.stopScan( this.callbackDelEscaneo );
         this.callbackDelEscaneo = null;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Mostramos la informacion por el lo y guardamos la informacion de las mediciones en un Array de mediciones
@@ -237,6 +259,9 @@ public class ServicioEscuharBeacons extends IntentService {
         }
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Calcula la distancia del iBeacon recibido segun el txPower y el rssi
      * @param txPower
@@ -250,6 +275,9 @@ public class ServicioEscuharBeacons extends IntentService {
         return Math.pow(10, power);
 
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
         /**
          * Inicializacion para poder buscar dispositivos BL
          */
@@ -275,6 +303,9 @@ public class ServicioEscuharBeacons extends IntentService {
         }
 
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
 
     /**

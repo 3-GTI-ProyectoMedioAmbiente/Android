@@ -20,8 +20,19 @@ import androidx.preference.PreferenceManager;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+/**
+ * @Author: Alberto Valls Martinez
+ * Fecha: 23/11/21
+ * VincularDispositivoFragment
+ * Clase que recibe la MAC de un sensor por medio de escanear un QR
+ */
 
+//----------------------------------------------------------------
+//----------------------------------------------------------------
 
+/**
+ * Clase VincularDispositivoFragment
+ */
 public class VincularDispositivoFragment extends Fragment {
 
 
@@ -41,12 +52,20 @@ public class VincularDispositivoFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment BeaconsFragment.
      */
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+
     public static VincularDispositivoFragment newInstance(String param1, String param2) {
         VincularDispositivoFragment fragment = new VincularDispositivoFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +76,10 @@ public class VincularDispositivoFragment extends Fragment {
             //String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -78,8 +101,14 @@ public class VincularDispositivoFragment extends Fragment {
         return view;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
 
+    /**
+     * Metodo que sirve para escanear un codigo QR
+     * escanear()
+     */
     public void escanear() {
 
         IntentIntegrator intent = IntentIntegrator.forSupportFragment(VincularDispositivoFragment.this);
@@ -95,6 +124,17 @@ public class VincularDispositivoFragment extends Fragment {
 
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para registrar un dispositivo en la cuenta de usuario
+     * @param requestCode recibimos el codigo de solicitud
+     * @param resultCode recibimos el codigo de resultado
+     * @param data recibimos la informacion del dispositivo
+     *
+     * Z,Z,intent->onActivityResult()
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -121,6 +161,18 @@ public class VincularDispositivoFragment extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo que coge la Mac del QR escaneado
+     * @param QR recibimos el texto escaneado del QR
+     * @return devolvemos la MAC
+     *
+     * Texto->getMacFromQr()->Texto
+     */
 
     private String getMacFromQR(String QR){
         int indice = QR.indexOf('_');

@@ -55,7 +55,13 @@ public class MedicionesFragment extends Fragment {
         return fragment;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
+    /**
+     * Constructor de la vista del mapa
+     * @param savedInstanceState instancia de medicionesFragment
+     */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,6 +119,14 @@ public class MedicionesFragment extends Fragment {
 
         return view;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para abrir el popup
+     * @param v recibimos la vista deseada
+     */
 
     public void showPopup(View v){
         TextView txtclose;

@@ -3,7 +3,9 @@ package com.example.jcherram.appbeacon.adapter;
 
 // -----------------------------------------------------------------------------------
 // @author: Alberto Valls Martinez
-//Fecha: 03/11/2021
+// Fecha: 03/11/2021
+// Notificacion
+// Clase para construir las notificaciones que serán enviadas al movil
 // -----------------------------------------------------------------------------------
 
 

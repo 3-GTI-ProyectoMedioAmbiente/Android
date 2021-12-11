@@ -32,6 +32,8 @@ public class LogicaFake {
     /**
      * Realizar peticione de insercion de datos mediante peticion REST
      * @param mediciones lista de mediciones a insetar
+     *
+     * <Medicion>->insertarMediciones()
      */
     public void insetarMediciones(ArrayList<Medicion> mediciones){
         JSONObject json = new JSONObject();
@@ -57,6 +59,18 @@ public class LogicaFake {
         );
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+
+    /**
+     * Metodo para recoger las mediciones de hoy mediante peticion REST
+     * @param fecha pasamos la fecha en la que queremos recoger las mediciones
+     * @param beaconsFragment le pasamos el fragment de beacons
+     *
+     * Texto, BeaconsFragment->getMedicionesHoy()
+     */
+
 
     public void getMedicionesHoy(String fecha, BeaconsFragment beaconsFragment){
 
@@ -72,6 +86,13 @@ public class LogicaFake {
 
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para recoger todas las mediciones de la bbdd mediante peticion REST
+     * @param activity le pasamos la activity que recibirá las mediciones
+     */
     public void getTodasLasMediciones(ActivityHistorialMediciones activity){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
@@ -85,7 +106,16 @@ public class LogicaFake {
         );
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
+    /**
+     * Metodo para parsear Json a un arraylist de mediciones
+     * @param json le pasamos el json que queremos parsear
+     * @return devolvemos el nuevo arraylist de mediciones
+     *
+     * Texto->parsearJsonToArrayMediciones()-><Medicion>
+     */
     private ArrayList<Medicion> parsearJsonToArrayMediciones(String json){
         ArrayList<Medicion> arrayListMediciones = new ArrayList<>();
         try {

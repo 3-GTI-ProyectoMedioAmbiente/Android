@@ -5,6 +5,9 @@ import java.util.Arrays;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
+// fecha;12/11/21
+// TramalBeacon
+// clase para recoger los beacons
 // -----------------------------------------------------------------------------------
 public class TramaIBeacon {
     private byte[] prefijo = null; // 9 bytes

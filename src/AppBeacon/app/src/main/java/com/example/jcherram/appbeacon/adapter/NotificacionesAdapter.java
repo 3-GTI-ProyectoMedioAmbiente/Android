@@ -16,7 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- Clase NotificacionesAdapter para el recyclerView
+ * @Author: Alberto Valls Martinez
+ * Fecha: 23/11/21
+ * NotificacionesAdapter
+ * Adaptador para el recycler view de notificaciones
  */
 
 public class NotificacionesAdapter extends RecyclerView.Adapter<NotificacionesAdapter.ViewHolder> {

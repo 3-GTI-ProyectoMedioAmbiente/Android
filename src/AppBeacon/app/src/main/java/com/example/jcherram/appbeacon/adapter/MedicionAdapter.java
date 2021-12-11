@@ -17,8 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- Clase NotificacionesAdapter para el recyclerView
+ * @Author: Alberto Valls Martinez
+ * Fecha: 23/11/21
+ * MedicionAdapter
+ * Adaptador para el recycler view de mediciones
  */
+
+// -----------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------
 
 public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHolder> {
 
@@ -30,7 +36,12 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
 
-
+    /**
+     * Constructor de medicionAdapter
+     *
+     * @param medicionList le pasamos la lista de mediciones
+     * @param context le pasamos el contexto deseado
+     */
     public MedicionAdapter(List<Medicion> medicionList, Context context) {
         this.medicionList = medicionList;
         this.context = context;
@@ -48,6 +59,13 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
     // -----------------------------------------------------------------------------------
 
 
+    /**
+     * Metodo para adjuntar la vista de las tarjetas de medicion
+     *
+     * @param parent introducimos el padre que necesitamos
+     * @param viewType para el tipo de vista
+     * @return devolvemos la vista con las mediciones
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,7 +76,14 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
 
-
+    /**
+     * Matodo para relacionar cada texto con su valor
+     *
+     * @param holder para la vista
+     * @param position para coger la posicion del valor requerido
+     *
+     * ViewHolder, Z-> onBindViewHolder()
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtvalor.setText(medicionList.get(position).getValor());

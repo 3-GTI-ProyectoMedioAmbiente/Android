@@ -16,6 +16,16 @@ import com.example.jcherram.appbeacon.controlador.PeticionarioREST;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @Author: Alberto Valls Martinez
+ * Fecha: 23/11/21
+ * ActivityHistorialMediciones
+ * Activity que muestra el historial de mediciones del sensor
+ */
+
+//----------------------------------------------------------------
+//----------------------------------------------------------------
 public class ActivityHistorialMediciones extends AppCompatActivity {
 
     private List<Medicion> elements;
@@ -36,6 +46,15 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo que sirve para representar las mediciones recogidas en la bbdd en el recycler view
+     * @param mediciones que son los datos recogidos por el sensor
+     *
+     * <Medicion>->loadMediciones()
+     */
 
     public void loadMediciones(ArrayList<Medicion> mediciones){
         elements = mediciones;

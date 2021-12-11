@@ -13,17 +13,38 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.jcherram.appbeacon.R;
 
+/**
+ * @Author: Alberto Valls Martinez
+ * Fecha: 23/11/21
+ * ClaseLanzarNotificaciones
+ * Clase que manda las notificaciones al movil
+ */
 public class ClaseLanzarNotificaciones {
     private final Context context;
     private final static String CHANNEL_ID = "NOTIFICACION";
     private final static int NOTIFICACION_ID = 0;
     private PendingIntent pendingIntent;
 
+    /**
+     * Metodo que llama a la función crearNotificationChannel()
+     * @param context le pasamos el contexto deseado
+     */
     public ClaseLanzarNotificaciones(Context context){
         this.context = context;
         createNotificationChannel();
     }
 
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para crear notificaciones
+     * @param mensaje le pasamos el mensajes que visualizará la notificacion
+     * @param titulo el titulo de la notificacion
+     *
+     * Texto, Texto->crearNotificacion()
+     */
     public void crearNotificacion(String mensaje, String titulo){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID);
         builder.setSmallIcon(R.drawable.logo);
@@ -39,6 +60,10 @@ public class ClaseLanzarNotificaciones {
     }
 
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+
     /**
      * La funcion setPendingIntent() es una funcion la cual utilizarems en un futuro, redirigir al usuario a un fragment al pulsar la notificacion.
      * setPendingIntent()
@@ -52,6 +77,10 @@ public class ClaseLanzarNotificaciones {
         //Log.d("pene","pending");
     }*/
 
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * La funcion createNotificationChannel() es una funcion la cual maneja la creacion de la notificacion.
      * createNotificationChannel()
@@ -64,6 +93,10 @@ public class ClaseLanzarNotificaciones {
             notificationManager.createNotificationChannel(notificationChannel);
         }
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     private Boolean isNotifiacionAlive(){
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);

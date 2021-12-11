@@ -62,6 +62,9 @@ public class BeaconsFragment extends Fragment {
         return fragment;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,9 @@ public class BeaconsFragment extends Fragment {
         logicaFake = new LogicaFake(ipServidor);
         logicaFake.getMedicionesHoy("2021-10-16",this);
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -98,15 +104,40 @@ public class BeaconsFragment extends Fragment {
         });
         return v;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para abrir la activity de settings
+     * configurarNodo()
+     */
     private void configurarNodo(){
         Intent intent = new Intent(getContext(), SettingsActivity.class);
         startActivity(intent);
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para ver el historial de mediciones
+     * verHistorial()
+     */
     private void verHistorial(){
         Intent intent = new Intent(getContext(), ActivityHistorialMediciones.class);
         startActivity(intent);
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * Metodo para calcular la media de mediciones
+     * @param list recibimos la lista de mediciones
+     *
+     * <medicion>->calcularMedia()
+     */
 
     public void calcularMedia(ArrayList<Medicion> list){
         float res = 0;

@@ -4,6 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+
+// -----------------------------------------------------------------------------------
+// @author: Alberto Valls Martinez
+// Fecha: 17/10/2021
+// SettingsActivity
+// Clase para el registro del usuario
+// -----------------------------------------------------------------------------------
 public class RegisterActivity extends AppCompatActivity {
 
     @Override

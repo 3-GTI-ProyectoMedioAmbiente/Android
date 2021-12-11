@@ -6,8 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+/**
+ * @Author: Alberto Valls Martinez
+ * Fecha: 23/11/21
+ * SplashActivity
+ * clase que inicializa una pantalla de inicio que dura unos segunos
+ */
+
+//----------------------------------------------------------------
+//----------------------------------------------------------------
+
 public class SplashActivity extends AppCompatActivity {
 
+    /**
+     *  Constructor de la Acticity de splash activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

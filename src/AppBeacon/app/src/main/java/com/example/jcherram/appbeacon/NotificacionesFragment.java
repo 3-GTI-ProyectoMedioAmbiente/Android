@@ -76,7 +76,8 @@ public class NotificacionesFragment extends Fragment  {
         // Required empty public constructor
     }
 
-
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
 
 
@@ -89,8 +90,12 @@ public class NotificacionesFragment extends Fragment  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
     /**
-     * La funcion llenarLista() es el recicler view.
+     * En ña funcion llenarLista() añadimos manualmente notificaciones para que salgan en el recyclerview
      * llenarLista()
      */
     private void llenarLista(){

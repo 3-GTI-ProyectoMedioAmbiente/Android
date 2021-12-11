@@ -47,6 +47,9 @@ public class Medicion {
         tipoMedicion="NO2";
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Constructor de la clase Medcion
      * @param medicion Medida
@@ -71,6 +74,9 @@ public class Medicion {
         tipoMedicion="NO2";
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Transforma el objeto actual a JSON
      * @return JSONObject medicion en formato JSOn
@@ -88,6 +94,9 @@ public class Medicion {
         return  json;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Getter de la clase Medicion que devuelve el atributo tipoMedicion de la clase
      * @return valor string resultante
@@ -95,6 +104,11 @@ public class Medicion {
     public String getTipoMedicion() {
         return tipoMedicion;
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Setter para modificar el valor tipoMedicion
      * @param tipoMedicion nuevo valor para el atributo que se va ha modificar
@@ -103,13 +117,21 @@ public class Medicion {
         this.tipoMedicion = tipoMedicion;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Getter de la clase Medicion que devuelve el atributo valor de la clase
      * @return valor string resultante
      */
+
     public String getValor() {
         return valor;
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
     /**
      * Setter para modificar el valor 'valor'
      * @param valor nuevo valor para el atributo que se va ha modificar
@@ -117,6 +139,9 @@ public class Medicion {
     public void setValor(String valor) {
         this.valor = valor;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Getter de la clase Medicion que devuelve el atributo ID de la clase
@@ -126,6 +151,9 @@ public class Medicion {
         return id;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Setter para modificar el valor hora
      * @param id nuevo valor para el atributo que se va ha modificar
@@ -133,6 +161,9 @@ public class Medicion {
     public void setId(int id) {
         this.id = id;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Getter de la clase Medicion que devuelve el atributo medicion de la clase
@@ -142,6 +173,9 @@ public class Medicion {
         return medicion;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Setter para modificar el valor medicion
      * @param medicion nuevo valor para el atributo que se va ha modificar
@@ -149,6 +183,9 @@ public class Medicion {
     public void setMedicion(float medicion) {
         this.medicion = medicion;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Getter de la clase Medicion que devuelve el atributo feche de la clase
@@ -158,6 +195,9 @@ public class Medicion {
         return fecha;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Setter para modificar el valor hora
      * @param fecha nuevo valor para el atributo que se va ha modificar
@@ -165,6 +205,9 @@ public class Medicion {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Getter de la clase Medicion que devuelve el atributo hora de la clase
@@ -174,6 +217,9 @@ public class Medicion {
         return hora;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Setter para modificar el valor hora
      * @param hora nuevo valor para el atributo que se va ha modificar
@@ -181,6 +227,9 @@ public class Medicion {
     public void setHora(Time hora) {
         this.hora = hora;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Getter de la clase Medicion que devuelve el atributo localizacion_lat de la clase
@@ -190,6 +239,9 @@ public class Medicion {
         return localizacion_lat;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Setter para modificar el valor localizacion_lat
      * @param localizacion_lat nuevo valor para el atributo que se va ha modificar
@@ -198,6 +250,9 @@ public class Medicion {
         this.localizacion_lat = localizacion_lat;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Getter de la clase Medicion que devuelve el atributo localizacion_lon de la clase
      * @return float numero resultante
@@ -205,6 +260,9 @@ public class Medicion {
     public float getLocalizacion_lon() {
         return localizacion_lon;
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Setter para modificar el valor Localizacion_Lon

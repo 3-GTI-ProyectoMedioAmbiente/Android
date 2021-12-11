@@ -14,6 +14,8 @@ import android.util.Log;
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
 //Fecha: 17/10/2021
+//PeticionarioREST
+//Clase para gestionar las diferentes peticionesREST
 // -----------------------------------------------------------------------------------
 public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
@@ -47,6 +49,11 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
         this.execute(); // otro thread ejecutará doInBackground()
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
     /**
      * Metodo que gestionara la peticion REST como un Thread
      * @param params distinots parametros que pueudo resivir la peticion
@@ -119,6 +126,10 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
         return false;
     }
+
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
 
     /**
      * Metodo que se llamara cuando finaliza la peticionRest
