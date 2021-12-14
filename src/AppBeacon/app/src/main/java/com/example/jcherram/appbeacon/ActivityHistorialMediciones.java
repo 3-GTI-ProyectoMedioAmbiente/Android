@@ -40,7 +40,7 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
         logicaFake = new LogicaFake(ipServidor);
-        logicaFake.getTodasLasMediciones(this);
+        logicaFake.obtenerTodasLasMediciones(this);
 
 
 

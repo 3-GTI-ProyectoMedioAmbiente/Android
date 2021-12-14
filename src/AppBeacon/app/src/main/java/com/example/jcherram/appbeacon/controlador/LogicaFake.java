@@ -15,7 +15,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 // -----------------------------------------------------------------------------------
-// @author: Juan Carlos Hernandez Ramirez
+// @author: Juan Carlos Hernandez Ramirez y Sergi
 // Fecha: 17/10/2021
 // -----------------------------------------------------------------------------------
 
@@ -30,9 +30,9 @@ public class LogicaFake {
      * Realizar peticione de insercion de datos mediante peticion REST
      * @param mediciones lista de mediciones a insetar
      *
-     * <Medicion>->insertarMediciones()
+     * <Medicion>->guardarMediciones()
      */
-    public void insetarMediciones(ArrayList<Medicion> mediciones){
+    public void guardarMediciones(ArrayList<Medicion> mediciones){
         JSONObject json = new JSONObject();
         try {
 
@@ -65,11 +65,10 @@ public class LogicaFake {
      * @param fecha pasamos la fecha en la que queremos recoger las mediciones
      * @param beaconsFragment le pasamos el fragment de beacons
      *
-     * Texto, BeaconsFragment->getMedicionesHoy()
+     * Texto, BeaconsFragment->obtenerMedicionesUltimas24h()
      */
 
-
-    public void getMedicionesHoy(String fecha, IndiceCalidadAireFragment beaconsFragment){
+    public void obtenerMedicionesUltimas24h(String fecha, IndiceCalidadAireFragment beaconsFragment){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
         peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",
@@ -90,7 +89,7 @@ public class LogicaFake {
      * Metodo para recoger todas las mediciones de la bbdd mediante peticion REST
      * @param activity le pasamos la activity que recibirá las mediciones
      */
-    public void getTodasLasMediciones(ActivityHistorialMediciones activity){
+    public void obtenerTodasLasMediciones(ActivityHistorialMediciones activity){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
         peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",

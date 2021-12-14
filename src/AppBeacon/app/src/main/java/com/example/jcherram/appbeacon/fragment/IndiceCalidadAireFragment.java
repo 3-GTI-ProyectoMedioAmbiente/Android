@@ -71,7 +71,7 @@ public class IndiceCalidadAireFragment extends Fragment {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
         logicaFake = new LogicaFake(ipServidor);
-        logicaFake.getMedicionesHoy("2021-10-16",this);
+        logicaFake.obtenerMedicionesUltimas24h("2021-10-16",this);
     }
 
     // -----------------------------------------------------------------------------------
