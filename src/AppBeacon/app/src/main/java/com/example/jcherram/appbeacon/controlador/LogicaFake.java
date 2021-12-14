@@ -15,8 +15,10 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 // -----------------------------------------------------------------------------------
+//LogicaFake.java
 // @author: Juan Carlos Hernandez Ramirez y Sergi
 // Fecha: 17/10/2021
+//Fichero que contiene los metodos de la logica fake que se comunican con la logica de negocio
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
