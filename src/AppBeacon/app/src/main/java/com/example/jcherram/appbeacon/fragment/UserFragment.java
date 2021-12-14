@@ -1,4 +1,4 @@
-package com.example.jcherram.appbeacon;
+package com.example.jcherram.appbeacon.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.jcherram.appbeacon.LoginActivity;
+import com.example.jcherram.appbeacon.R;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jcherram.appbeacon.R;
+import com.example.jcherram.appbeacon.modelo.Notificacion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class NotificacionesAdapter extends RecyclerView.Adapter<NotificacionesAd
 
 
 
-    List<Notificacion> notificacionesList;
+    private List<Notificacion> notificacionesList;
     private Context context;
 
     // -----------------------------------------------------------------------------------

@@ -1,10 +1,9 @@
-package com.example.jcherram.appbeacon;
+package com.example.jcherram.appbeacon.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
@@ -15,25 +14,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
+import com.example.jcherram.appbeacon.R;
+import com.example.jcherram.appbeacon.SettingsActivity;
+import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.sql.Time;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BeaconsFragment#newInstance} factory method to
+ * Use the {@link IndiceCalidadAireFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BeaconsFragment extends Fragment {
+public class IndiceCalidadAireFragment extends Fragment {
 
     private TextView textViewMedia;
     private TextView textViewTextoMedia;
@@ -44,7 +40,7 @@ public class BeaconsFragment extends Fragment {
 
     private Medicion ultimaMedicion;
     private LogicaFake logicaFake;
-    public BeaconsFragment() {
+    public IndiceCalidadAireFragment() {
         // Required empty public constructor
     }
 
@@ -56,8 +52,8 @@ public class BeaconsFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment BeaconsFragment.
      */
-    public static BeaconsFragment newInstance(String param1, String param2) {
-        BeaconsFragment fragment = new BeaconsFragment();
+    public static IndiceCalidadAireFragment newInstance(String param1, String param2) {
+        IndiceCalidadAireFragment fragment = new IndiceCalidadAireFragment();
 
         return fragment;
     }
@@ -65,6 +61,10 @@ public class BeaconsFragment extends Fragment {
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
 
+    /**
+     * Se llama cuando onCreate el Fragment
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,14 @@ public class BeaconsFragment extends Fragment {
 
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
+
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

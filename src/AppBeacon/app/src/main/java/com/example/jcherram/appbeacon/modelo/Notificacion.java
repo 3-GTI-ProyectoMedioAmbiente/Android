@@ -1,4 +1,4 @@
-package com.example.jcherram.appbeacon.adapter;
+package com.example.jcherram.appbeacon.modelo;
 
 
 // -----------------------------------------------------------------------------------

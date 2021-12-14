@@ -1,4 +1,4 @@
-package com.example.jcherram.appbeacon;
+package com.example.jcherram.appbeacon.fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -15,42 +15,32 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.jcherram.appbeacon.adapter.Notificacion;
-import com.example.jcherram.appbeacon.modelo.ActivityInfoContaminante;
+import com.example.jcherram.appbeacon.ActivityInfoContaminante;
+import com.example.jcherram.appbeacon.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MedicionesFragment#newInstance} factory method to
+ * Use the {@link MapaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MedicionesFragment extends Fragment {
+public class MapaFragment extends Fragment {
 
-    Dialog mydialog;
-    TextView txtclose;
+    private Dialog mydialog;
+    private TextView txtclose;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    public MedicionesFragment() {
+    public MapaFragment() {
         // Required empty public constructor
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment MedicionesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MedicionesFragment newInstance(String param1, String param2) {
-        MedicionesFragment fragment = new MedicionesFragment();
+    public static MapaFragment newInstance() {
+        MapaFragment fragment = new MapaFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }

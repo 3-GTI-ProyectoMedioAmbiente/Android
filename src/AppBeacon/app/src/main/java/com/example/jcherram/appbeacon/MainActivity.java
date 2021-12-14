@@ -1,7 +1,6 @@
 
 package com.example.jcherram.appbeacon;
 import android.Manifest;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -19,7 +18,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
 
-import com.example.jcherram.appbeacon.adapter.Notificacion;
+import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
+import com.example.jcherram.appbeacon.fragment.MapaFragment;
+import com.example.jcherram.appbeacon.fragment.NotificacionesFragment;
+import com.example.jcherram.appbeacon.fragment.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 // -----------------------------------------------------------------------------------
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         comprobarPermisosBlueetooth();
         setContentView(R.layout.activity_main);
-        setFragment(new MedicionesFragment());
+        setFragment(new MapaFragment());
 
         guardarDireccionIP();
 
@@ -62,13 +64,13 @@ public class MainActivity extends AppCompatActivity  {
                         break;
 
                     case R.id.nav_mediciones:
-                        fragment = new MedicionesFragment();
+                        fragment = new MapaFragment();
                         break;
 
 
                     case R.id.nav_beacons:
                         if( comprobarSiExisteSensorVinculado()){
-                            fragment = new BeaconsFragment();
+                            fragment = new IndiceCalidadAireFragment();
                         }else{
                             fragment = new VincularDispositivoFragment();
                         }

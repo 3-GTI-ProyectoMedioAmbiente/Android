@@ -1,12 +1,9 @@
 package com.example.jcherram.appbeacon.controlador;
 
-import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
-import com.example.jcherram.appbeacon.BeaconsFragment;
+import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 import org.json.JSONArray;
@@ -72,7 +69,7 @@ public class LogicaFake {
      */
 
 
-    public void getMedicionesHoy(String fecha, BeaconsFragment beaconsFragment){
+    public void getMedicionesHoy(String fecha, IndiceCalidadAireFragment beaconsFragment){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
         peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",

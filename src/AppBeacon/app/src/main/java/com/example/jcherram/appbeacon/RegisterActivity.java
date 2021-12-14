@@ -13,6 +13,10 @@ import android.os.Bundle;
 // -----------------------------------------------------------------------------------
 public class RegisterActivity extends AppCompatActivity {
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

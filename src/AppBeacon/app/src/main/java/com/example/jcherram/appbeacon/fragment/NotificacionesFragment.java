@@ -1,10 +1,5 @@
-package com.example.jcherram.appbeacon;
+package com.example.jcherram.appbeacon.fragment;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.jcherram.appbeacon.adapter.Notificacion;
+import com.example.jcherram.appbeacon.R;
+import com.example.jcherram.appbeacon.modelo.Notificacion;
 import com.example.jcherram.appbeacon.adapter.NotificacionesAdapter;
 import com.example.jcherram.appbeacon.controlador.ClaseLanzarNotificaciones;
 
@@ -95,7 +89,7 @@ public class NotificacionesFragment extends Fragment  {
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
     /**
-     * En ña funcion llenarLista() añadimos manualmente notificaciones para que salgan en el recyclerview
+     * Funcion llenarLista() añadimos manualmente notificaciones para que salgan en el recyclerview
      * llenarLista()
      */
     private void llenarLista(){

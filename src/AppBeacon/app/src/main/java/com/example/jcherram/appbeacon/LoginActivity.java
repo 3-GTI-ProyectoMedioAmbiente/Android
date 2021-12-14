@@ -17,8 +17,12 @@ public class LoginActivity extends AppCompatActivity
 
     private Button button;
     private Button buttonIniciarSesion;
-    @Override
 
+    /**
+     *
+     * @param savedInstanceState
+     */
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);

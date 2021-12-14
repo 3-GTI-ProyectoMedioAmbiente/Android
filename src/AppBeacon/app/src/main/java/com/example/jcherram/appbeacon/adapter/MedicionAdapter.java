@@ -51,7 +51,10 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
     // -----------------------------------------------------------------------------------
 
 
-
+    /**
+     *
+     * @param listaMedicion
+     */
     public MedicionAdapter(ArrayList<Medicion> listaMedicion) {
         this.medicionList = listaMedicion;
     }
