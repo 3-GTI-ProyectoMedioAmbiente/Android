@@ -81,7 +81,13 @@ public class MapaFragment extends Fragment {
         txtclose=(TextView) mydialog.findViewById(R.id.txtclose);
 
         webView=view.findViewById(R.id.webview);
-        webView.loadUrl("https://www.google.com");
+        webView.clearCache(true);
+        webView.clearHistory();
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
+        webView.loadUrl("http://192.168.1.14/test.html");
+        //webView.loadUrl("https://poocoin.app/tokens/0x24802247bd157d771b7effa205237d8e9269ba8a");
 
         ImageButton btninfo =  view.findViewById(R.id.btninfo);
         btninfo.setOnClickListener(new View.OnClickListener() {
