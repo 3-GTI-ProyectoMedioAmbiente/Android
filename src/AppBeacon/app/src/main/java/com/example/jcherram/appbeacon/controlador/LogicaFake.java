@@ -168,7 +168,7 @@ public class LogicaFake {
                         //aqui lo que me devuelva la base de datos
                         if (codigo == 200){
                             if (cuerpo.equals("-1")){
-                                Toast.makeText(activity.getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(activity.getApplicationContext(), "Usuario no registrado o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                                 //Log.d("res","entro al if de menos 1");
                             }else{
                                 //aqui proceso los datos de la bd
