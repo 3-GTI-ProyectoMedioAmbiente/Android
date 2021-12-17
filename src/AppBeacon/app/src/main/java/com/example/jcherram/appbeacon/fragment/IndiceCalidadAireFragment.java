@@ -147,19 +147,24 @@ public class IndiceCalidadAireFragment extends Fragment {
      */
 
     public void calcularMedia(ArrayList<Medicion> list){
-        float res = 0;
-        for (int i = 0; i<list.size();i++){
-            res+=list.get(i).getMedicion();
+        if (!list.isEmpty()){
+            float res = 0;
+            for (int i = 0; i<list.size();i++){
+                res+=list.get(i).getMedicion();
+            }
+            res= res/list.size();
+
+            ultimaMedicion = list.get(list.size()-1);
+
+            textViewMedia.setText(String.format("%.02f", res));
+            textViewTextoMedia.setText(ultimaMedicion.getValor());
+
+            textViewValorUltima.setText(ultimaMedicion.getValor());
+            textViewHoraUltima.setText(Utilidades.TimeToString(ultimaMedicion.getHora()));
+            textViewMedicionUltima.setText(String.format("%.02f", ultimaMedicion.getMedicion())+" µg/m3");
         }
-        res= res/list.size();
-        ultimaMedicion = list.get(list.size()-1);
 
-        textViewMedia.setText(String.format("%.02f", res));
-        textViewTextoMedia.setText(ultimaMedicion.getValor());
 
-        textViewValorUltima.setText(ultimaMedicion.getValor());
-        textViewHoraUltima.setText(Utilidades.TimeToString(ultimaMedicion.getHora()));
-        textViewMedicionUltima.setText(String.format("%.02f", ultimaMedicion.getMedicion())+" µg/m3");
     }
 
 }

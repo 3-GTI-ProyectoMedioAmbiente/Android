@@ -77,7 +77,7 @@ public class LogicaFake {
     public void obtenerMedicionesUltimas24h(String fecha,String tipo, int idUsuario, IndiceCalidadAireFragment beaconsFragment){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
-        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo=+"+tipo+"&idUsuario="+idUsuario,"",
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo="+tipo+"&idUsuario="+idUsuario,"",
                 new PeticionarioREST.RespuestaREST () {
                     @Override
                     public void callback(int codigo, String cuerpo) {
