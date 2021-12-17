@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
-
-;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -17,12 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
-
 import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
 import com.example.jcherram.appbeacon.fragment.MapaFragment;
 import com.example.jcherram.appbeacon.fragment.NotificacionesFragment;
 import com.example.jcherram.appbeacon.fragment.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
-    private static final String DIRECCION_SERVIDOR = "http://192.168.156.31:5000/";
+    private static final String DIRECCION_SERVIDOR = "http://192.168.1.89:5000/";
     private BottomNavigationView navigationView;
     /**
      * Constructor de vista principal
@@ -44,6 +43,10 @@ public class MainActivity extends AppCompatActivity  {
         comprobarPermisosBlueetooth();
         setContentView(R.layout.activity_main);
         setFragment(new MapaFragment());
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String res = sharedPref.getString(getString(R.string.usuarioActivoTelefono), "noNombre");
+        Log.d("entroAMain",res);
 
         guardarDireccionIP();
 
@@ -188,5 +191,7 @@ public class MainActivity extends AppCompatActivity  {
                 return;
         }
     }
+
+
 }
 

@@ -39,5 +39,16 @@
     <string name="preferenceIdSensor">idSensor</string>
     <string name="title_deteccionDeNodo">Detección de Mi Nodo</string>
 
-    <string name="preferenceIpServidor"></string>
+    <string name="preferenceIpServidor">ipServidor</string>
+
+    <string name="usuarioActivoId">usuarioActivoId</string>
+    <string name="usuarioActivoNombre">usuarioActivoNombre</string>
+    <string name="usuarioActivoApellidos">usuarioActivoApellidos</string>
+    <string name="usuarioActivoMail">usuarioActivoMail</string>
+    <string name="usuarioActivoEdad">usuarioActivoEdad</string>
+    <string name="usuarioActivoIsAutobusero">usuarioActivoIsAutobusero</string>
+    <string name="usuarioActivoMatricula">usuarioActivoMatricula</string>
+    <string name="usuarioActivoTelefono">usuarioActivoTelefono</string>
+    <string name="usuarioActivoPassword">usuarioActivoPassword</string>
+
 </resources>

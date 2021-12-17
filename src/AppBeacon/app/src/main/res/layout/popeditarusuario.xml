@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Editar Usuario"
+            android:textColor="@color/teal_700"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextNombreEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewNombreEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNombreEditar" />
+
+        <EditText
+            android:id="@+id/editTextTelefonoEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewTelefonoEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTelefonoEditar" />
+
+        <TextView
+            android:id="@+id/textViewTelefonoEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Teléfono:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/editTextEdadEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEdadEditar" />
+
+        <EditText
+            android:id="@+id/editTextEdadEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewEdadEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEdadEditar" />
+
+        <TextView
+            android:id="@+id/textViewEdadEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Edad:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/editTextCorreoEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCorreoEditar" />
+
+        <EditText
+            android:id="@+id/editTextCorreoEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewMailEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMailEditar" />
+
+        <TextView
+            android:id="@+id/textViewMailEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Mail:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/editTextApellidosEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextApellidosEditar" />
+
+        <TextView
+            android:id="@+id/textViewApellidosEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Apellidos:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/editTextNombreEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNombreEditar" />
+
+        <TextView
+            android:id="@+id/textViewNombreEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Nombre:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+        <EditText
+            android:id="@+id/editTextApellidosEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/textViewApellidosEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textViewApellidosEditar" />
+
+        <TextView
+            android:id="@+id/textViewAntiguaContra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Antigua Contraseña:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/switch2"
+            app:layout_constraintTop_toBottomOf="@+id/switch2" />
+
+        <EditText
+            android:id="@+id/editTextAnContraEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:paddingStart="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/textViewAntiguaContra"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAntiguaContra" />
+
+        <TextView
+            android:id="@+id/textViewNuevaContra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Nueva Contraseña:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/editTextAnContraEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextAnContraEditar" />
+
+        <EditText
+            android:id="@+id/editTextNuContraEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:paddingStart="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/textViewNuevaContra"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNuevaContra" />
+
+        <TextView
+            android:id="@+id/textViewReNuevaContra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Repite Nueva Contraseña:"
+            android:textColor="#024A44"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/editTextNuContraEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNuContraEditar" />
+
+        <EditText
+            android:id="@+id/editTextReContraEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/register"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:paddingStart="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/textViewReNuevaContra"
+            app:layout_constraintTop_toBottomOf="@+id/textViewReNuevaContra" />
+
+        <Button
+            android:id="@+id/btnGuardarCambios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar Cambios"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextReContraEditar" />
+
+        <TextView
+            android:id="@+id/txtCloseEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:padding="10px"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView40"
+            app:layout_constraintTop_toTopOf="@+id/textView40">
+
+        </TextView>
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="¿Quieres cambiar tu contraseña?"
+            app:layout_constraintStart_toStartOf="@+id/editTextTelefonoEditar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoEditar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

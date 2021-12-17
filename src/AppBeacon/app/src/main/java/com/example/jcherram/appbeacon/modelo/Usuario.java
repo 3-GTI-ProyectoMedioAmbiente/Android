@@ -3,9 +3,6 @@ package com.example.jcherram.appbeacon.modelo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.util.Locale;
-
 /**
  *
  * Usuario.java
@@ -83,6 +80,30 @@ public class Usuario {
 
     }
 
+    /**
+     * Constructor sin id para el registro
+     *
+     * @param mail
+     * @param nombre
+     * @param apellidos
+     * @param isAutobusero
+     * @param edad
+     * @param matricula
+     * @param telefono
+     * @param password
+     *
+     * id:Z,mail:Texto,nombre:Texto,apellidos:Texto,isAutobusero:VoF,edad:Z,matricula:Texto,telefono:Texto -> constructor()
+     */
+    public Usuario( String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password) {
+        this.mail = mail;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.isAutobusero = isAutobusero;
+        this.edad = edad;
+        this.matricula = matricula;
+        this.telefono = telefono;
+        this.password = password;
+    }
     /**
      *
      * Getters y setters

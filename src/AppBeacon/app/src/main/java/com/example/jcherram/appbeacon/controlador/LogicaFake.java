@@ -1,18 +1,25 @@
 package com.example.jcherram.appbeacon.controlador;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
-import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
+import com.example.jcherram.appbeacon.LoginActivity;
+import com.example.jcherram.appbeacon.RegisterActivity;
 import com.example.jcherram.appbeacon.Utilidades;
+import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
+import com.example.jcherram.appbeacon.fragment.UserFragment;
 import com.example.jcherram.appbeacon.modelo.Medicion;
+import com.example.jcherram.appbeacon.modelo.Usuario;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
 // -----------------------------------------------------------------------------------
 //LogicaFake.java
@@ -140,5 +147,157 @@ public class LogicaFake {
         return arrayListMediciones;
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+
+    /**
+     * loginUsuario
+     * Metodo que recibe un mail y un usuario y hace una peticion en a base de datos
+     * y si el usuario esta registrado se guarda el usuario
+     *
+     *
+     * @param mail - Correo introducido por el usuario
+     * @param pass - Contraseña introducida por el usuario
+     */
+    public void loginUsuario(String mail, String pass , LoginActivity activity){
+        //hacemos peticion rest
+        //?mail=sergisise@gmail.com&pass=hola
+        Log.d("test","entroLogicaFake");
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET", direccionIpServidor + "loginUsuario?mail="+mail+"&pass="+pass, "",
+                new PeticionarioREST.RespuestaREST() {
+
+                    @Override
+                    public void callback(int codigo, String cuerpo) {
+                        //aqui lo que me devuelva la base de datos
+                        if (codigo == 200){
+                            if (cuerpo.equals("-1")){
+                                Toast.makeText(activity.getApplicationContext(), "Usuario no registrado", Toast.LENGTH_SHORT).show();
+                                //Log.d("res","entro al if de menos 1");
+                            }else{
+                                //aqui proceso los datos de la bd
+                                Log.d("cuerpoPeticion",cuerpo);
+
+                                try {
+                                    Log.d("cuerpoPeticion","Entro al try");
+                                    JSONObject json = new JSONObject(cuerpo);
+
+                                    //Creamos un usuario con la info que nos llega de la base de datos
+                                    //Usuario us = new Usuario(1,"@","Sergi","SirventSempere",false,21,"1234hgt","321321321","hola123");
+
+                                    if (json.getInt("isAutobusero") == 0){
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
+                                        activity.settearUsuarioActivo(usuarioRecibido);
+                                    }else{
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
+                                        activity.settearUsuarioActivo(usuarioRecibido);
+                                    }
+                                    //Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),json.getBoolean("isAutobusero"),json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
+                                    Log.d("test","entroen el try");
+                                    //guardamos el usuario en shared preferences
+
+
+
+                                } catch (JSONException e) {
+                                    Log.d("ErrorJSON","Algo va mal en el json de login");
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+
+                        }else{
+                            Log.d("ResultadoBDLogin","Algo ha ido mal, res != 200");
+                        }
+                    }
+
+                });
+
+    }
+
+    /**
+     * Metodo de la logica fake que se encarga de comunicarse con crearusuario de la logica verdadera
+     *
+     * @param usuario - Objeto usuario que contiene la informacion para crear el usuario
+     * @param activity - Parámetro referente a la actividad actual
+     *
+     * Usuario usuario,Context context,LoginActivity activity -> crearUsuario()
+     */
+    public void crearUsuario(Usuario usuario, RegisterActivity activity){
+
+        JSONObject jsonUsuario = new JSONObject();
+        try {
+
+
+            jsonUsuario.put("nombre",usuario.getNombre());
+            jsonUsuario.put("apellidos",usuario.getApellidos());
+            jsonUsuario.put("mail",usuario.getMail());
+            jsonUsuario.put("edad",usuario.getEdad());
+            jsonUsuario.put("telefono",usuario.getTelefono());
+            jsonUsuario.put("password",usuario.getPassword());
+            jsonUsuario.put("isAutobusero",usuario.getAutobusero());
+            jsonUsuario.put("matricula",usuario.getMatricula());
+
+        } catch (JSONException e) {
+            Log.d("json","Algo va mal en la creacion de json de editar usuario");
+            e.printStackTrace();
+        }
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("POST", direccionIpServidor + "crearUsuario", jsonUsuario.toString(), new PeticionarioREST.RespuestaREST() {
+            @Override
+            public void callback(int codigo, String cuerpo) {
+                if (codigo == 200){
+                    if (cuerpo.equals("-1")){
+                        Log.d("crearUsuario","El correo de usuario ya ha sido creado");
+                        Toast.makeText(activity.getApplicationContext(), "Ya existe una cuenta con este correo", Toast.LENGTH_SHORT).show();
+                    }else{
+                        //caso correcto proceso la info de la bd
+                        activity.redirigirLogin();
+                    }
+                }else{
+
+                    Log.d("crearUsuario","Algo ha ido mal en la conexion con crear usuario");
+                }
+            }
+        });
+    }
+
+    /**
+     * Método de la lógica fake que se comunica con el método de editar usuario de la lógica
+     * de negocio, encargada de editar un usuario de la base de datos
+     *
+     * @param usuario - usuario que se quiere editar
+     * @param context - Contexto desde donde se llama al metodo
+     * @param fragment -Fragment desde donde se lanza el usuario
+     */
+    public void editarUsuario(Usuario usuario, Context context, UserFragment fragment){
+
+        JSONObject jsonUsuario = new JSONObject();
+        try {
+
+            jsonUsuario.put("id_usuario",usuario.getId());
+            jsonUsuario.put("nombre",usuario.getNombre());
+            jsonUsuario.put("apellidos",usuario.getApellidos());
+            jsonUsuario.put("mail",usuario.getMail());
+            jsonUsuario.put("edad",usuario.getEdad());
+            jsonUsuario.put("telefono",usuario.getTelefono());
+            jsonUsuario.put("password",usuario.getPassword());
+
+        } catch (JSONException e) {
+            Log.d("json","Algo va mal en la creacion de json de editar usuario");
+            e.printStackTrace();
+        }
+
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("PUT", direccionIpServidor + "editarUsuario", jsonUsuario.toString(), new PeticionarioREST.RespuestaREST() {
+            @Override
+            public void callback(int codigo, String cuerpo) {
+                //procesar la respuesta del put
+
+                fragment.settearUsuarioActivo();
+            }
+        });
+
+    }
 
 }
