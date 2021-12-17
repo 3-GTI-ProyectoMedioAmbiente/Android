@@ -2,11 +2,16 @@ package com.example.jcherram.appbeacon;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
     Switch aSwitch;
     EditText editText;
     Dialog mydialog;
+    CheckBox cbDatos;
+    TextView datosTv;
+    String urlDatos;
 
     //edit texts
     EditText etNombre;
@@ -51,10 +59,16 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        logicaFake = new LogicaFake("http://192.168.1.35:5000/");
+        logicaFake = new LogicaFake("http://192.168.204.139:5000/");
 
         aSwitch=(Switch) findViewById(R.id.switch1);
         editText=(EditText) findViewById(R.id.etMatriculaRegis);
+        cbDatos = (CheckBox)findViewById(R.id.checkBoxDatos);
+        datosTv = findViewById(R.id.tvCondicionesDatos);
+        SpannableString mitextoU = new SpannableString(datosTv.getText().toString());
+        mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
+        datosTv.setText(mitextoU);
+        urlDatos = "https://www.boe.es/eli/es/lo/2018/12/05/3/con";
 
         etNombre = findViewById(R.id.etNombreRegis);
         etApellidos = findViewById(R.id.etApellidosRegis);
@@ -70,6 +84,15 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registrarUsuario();
+            }
+        });
+
+        datosTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri =  Uri.parse(urlDatos);
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
             }
         });
 
@@ -104,15 +127,15 @@ public class RegisterActivity extends AppCompatActivity {
             if (aSwitch.isChecked() && etMatricula.getText().toString().equals("")){
                 Toast.makeText(this, "Es obligatorio rellenar todos los campos", Toast.LENGTH_SHORT).show();
             }else{
-                //caso correcto comprobamos si las matriculas con iguales
+                //caso correcto comprobamos si las pass con iguales
                 if (etPass.getText().toString().equals(etConfPass.getText().toString())){
                     //las contraseñas coinciden
-
+                if (cbDatos.isChecked()){
                     if(aSwitch.isChecked()){
                         //si se registra un autobusero
                         Usuario usuarioAutobusero = new Usuario(
-                            etMail.getText().toString(),
-                            etNombre.getText().toString(),
+                                etMail.getText().toString(),
+                                etNombre.getText().toString(),
                                 etApellidos.getText().toString(),
                                 true,
                                 Integer.parseInt(etEdad.getText().toString()),
@@ -141,6 +164,11 @@ public class RegisterActivity extends AppCompatActivity {
                         //llamamos a la logica
                         logicaFake.crearUsuario(usuarioNoAutobusero,this);
                     }
+                }else{
+                    ///el check box no esta pulsado
+                    Toast.makeText(this, "Debes aceptar las condiciones de tratamiento de datos", Toast.LENGTH_SHORT).show();
+                }
+
 
                 }else{
                     Toast.makeText(this, "Las contraseñas deben coincidir", Toast.LENGTH_SHORT).show();

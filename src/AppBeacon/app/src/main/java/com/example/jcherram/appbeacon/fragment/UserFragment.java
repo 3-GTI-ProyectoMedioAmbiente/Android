@@ -101,7 +101,7 @@ public class UserFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Switch sw;
-        logicaFake = new LogicaFake("http://192.168.1.35:5000/");
+        logicaFake = new LogicaFake("http://192.168.204.139:5000/");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
