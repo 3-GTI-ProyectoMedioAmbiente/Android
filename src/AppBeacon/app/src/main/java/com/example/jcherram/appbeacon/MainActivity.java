@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
-    private static final String DIRECCION_SERVIDOR = "http://192.168.1.89:5000/";
+    private static final String DIRECCION_SERVIDOR = "http://192.168.205.31:5000/";
     private BottomNavigationView navigationView;
     /**
      * Constructor de vista principal

@@ -96,9 +96,8 @@ public class ServicioEscuharBeacons extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         long tiempoDeEspera = intent.getLongExtra("tiempoDeEspera",50000);
-        String direccionIpServidor = intent.getStringExtra("ipServidor");
         String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
-        LogicaFake logicaFake = new LogicaFake(direccionIpServidor);
+        LogicaFake logicaFake = new LogicaFake();
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
@@ -205,7 +204,7 @@ public class ServicioEscuharBeacons extends IntentService {
             Date currentTime = Calendar.getInstance().getTime();
             TramaIBeacon tib = new TramaIBeacon(bytes);
             float dato = Utilidades.bytesToInt(tib.getMinor());
-            Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
+            Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 38.99698442634084f,-0.1663422921168631f );
             mediciones.add(medicion);
 
             Log.d(ETIQUETA_LOG, " ****************************************************");

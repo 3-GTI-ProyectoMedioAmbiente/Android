@@ -29,10 +29,8 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor;
-
-    public LogicaFake(String direccionIpServidor){
-        this.direccionIpServidor = direccionIpServidor;
+    private final String direccionIpServidor = "http://192.168.204.31:5000/";
+    public LogicaFake(){
     }
 
     /**

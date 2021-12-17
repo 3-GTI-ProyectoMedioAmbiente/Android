@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        logicaFake = new LogicaFake("http://192.168.204.139:5000/");
+        logicaFake = new LogicaFake();
 
         aSwitch=(Switch) findViewById(R.id.switch1);
         editText=(EditText) findViewById(R.id.etMatriculaRegis);

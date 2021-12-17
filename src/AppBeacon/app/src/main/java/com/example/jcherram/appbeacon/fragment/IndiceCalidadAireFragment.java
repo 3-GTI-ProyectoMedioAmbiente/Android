@@ -68,9 +68,7 @@ public class IndiceCalidadAireFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
-        logicaFake = new LogicaFake(ipServidor);
+        logicaFake = new LogicaFake();
         logicaFake.obtenerMedicionesUltimas24h("2021-10-16",this);
     }
 

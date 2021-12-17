@@ -35,10 +35,7 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         Context context = getApplicationContext();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
-
-        logicaFake = new LogicaFake("http://192.168.204.139:5000/");
+        logicaFake = new LogicaFake();
 
 
         //botones
