@@ -29,7 +29,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.204.31:5000/";
+    private final String direccionIpServidor = "http://192.168.1.14:5000/";
     public LogicaFake(){
     }
 
@@ -39,7 +39,7 @@ public class LogicaFake {
      *
      * <Medicion>->guardarMediciones()
      */
-    public void guardarMediciones(ArrayList<Medicion> mediciones){
+    public void guardarMediciones(ArrayList<Medicion> mediciones, int id_sensor){
         JSONObject json = new JSONObject();
         try {
 
@@ -75,10 +75,10 @@ public class LogicaFake {
      * Texto, BeaconsFragment->obtenerMedicionesUltimas24h()
      */
 
-    public void obtenerMedicionesUltimas24h(String fecha, IndiceCalidadAireFragment beaconsFragment){
+    public void obtenerMedicionesUltimas24h(String fecha,String tipo, int idUsuario, IndiceCalidadAireFragment beaconsFragment){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
-        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo=+"+tipo+"&idUsuario="+idUsuario,"",
                 new PeticionarioREST.RespuestaREST () {
                     @Override
                     public void callback(int codigo, String cuerpo) {
@@ -96,10 +96,10 @@ public class LogicaFake {
      * Metodo para recoger todas las mediciones de la bbdd mediante peticion REST
      * @param activity le pasamos la activity que recibirá las mediciones
      */
-    public void obtenerTodasLasMediciones(ActivityHistorialMediciones activity){
+    public void obtenerTodasLasMediciones(ActivityHistorialMediciones activity, int idUsuario, String tipo){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
-        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerTodasLasMediciones","",
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo="+tipo+"&idUsuario="+idUsuario,"",
                 new PeticionarioREST.RespuestaREST () {
                     @Override
                     public void callback(int codigo, String cuerpo) {
@@ -135,8 +135,7 @@ public class LogicaFake {
                 Time time = Utilidades.stringToTime(m.getString("hora"));
                 float localizacion_lat = (float)m.getDouble("localizacion_lat");
                 float localizacion_lon = (float)m.getDouble("localizacion_lon");
-
-                arrayListMediciones.add(new Medicion(id,medicion,fecha,time, localizacion_lat,localizacion_lon));
+                arrayListMediciones.add(new Medicion(id,medicion,fecha,time, localizacion_lat,localizacion_lon, 3,1));
             }
 
         } catch (JSONException e) {
@@ -184,10 +183,10 @@ public class LogicaFake {
                                     //Usuario us = new Usuario(1,"@","Sergi","SirventSempere",false,21,"1234hgt","321321321","hola123");
 
                                     if (json.getInt("isAutobusero") == 0){
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), json.getInt("id_sensor") );
                                         activity.settearUsuarioActivo(usuarioRecibido);
                                     }else{
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), json.getInt("id_sensor") );
                                         activity.settearUsuarioActivo(usuarioRecibido);
                                     }
                                     //Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),json.getBoolean("isAutobusero"),json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
@@ -265,10 +264,9 @@ public class LogicaFake {
      * de negocio, encargada de editar un usuario de la base de datos
      *
      * @param usuario - usuario que se quiere editar
-     * @param context - Contexto desde donde se llama al metodo
      * @param fragment -Fragment desde donde se lanza el usuario
      */
-    public void editarUsuario(Usuario usuario, Context context, UserFragment fragment){
+    public void editarUsuario(Usuario usuario,UserFragment fragment){
 
         JSONObject jsonUsuario = new JSONObject();
         try {
@@ -291,8 +289,9 @@ public class LogicaFake {
             @Override
             public void callback(int codigo, String cuerpo) {
                 //procesar la respuesta del put
-
-                fragment.settearUsuarioActivo();
+                if (fragment!=null){
+                    fragment.settearUsuarioActivo();
+                }
             }
         });
 

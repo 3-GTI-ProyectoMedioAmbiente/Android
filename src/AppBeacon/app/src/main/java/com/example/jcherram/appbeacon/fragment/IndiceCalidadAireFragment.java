@@ -69,7 +69,8 @@ public class IndiceCalidadAireFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         logicaFake = new LogicaFake();
-        logicaFake.obtenerMedicionesUltimas24h("2021-10-16",this);
+
+        logicaFake.obtenerMedicionesUltimas24h("2021-12-17",this);
     }
 
     // -----------------------------------------------------------------------------------

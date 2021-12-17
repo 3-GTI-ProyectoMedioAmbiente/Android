@@ -288,7 +288,7 @@ public class UserFragment extends Fragment {
                                     editTextTelefono.getText().toString(),
                                     editTextNuevaContra.getText().toString()
                             );
-                            logicaFake.editarUsuario(usuario,this.getActivity().getApplicationContext(),this);
+                            logicaFake.editarUsuario(usuario,this);
 
 
 
@@ -317,7 +317,7 @@ public class UserFragment extends Fragment {
                         editTextTelefono.getText().toString(),
                         sharedPref.getString("usuarioActivoPassword","noPass")
                 );
-                logicaFake.editarUsuario(usuario,this.getActivity().getApplicationContext(),this);
+                logicaFake.editarUsuario(usuario,this);
             }
 
         }

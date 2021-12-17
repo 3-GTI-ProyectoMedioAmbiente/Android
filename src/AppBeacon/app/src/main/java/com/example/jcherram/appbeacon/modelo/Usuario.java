@@ -24,6 +24,7 @@ public class Usuario {
     private String matricula;
     private String telefono;
     private String password;
+    private int id_sensor;
 
 
     /**
@@ -41,7 +42,7 @@ public class Usuario {
      *
      * id:Z,mail:Texto,nombre:Texto,apellidos:Texto,isAutobusero:VoF,edad:Z,matricula:Texto,telefono:Texto -> constructor()
      */
-    public Usuario(int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password) {
+    public Usuario(int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password, int id_sensor) {
         this.id = id;
         this.mail = mail;
         this.nombre = nombre;
@@ -51,6 +52,19 @@ public class Usuario {
         this.matricula = matricula;
         this.telefono = telefono;
         this.password = password;
+        this.id_sensor = id_sensor;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getId_sensor() {
+        return id_sensor;
+    }
+
+    public void setId_sensor(int id_sensor) {
+        this.id_sensor = id_sensor;
     }
 
     /**

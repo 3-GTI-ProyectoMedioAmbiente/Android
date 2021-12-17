@@ -97,6 +97,7 @@ public class ServicioEscuharBeacons extends IntentService {
     protected void onHandleIntent(Intent intent) {
         long tiempoDeEspera = intent.getLongExtra("tiempoDeEspera",50000);
         String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
+        int id_sensor = intent.getIntExtra("usuarioActivoIdSensor",3);
         LogicaFake logicaFake = new LogicaFake();
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
@@ -111,14 +112,12 @@ public class ServicioEscuharBeacons extends IntentService {
                 buscarEsteDispositivoBTLE(nombreDispositivo);
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
                 if(mediciones.size() >=MEDICIONES_A_ENVIAR){
-                    logicaFake.guardarMediciones(new ArrayList<>(mediciones));
+                    logicaFake.guardarMediciones(new ArrayList<>(mediciones), id_sensor);
                     mediciones= new ArrayList<>();
                 }
                 contador++;
             }
-
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
-
         } catch (InterruptedException e) {
             // Restore interrupt status.
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");

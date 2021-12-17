@@ -131,6 +131,10 @@ public class LoginActivity extends AppCompatActivity
         editor.putString(getString(R.string.usuarioActivoPassword), usuario.getPassword());
         editor.apply();
 
+        //id_sensor
+        editor.putString(getString(R.string.usuarioActivoIdSensor), usuario.getPassword());
+        editor.apply();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 

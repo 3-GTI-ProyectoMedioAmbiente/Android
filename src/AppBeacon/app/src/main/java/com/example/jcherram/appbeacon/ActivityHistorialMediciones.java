@@ -37,10 +37,9 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
         setContentView(R.layout.activity_historial_mediciones);
 
         logicaFake = new LogicaFake();
-        logicaFake.obtenerTodasLasMediciones(this);
-
-
-
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int res = sharedPref.getInt(getString(R.string.usuarioActivoId), 1);
+        logicaFake.obtenerTodasLasMediciones(this,res,"mes");
     }
 
     // -----------------------------------------------------------------------------------

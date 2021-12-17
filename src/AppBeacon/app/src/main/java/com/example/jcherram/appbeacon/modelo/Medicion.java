@@ -18,6 +18,8 @@ public class Medicion {
     private Time hora;
     private float localizacion_lat;
     private float localizacion_lon;
+    private int id_tipoMedicion;
+    private int id_sensor;
     private String valor;
     private String tipoMedicion;
     /**
@@ -29,7 +31,7 @@ public class Medicion {
      * @param localizacion_lat Coordenda latitud donde se produjo la medidaa
      * @param localizacion_lon Coordenda longitud donde se produjo la medidaa
      */
-    public Medicion(int id, float medicion, Date fecha, Time hora, float localizacion_lat, float localizacion_lon) {
+    public Medicion(int id, float medicion, Date fecha, Time hora, float localizacion_lat, float localizacion_lon, int id_tipoMedicion, int id_sensor) {
         this.id = id;
         this.medicion = medicion;
         this.fecha = fecha;
