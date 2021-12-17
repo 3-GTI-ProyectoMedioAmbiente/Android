@@ -233,7 +233,7 @@ public class LogicaFake {
             jsonUsuario.put("edad",usuario.getEdad());
             jsonUsuario.put("telefono",usuario.getTelefono());
             jsonUsuario.put("password",usuario.getPassword());
-            jsonUsuario.put("isAutobusero",usuario.getAutobusero());
+            jsonUsuario.put("isAutobusero",usuario.getAutobusero().toString());
             jsonUsuario.put("matricula",usuario.getMatricula());
 
         } catch (JSONException e) {
