@@ -1,6 +1,5 @@
 package com.example.jcherram.appbeacon.controlador;
 
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -183,11 +182,15 @@ public class LogicaFake {
                                     //Usuario us = new Usuario(1,"@","Sergi","SirventSempere",false,21,"1234hgt","321321321","hola123");
 
                                     if (json.getInt("isAutobusero") == 0){
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), json.getInt("id_sensor") );
+
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
                                         activity.settearUsuarioActivo(usuarioRecibido);
+
                                     }else{
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), json.getInt("id_sensor") );
+
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
                                         activity.settearUsuarioActivo(usuarioRecibido);
+
                                     }
                                     //Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),json.getBoolean("isAutobusero"),json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
                                     Log.d("test","entroen el try");

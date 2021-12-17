@@ -157,6 +157,7 @@ public class VincularDispositivoFragment extends Fragment {
                 editor.putString(getString(R.string.preferenceMacSensor),getMacFromQR(qr));
                 editor.putString(getString(R.string.preferenceModeloSensor),"Pro Max V9");
                 editor.putBoolean(getString(R.string.preferenceEstadoServicio), false);
+                editor.putInt(getString(R.string.usuarioActivoIdSensor), 1);
                 editor.apply();
 
                 LogicaFake logicaFake = new LogicaFake();

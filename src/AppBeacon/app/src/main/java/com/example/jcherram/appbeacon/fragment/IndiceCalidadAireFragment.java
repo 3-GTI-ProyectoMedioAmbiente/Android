@@ -3,16 +3,15 @@ package com.example.jcherram.appbeacon.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.preference.PreferenceManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
 import com.example.jcherram.appbeacon.R;
@@ -69,8 +68,9 @@ public class IndiceCalidadAireFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         logicaFake = new LogicaFake();
-
-        logicaFake.obtenerMedicionesUltimas24h("2021-12-17",this);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
+        int res = sharedPref.getInt(getString(R.string.usuarioActivoId), 1);
+        logicaFake.obtenerMedicionesUltimas24h("2021-12-17","dia",res,this);
     }
 
     // -----------------------------------------------------------------------------------
