@@ -172,11 +172,12 @@ public class SettingsActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String nombreSensor = sharedPreferences.getString(getString(R.string.preferenceIdSensor), "noId");
             String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
-
+            int id_sensor = sharedPreferences.getInt(getString(R.string.usuarioActivoIdSensor), 3);
             this.elIntentDelServicio = new Intent(getContext(), ServicioEscuharBeacons.class);
             this.elIntentDelServicio.putExtra("tiempoDeEspera", (long) 5000);
             this.elIntentDelServicio.putExtra("ipServidor", ipServidor);
             this.elIntentDelServicio.putExtra("nombreDispositivo", nombreSensor);
+            this.elIntentDelServicio.putExtra("usuarioActivoIdSensor", id_sensor);
             getActivity().startService( this.elIntentDelServicio );
         }
 

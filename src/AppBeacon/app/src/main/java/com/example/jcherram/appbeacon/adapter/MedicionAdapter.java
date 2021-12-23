@@ -43,8 +43,13 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
      * @param context le pasamos el contexto deseado
      */
     public MedicionAdapter(List<Medicion> medicionList, Context context) {
-        this.medicionList = medicionList;
+
         this.context = context;
+        ArrayList<Medicion> arraListaInvertida = new ArrayList<>();
+        for (int i=medicionList.size()-1;i>=0;i--){
+            arraListaInvertida.add(medicionList.get(i));
+        }
+        this.medicionList = arraListaInvertida;
     }
 
     // -----------------------------------------------------------------------------------
@@ -56,6 +61,11 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
      * @param listaMedicion
      */
     public MedicionAdapter(ArrayList<Medicion> listaMedicion) {
+        ArrayList<Medicion> arraListaInvertida = new ArrayList<>();
+        for (int i=listaMedicion.size()-1;i>=0;i--){
+            arraListaInvertida.add(listaMedicion.get(i));
+        }
+
         this.medicionList = listaMedicion;
     }
     // -----------------------------------------------------------------------------------
@@ -125,7 +135,6 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
      * Metodo ViewHolder para el recyclerView
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
 
         private TextView txtvalor;
         private TextView txtmedicion;

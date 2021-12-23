@@ -23,25 +23,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginBottom="50dp"
-            android:fontFamily="@font/montserrat"
-            android:text="¿Olvidaste tu contraseña?"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextContrastCheck" />
-
         <Button
             android:id="@+id/buttonIniciarSesion"
             android:layout_width="262dp"
@@ -59,10 +40,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editTextPassword"
             android:layout_width="270dp"
             android:layout_height="48dp"
             android:layout_marginTop="40dp"
@@ -77,18 +58,18 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextCorreo"
             android:layout_width="270dp"
             android:layout_height="48dp"
             android:layout_marginTop="70dp"
             android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:fontFamily="@font/montserrat"
-            android:hint="Usuario"
-            android:inputType="textPersonName"
+            android:hint="Mail"
+            android:inputType="textEmailAddress"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textStyle="bold"

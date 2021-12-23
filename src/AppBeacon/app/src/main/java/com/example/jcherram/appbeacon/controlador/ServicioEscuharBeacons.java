@@ -8,16 +8,11 @@ import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.preference.PreferenceManager;
 
-import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.modelo.TramaIBeacon;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
@@ -28,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
@@ -102,9 +96,9 @@ public class ServicioEscuharBeacons extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         long tiempoDeEspera = intent.getLongExtra("tiempoDeEspera",50000);
-        String direccionIpServidor = intent.getStringExtra("ipServidor");
         String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
-        LogicaFake logicaFake = new LogicaFake(direccionIpServidor);
+        int id_sensor = intent.getIntExtra("usuarioActivoIdSensor",3);
+        LogicaFake logicaFake = new LogicaFake();
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
@@ -118,14 +112,12 @@ public class ServicioEscuharBeacons extends IntentService {
                 buscarEsteDispositivoBTLE(nombreDispositivo);
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
                 if(mediciones.size() >=MEDICIONES_A_ENVIAR){
-                    logicaFake.insetarMediciones(new ArrayList<>(mediciones));
+                    logicaFake.guardarMediciones(new ArrayList<>(mediciones), id_sensor);
                     mediciones= new ArrayList<>();
                 }
                 contador++;
             }
-
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
-
         } catch (InterruptedException e) {
             // Restore interrupt status.
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
@@ -211,7 +203,7 @@ public class ServicioEscuharBeacons extends IntentService {
             Date currentTime = Calendar.getInstance().getTime();
             TramaIBeacon tib = new TramaIBeacon(bytes);
             float dato = Utilidades.bytesToInt(tib.getMinor());
-            Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 25.6f,35.6f );
+            Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 38.99698442634084f,-0.1663422921168631f );
             mediciones.add(medicion);
 
             Log.d(ETIQUETA_LOG, " ****************************************************");

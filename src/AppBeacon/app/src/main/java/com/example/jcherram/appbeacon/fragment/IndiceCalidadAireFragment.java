@@ -3,16 +3,15 @@ package com.example.jcherram.appbeacon.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.preference.PreferenceManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
 import com.example.jcherram.appbeacon.R;
@@ -68,10 +67,10 @@ public class IndiceCalidadAireFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String ipServidor = sharedPreferences.getString(getString(R.string.preferenceIpServidor), "noIp");
-        logicaFake = new LogicaFake(ipServidor);
-        logicaFake.getMedicionesHoy("2021-10-16",this);
+        logicaFake = new LogicaFake();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
+        int res = sharedPref.getInt(getString(R.string.usuarioActivoId), 1);
+        logicaFake.obtenerMedicionesUltimas24h("2021-12-17","dia",res,this);
     }
 
     // -----------------------------------------------------------------------------------
@@ -148,19 +147,24 @@ public class IndiceCalidadAireFragment extends Fragment {
      */
 
     public void calcularMedia(ArrayList<Medicion> list){
-        float res = 0;
-        for (int i = 0; i<list.size();i++){
-            res+=list.get(i).getMedicion();
+        if (!list.isEmpty()){
+            float res = 0;
+            for (int i = 0; i<list.size();i++){
+                res+=list.get(i).getMedicion();
+            }
+            res= res/list.size();
+
+            ultimaMedicion = list.get(list.size()-1);
+
+            textViewMedia.setText(String.format("%.02f", res));
+            textViewTextoMedia.setText(ultimaMedicion.getValor());
+
+            textViewValorUltima.setText(ultimaMedicion.getValor());
+            textViewHoraUltima.setText(Utilidades.TimeToString(ultimaMedicion.getHora()));
+            textViewMedicionUltima.setText(String.format("%.02f", ultimaMedicion.getMedicion())+" µg/m3");
         }
-        res= res/list.size();
-        ultimaMedicion = list.get(list.size()-1);
 
-        textViewMedia.setText(String.format("%.02f", res));
-        textViewTextoMedia.setText(ultimaMedicion.getValor());
 
-        textViewValorUltima.setText(ultimaMedicion.getValor());
-        textViewHoraUltima.setText(Utilidades.TimeToString(ultimaMedicion.getHora()));
-        textViewMedicionUltima.setText(String.format("%.02f", ultimaMedicion.getMedicion())+" µg/m3");
     }
 
 }

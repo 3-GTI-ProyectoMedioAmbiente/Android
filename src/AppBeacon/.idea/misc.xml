@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/activity_main.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/activity_register.xml" value="0.2515463917525773" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/fragment_mediciones.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/fragment_user.xml" value="0.264" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/popeditarusuario.xml" value="0.264" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/popupeditarusuario.xml" value="0.176" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/popupgas.xml" value="0.4" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/prova.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Sergi/Desktop/ProyectoMedioAmbiente/Android/Android/src/AppBeacon/app/src/main/res/layout/settings_activity.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/bottomrad.xml" value="0.12905405405405404" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/buttonradius.xml" value="0.2483108108108108" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/drawable/highlight_color.xml" value="0.22135416666666666" />
@@ -24,6 +34,7 @@
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/card_prueba.xml" value="1.5082236842105263" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons2.xml" value="0.33" />
+        <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_mapa.xml" value="0.16393442622950818" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_medicion.xml" value="0.23783783783783785" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_mediciones.xml" value="0.5" />
         <entry key="..\:/Users/alber/Desktop/ProyectoBIO/Android/src/AppBeacon/app/src/main/res/layout/fragment_notificaciones.xml" value="0.26294277929155313" />
@@ -71,6 +82,7 @@
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/card_medicion.xml" value="0.194140625" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/card_notificaciones.xml" value="0.2890625" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_beacons2.xml" value="0.33" />
+        <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_mapa.xml" value="0.275" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_mediciones.xml" value="0.25" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_mi_nodo.xml" value="0.216796875" />
         <entry key="..\:/Users/daxte/Desktop/Universidad/Proyecto_Medio _Ambiente/Repositorio/Android/src/AppBeacon/app/src/main/res/layout/fragment_notificaciones.xml" value="0.2890625" />

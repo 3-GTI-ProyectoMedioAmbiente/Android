@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
+import com.example.jcherram.appbeacon.controlador.LogicaFake;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -144,23 +144,57 @@ public class VincularDispositivoFragment extends Fragment {
                 //txtresultado.setText(result.getContents());
                 String qr =  result.getContents();
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
+                int idSensor;
+                if(qr.equals("EA:86:B7:6C:64:9B")){
+                    idSensor=1;
+                }else{
+                    idSensor=2;
+                }
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(getString(R.string.preferenceIdSensor), qr);
                 editor.putString(getString(R.string.preferenceMacSensor),getMacFromQR(qr));
                 editor.putString(getString(R.string.preferenceModeloSensor),"Pro Max V9");
                 editor.putBoolean(getString(R.string.preferenceEstadoServicio), false);
+                editor.putInt(getString(R.string.usuarioActivoIdSensor), idSensor);
                 editor.apply();
 
+                LogicaFake logicaFake = new LogicaFake();
+                //int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password, int id_sensor
+                /*
+                Usuario user = getCurrentUser();
+                user.setId_sensor(idSensor);
+                logicaFake.editarUsuario(user, null);
                 Toast.makeText(getContext(), "El dispositivo se ha registrado correctamente", Toast.LENGTH_SHORT).show();
                 ((MainActivity)getActivity()).setFragment(new IndiceCalidadAireFragment());
+
+                 */
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+/*
+    private Usuario getCurrentUser(){
+        //int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password, int id_sensor
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        int id = sharedPreferences.getInt(getString(R.string.usuarioActivoId), -1);
+        String mail = sharedPreferences.getString(getString(R.string.usuarioActivoMail), "");
+        String nomre = sharedPreferences.getString(getString(R.string.usuarioActivoNombre), "");
+        String apellidos = sharedPreferences.getString(getString(R.string.usuarioActivoNombre), "");
+        Boolean isAutobusero = sharedPreferences.getBoolean(getString(R.string.usuarioActivoIsAutobusero), false);
+        int edad = sharedPreferences.getInt(getString(R.string.usuarioActivoEdad), -1);
+        String matricula = sharedPreferences.getString(getString(R.string.usuarioActivoMatricula), "");
+        String telefono = sharedPreferences.getString(getString(R.string.usuarioActivoTelefono), "");
+        String password = sharedPreferences.getString(getString(R.string.usuarioActivoPassword), "");
+        int id_sensor = sharedPreferences.getInt(getString(R.string.usuarioActivoIdSensor), -1);
+
+        return new Usuario(id, mail, nomre,apellidos,isAutobusero,edad,matricula,telefono,password,id_sensor);
 
 
+
+    }
+
+*/
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
 

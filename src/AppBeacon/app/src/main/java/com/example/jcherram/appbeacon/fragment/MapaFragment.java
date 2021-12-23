@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -27,6 +28,7 @@ public class MapaFragment extends Fragment {
 
     private Dialog mydialog;
     private TextView txtclose;
+    private WebView webView;
 
     public MapaFragment() {
         // Required empty public constructor
@@ -68,17 +70,24 @@ public class MapaFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_mediciones,
+        View view = inflater.inflate(R.layout.fragment_mapa,
                 container, false);
 
-        autoCompleteTextView = view.findViewById(R.id.autoCompleteTextView2);
 
-        adpterItems = new ArrayAdapter<String>(getContext(), R.layout.list_gas, items);
 
-        autoCompleteTextView.setAdapter(adpterItems);
+
         mydialog = new Dialog(getContext());
         mydialog.setContentView(R.layout.popupgas);
         txtclose=(TextView) mydialog.findViewById(R.id.txtclose);
+
+        webView=view.findViewById(R.id.webview);
+        webView.clearCache(true);
+        webView.clearHistory();
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+
+        webView.loadUrl("http://192.168.204.31/test.html");
+        //webView.loadUrl("https://poocoin.app/tokens/0x24802247bd157d771b7effa205237d8e9269ba8a");
 
         ImageButton btninfo =  view.findViewById(R.id.btninfo);
         btninfo.setOnClickListener(new View.OnClickListener() {
@@ -96,14 +105,7 @@ public class MapaFragment extends Fragment {
             }
         });
 
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(), "Gas: "+item,Toast.LENGTH_SHORT).show();
 
-            }
-        });
 
 
 
@@ -132,9 +134,4 @@ public class MapaFragment extends Fragment {
         mydialog.show();
 
     }
-
-
-
-
-
 }
