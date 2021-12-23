@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import androidx.preference.PreferenceManager;
 import com.example.jcherram.appbeacon.LoginActivity;
 import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
+import com.example.jcherram.appbeacon.modelo.Usuario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +55,7 @@ public class UserFragment extends Fragment {
     private EditText editTextNombre;
     private EditText editTextApellidos;
     private EditText editTextMail;
-    private EditText editTextEdad;
+    private DatePicker dpEdadEditar;
     private EditText editTextTelefono;
 
     private EditText editTextAntiguaContra;
@@ -175,7 +177,7 @@ public class UserFragment extends Fragment {
         editTextNombre = (EditText) mydialog.findViewById(R.id.etNombreRegis);
         editTextApellidos = (EditText) mydialog.findViewById(R.id.etApellidosRegis);
         editTextMail = (EditText) mydialog.findViewById(R.id.etMailRegis);
-        editTextEdad = (EditText) mydialog.findViewById(R.id.editTextEdadEditar);
+        dpEdadEditar = (DatePicker) mydialog.findViewById(R.id.etEdadEditar);
         editTextTelefono = (EditText) mydialog.findViewById(R.id.etTelefonoRegis);
 
         editTextAntiguaContra = (EditText) mydialog.findViewById(R.id.etPassRegis);
@@ -200,7 +202,40 @@ public class UserFragment extends Fragment {
         editTextNombre.setText(sharedPref.getString("usuarioActivoNombre","null"));
         editTextApellidos.setText(sharedPref.getString("usuarioActivoApellidos","null"));
         editTextMail.setText(sharedPref.getString("usuarioActivoMail","null"));
-        editTextEdad.setText(String.valueOf(sharedPref.getInt("usuarioActivoEdad",-1)));
+
+        //para settear la fecha
+        String lista = sharedPref.getString("usuarioActivoEdad","null");
+        char a1 = lista.charAt(0);
+        char a2 = lista.charAt(1);
+        char a3 = lista.charAt(2);
+        char a4 = lista.charAt(3);
+        char m1 = lista.charAt(5);
+        char m2 = lista.charAt(6);
+        char d1 = lista.charAt(8);
+        char d2 = lista.charAt(9);
+
+        StringBuilder sba = new StringBuilder();
+        sba.append(a1);
+        sba.append(a2);
+        sba.append(a3);
+        sba.append(a4);
+
+
+
+        StringBuilder sbm = new StringBuilder();
+        sbm.append(m1);
+        sbm.append(m2);
+
+        StringBuilder sbd = new StringBuilder();
+        sbd.append(d1);
+        sbd.append(d2);
+
+        dpEdadEditar.updateDate(Integer.valueOf(sba.toString())+0,Integer.valueOf(sbm.toString())-1,Integer.valueOf(sbd.toString())+0);
+
+
+
+
+        //dpEdadEditar.updateDate();
         editTextTelefono.setText(sharedPref.getString("usuarioActivoTelefono","null"));
 
         //botonGuardar cambios
@@ -253,7 +288,6 @@ public class UserFragment extends Fragment {
             if(editTextNombre.getText().toString().equals("") ||
                     editTextApellidos.getText().toString().equals("")||
                     editTextMail.getText().toString().equals("")||
-                    editTextEdad.getText().toString().equals("")||
                     editTextTelefono.getText().toString().equals("")||
                     editTextAntiguaContra.getText().toString().equals("")||
                     editTextNuevaContra.getText().toString().equals("")||
@@ -276,20 +310,20 @@ public class UserFragment extends Fragment {
                             Toast.makeText(this.getActivity().getApplicationContext(), "La contraseña antigua es incorrecta", Toast.LENGTH_SHORT).show();
 
                         }else{
-                            /*
+                            String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
                             //caso correcto
                             Usuario usuario = new Usuario(
                                     sharedPref.getInt("usuarioActivoId",-1),
                                     editTextMail.getText().toString(),
                                     editTextNombre.getText().toString(),
                                     editTextApellidos.getText().toString(),
-                                    Integer.parseInt(editTextEdad.getText().toString()),
+                                    fecha,
                                     editTextTelefono.getText().toString(),
                                     editTextNuevaContra.getText().toString()
                             );
                             logicaFake.editarUsuario(usuario,this);
 
-                             */
+
 
 
 
@@ -303,25 +337,25 @@ public class UserFragment extends Fragment {
             if(editTextNombre.getText().toString().equals("") ||
                     editTextApellidos.getText().toString().equals("")||
                     editTextMail.getText().toString().equals("")||
-                    editTextEdad.getText().toString().equals("")||
+                    //dpEdadEditar.getText().toString().equals("")||
                     editTextTelefono.getText().toString().equals("")
             ){
                 Toast.makeText(this.getActivity().getApplicationContext(), "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
             }else {
-                /*
+                String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
                 //caso correcto
                 Usuario usuario = new Usuario(
                         sharedPref.getInt("usuarioActivoId",-1),
                         editTextMail.getText().toString(),
                         editTextNombre.getText().toString(),
                         editTextApellidos.getText().toString(),
-                        Integer.parseInt(editTextEdad.getText().toString()),
+                        fecha,
                         editTextTelefono.getText().toString(),
                         sharedPref.getString("usuarioActivoPassword","noPass")
                 );
                 logicaFake.editarUsuario(usuario,this);
 
-                 */
+
             }
 
         }
@@ -342,7 +376,8 @@ public class UserFragment extends Fragment {
         editor.putString("usuarioActivoMail",editTextMail.getText().toString());
         editor.apply();
         //edad
-        editor.putInt("usuarioActivoEdad",Integer.parseInt(editTextEdad.getText().toString()));
+        String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
+        editor.putString("usuarioActivoEdad",fecha);
         //telefono
         editor.putString("usuarioActivoTelefono",editTextTelefono.getText().toString());
         editor.apply();
