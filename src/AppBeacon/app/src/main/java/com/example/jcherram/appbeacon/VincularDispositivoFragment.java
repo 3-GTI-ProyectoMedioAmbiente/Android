@@ -14,8 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
-import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
-import com.example.jcherram.appbeacon.modelo.Usuario;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -162,17 +160,20 @@ public class VincularDispositivoFragment extends Fragment {
 
                 LogicaFake logicaFake = new LogicaFake();
                 //int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password, int id_sensor
+                /*
                 Usuario user = getCurrentUser();
                 user.setId_sensor(idSensor);
                 logicaFake.editarUsuario(user, null);
                 Toast.makeText(getContext(), "El dispositivo se ha registrado correctamente", Toast.LENGTH_SHORT).show();
                 ((MainActivity)getActivity()).setFragment(new IndiceCalidadAireFragment());
+
+                 */
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
+/*
     private Usuario getCurrentUser(){
         //int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password, int id_sensor
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -193,7 +194,7 @@ public class VincularDispositivoFragment extends Fragment {
 
     }
 
-
+*/
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
 

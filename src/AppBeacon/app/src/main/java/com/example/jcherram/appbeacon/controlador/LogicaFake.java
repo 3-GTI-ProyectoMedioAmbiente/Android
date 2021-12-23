@@ -28,7 +28,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.204.31:5000/";
+    private final String direccionIpServidor = "http://172.20.10.9:5000/";
     public LogicaFake(){
     }
 
@@ -183,12 +183,12 @@ public class LogicaFake {
 
                                     if (json.getInt("isAutobusero") == 0){
 
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getString("fechaNacimiento"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
                                         activity.settearUsuarioActivo(usuarioRecibido);
 
                                     }else{
 
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
+                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getString("fechaNacimiento"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
                                         activity.settearUsuarioActivo(usuarioRecibido);
 
                                     }
@@ -232,7 +232,7 @@ public class LogicaFake {
             jsonUsuario.put("nombre",usuario.getNombre());
             jsonUsuario.put("apellidos",usuario.getApellidos());
             jsonUsuario.put("mail",usuario.getMail());
-            jsonUsuario.put("edad",usuario.getEdad());
+            jsonUsuario.put("fechaNacimiento",usuario.getfechaNacimiento());
             jsonUsuario.put("telefono",usuario.getTelefono());
             jsonUsuario.put("password",usuario.getPassword());
             jsonUsuario.put("isAutobusero",usuario.getAutobusero().toString());
@@ -278,7 +278,7 @@ public class LogicaFake {
             jsonUsuario.put("nombre",usuario.getNombre());
             jsonUsuario.put("apellidos",usuario.getApellidos());
             jsonUsuario.put("mail",usuario.getMail());
-            jsonUsuario.put("edad",usuario.getEdad());
+            jsonUsuario.put("fechaNacimiento",usuario.getfechaNacimiento());
             jsonUsuario.put("telefono",usuario.getTelefono());
             jsonUsuario.put("password",usuario.getPassword());
 

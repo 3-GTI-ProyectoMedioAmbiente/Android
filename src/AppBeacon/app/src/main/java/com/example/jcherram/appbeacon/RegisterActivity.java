@@ -9,6 +9,7 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -29,7 +30,9 @@ import com.example.jcherram.appbeacon.modelo.Usuario;
 public class RegisterActivity extends AppCompatActivity {
 
     Switch aSwitch;
-    EditText editText;
+    TextView tvMatricula;
+    EditText etMatricula;
+
     Dialog mydialog;
     CheckBox cbDatos;
     TextView datosTv;
@@ -39,9 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etNombre;
     EditText etApellidos;
     EditText etMail;
-    EditText etEdad;
+    DatePicker etFechaNacimiento;
     EditText etTelefono;
-    EditText etMatricula;
+
     EditText etPass;
     EditText etConfPass;
 
@@ -62,9 +65,13 @@ public class RegisterActivity extends AppCompatActivity {
         logicaFake = new LogicaFake();
 
         aSwitch=(Switch) findViewById(R.id.switch1);
-        editText=(EditText) findViewById(R.id.etMatriculaRegis);
+        etMatricula=(EditText) findViewById(R.id.etMatriculaRegis);
+        tvMatricula = (TextView) findViewById(R.id.tvMatricula);
+
         cbDatos = (CheckBox)findViewById(R.id.checkBoxDatos);
+
         datosTv = findViewById(R.id.tvCondicionesDatos);
+
         SpannableString mitextoU = new SpannableString(datosTv.getText().toString());
         mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
         datosTv.setText(mitextoU);
@@ -73,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
         etNombre = findViewById(R.id.etNombreRegis);
         etApellidos = findViewById(R.id.etApellidosRegis);
         etMail = findViewById(R.id.etMailRegis);
-        etEdad = findViewById(R.id.etEdadRegis);
+        etFechaNacimiento = findViewById(R.id.etEdadRegis);
         etTelefono = findViewById(R.id.etTelefonoRegis);
         etMatricula = findViewById(R.id.etMatriculaRegis);
         etPass = findViewById(R.id.etPassRegis);
@@ -103,9 +110,11 @@ public class RegisterActivity extends AppCompatActivity {
     if(view.getId()==R.id.switch1){
         if(aSwitch.isChecked()){
 
-            editText.setVisibility(View.VISIBLE);
+            tvMatricula.setVisibility(View.VISIBLE);
+            etMatricula.setVisibility(View.VISIBLE);
         }else{
-            editText.setVisibility(View.INVISIBLE);
+            tvMatricula.setVisibility(View.GONE);
+            etMatricula.setVisibility(View.GONE);
 
         }
         }
@@ -116,7 +125,6 @@ public class RegisterActivity extends AppCompatActivity {
         if (etNombre.getText().toString().equals("")||
             etApellidos.getText().toString().equals("")||
                 etMail.getText().toString().equals("")||
-                etEdad.getText().toString().equals("")||
                 etTelefono.getText().toString().equals("")||
                 etPass.getText().toString().equals("")||
                 etConfPass.getText().toString().equals("")
@@ -133,12 +141,18 @@ public class RegisterActivity extends AppCompatActivity {
                 if (cbDatos.isChecked()){
                     if(aSwitch.isChecked()){
                         //si se registra un autobusero
+                        String fecha = etFechaNacimiento.getYear()+"-"+etFechaNacimiento.getMonth()+"-"+etFechaNacimiento.getDayOfMonth();
+
+
+
+
+
                         Usuario usuarioAutobusero = new Usuario(
                                 etMail.getText().toString(),
                                 etNombre.getText().toString(),
                                 etApellidos.getText().toString(),
                                 true,
-                                Integer.parseInt(etEdad.getText().toString()),
+                                fecha,
                                 etMatricula.getText().toString(),
                                 etTelefono.getText().toString(),
                                 etPass.getText().toString()
@@ -147,19 +161,27 @@ public class RegisterActivity extends AppCompatActivity {
                         //llamamos a la logica
                         logicaFake.crearUsuario(usuarioAutobusero,this);
 
+
+
                     }else{
                         //si se registra un NO autobusero
+
+                        String fecha = etFechaNacimiento.getYear()+"-"+etFechaNacimiento.getMonth()+"-"+etFechaNacimiento.getDayOfMonth();
+
+
 
                         Usuario usuarioNoAutobusero = new Usuario(
                                 etMail.getText().toString(),
                                 etNombre.getText().toString(),
                                 etApellidos.getText().toString(),
                                 false,
-                                Integer.parseInt(etEdad.getText().toString()),
+                                fecha,
                                 "Sin Matricula",
                                 etTelefono.getText().toString(),
                                 etPass.getText().toString()
                         );
+
+
 
                         //llamamos a la logica
                         logicaFake.crearUsuario(usuarioNoAutobusero,this);

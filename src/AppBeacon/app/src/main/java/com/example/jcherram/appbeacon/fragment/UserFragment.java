@@ -20,7 +20,6 @@ import androidx.preference.PreferenceManager;
 import com.example.jcherram.appbeacon.LoginActivity;
 import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
-import com.example.jcherram.appbeacon.modelo.Usuario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -173,13 +172,13 @@ public class UserFragment extends Fragment {
         });
         sw1 = (Switch) mydialog.findViewById(R.id.switch2);
 
-        editTextNombre = (EditText) mydialog.findViewById(R.id.editTextNombreEditar);
-        editTextApellidos = (EditText) mydialog.findViewById(R.id.editTextApellidosEditar);
-        editTextMail = (EditText) mydialog.findViewById(R.id.editTextCorreoEditar);
+        editTextNombre = (EditText) mydialog.findViewById(R.id.etNombreRegis);
+        editTextApellidos = (EditText) mydialog.findViewById(R.id.etApellidosRegis);
+        editTextMail = (EditText) mydialog.findViewById(R.id.etMailRegis);
         editTextEdad = (EditText) mydialog.findViewById(R.id.editTextEdadEditar);
-        editTextTelefono = (EditText) mydialog.findViewById(R.id.editTextTelefonoEditar);
+        editTextTelefono = (EditText) mydialog.findViewById(R.id.etTelefonoRegis);
 
-        editTextAntiguaContra = (EditText) mydialog.findViewById(R.id.editTextAnContraEditar);
+        editTextAntiguaContra = (EditText) mydialog.findViewById(R.id.etPassRegis);
         editTextNuevaContra = (EditText) mydialog.findViewById(R.id.editTextNuContraEditar);
         editTextReNuevaContra = (EditText) mydialog.findViewById(R.id.editTextReContraEditar);
 
@@ -205,7 +204,7 @@ public class UserFragment extends Fragment {
         editTextTelefono.setText(sharedPref.getString("usuarioActivoTelefono","null"));
 
         //botonGuardar cambios
-        btnGuardarCambios = (Button) mydialog.findViewById(R.id.btnGuardarCambios);
+        btnGuardarCambios = (Button) mydialog.findViewById(R.id.btnRegistro);
         btnGuardarCambios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -277,7 +276,7 @@ public class UserFragment extends Fragment {
                             Toast.makeText(this.getActivity().getApplicationContext(), "La contraseña antigua es incorrecta", Toast.LENGTH_SHORT).show();
 
                         }else{
-
+                            /*
                             //caso correcto
                             Usuario usuario = new Usuario(
                                     sharedPref.getInt("usuarioActivoId",-1),
@@ -289,6 +288,8 @@ public class UserFragment extends Fragment {
                                     editTextNuevaContra.getText().toString()
                             );
                             logicaFake.editarUsuario(usuario,this);
+
+                             */
 
 
 
@@ -307,6 +308,7 @@ public class UserFragment extends Fragment {
             ){
                 Toast.makeText(this.getActivity().getApplicationContext(), "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
             }else {
+                /*
                 //caso correcto
                 Usuario usuario = new Usuario(
                         sharedPref.getInt("usuarioActivoId",-1),
@@ -318,6 +320,8 @@ public class UserFragment extends Fragment {
                         sharedPref.getString("usuarioActivoPassword","noPass")
                 );
                 logicaFake.editarUsuario(usuario,this);
+
+                 */
             }
 
         }
@@ -358,7 +362,7 @@ public class UserFragment extends Fragment {
         nombreUsuarioInfo.setText(sharedPref.getString("usuarioActivoNombre","noName"));
         apellidosUsuarioInfo.setText(sharedPref.getString("usuarioActivoApellidos","noName"));
         mailUsuarioInfo.setText(sharedPref.getString("usuarioActivoMail","noName"));
-        edadUsuarioInfo.setText(String.valueOf(sharedPref.getInt("usuarioActivoEdad",-1)));
+        edadUsuarioInfo.setText(sharedPref.getString("usuarioActivoEdad","noEdad"));
         telefonoUsuarioInfo.setText(sharedPref.getString("usuarioActivoTelefono","noName"));
     }
     public void cSesion(){

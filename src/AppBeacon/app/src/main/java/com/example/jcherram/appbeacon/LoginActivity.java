@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity
      * @param {Usuario} - Usuario procedente de la base de datos
      * Usuario -> settearUsuarioActivo()
      */
-    public void settearUsuarioActivo(Usuario usuario){
+    public void settearUsuarioActivo(Usuario usuario) {
         Log.d("test","entro a settear");
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -116,7 +116,8 @@ public class LoginActivity extends AppCompatActivity
         editor.putString(getString(R.string.usuarioActivoMail), usuario.getMail());
         editor.apply();
         //edad
-        editor.putInt(getString(R.string.usuarioActivoEdad), usuario.getEdad());
+
+        editor.putString(getString(R.string.usuarioActivoEdad), usuario.getfechaNacimiento());
         editor.apply();
         //isAutobusero
         editor.putBoolean(getString(R.string.usuarioActivoIsAutobusero), usuario.getAutobusero());

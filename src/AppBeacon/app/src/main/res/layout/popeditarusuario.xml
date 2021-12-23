@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextNombreEditar"
+            android:id="@+id/etNombreRegis"
             android:layout_width="wrap_content"
             android:layout_height="31dp"
             android:layout_marginTop="8dp"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewNombreEditar" />
 
         <EditText
-            android:id="@+id/editTextTelefonoEditar"
+            android:id="@+id/etTelefonoRegis"
             android:layout_width="wrap_content"
             android:layout_height="31dp"
             android:layout_marginTop="8dp"
@@ -78,11 +78,11 @@
             android:text="Edad:"
             android:textColor="#024A44"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/editTextCorreoEditar"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCorreoEditar" />
+            app:layout_constraintStart_toStartOf="@+id/etMailRegis"
+            app:layout_constraintTop_toBottomOf="@+id/etMailRegis" />
 
         <EditText
-            android:id="@+id/editTextCorreoEditar"
+            android:id="@+id/etMailRegis"
             android:layout_width="wrap_content"
             android:layout_height="31dp"
             android:layout_marginTop="8dp"
@@ -101,8 +101,8 @@
             android:text="Mail:"
             android:textColor="#024A44"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/editTextApellidosEditar"
-            app:layout_constraintTop_toBottomOf="@+id/editTextApellidosEditar" />
+            app:layout_constraintStart_toStartOf="@+id/etApellidosRegis"
+            app:layout_constraintTop_toBottomOf="@+id/etApellidosRegis" />
 
         <TextView
             android:id="@+id/textViewApellidosEditar"
@@ -112,8 +112,8 @@
             android:text="Apellidos:"
             android:textColor="#024A44"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/editTextNombreEditar"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNombreEditar" />
+            app:layout_constraintStart_toStartOf="@+id/etNombreRegis"
+            app:layout_constraintTop_toBottomOf="@+id/etNombreRegis" />
 
         <TextView
             android:id="@+id/textViewNombreEditar"
@@ -128,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
         <EditText
-            android:id="@+id/editTextApellidosEditar"
+            android:id="@+id/etApellidosRegis"
             android:layout_width="wrap_content"
             android:layout_height="31dp"
             android:layout_marginTop="8dp"
@@ -152,7 +152,7 @@
             app:layout_constraintTop_toBottomOf="@+id/switch2" />
 
         <EditText
-            android:id="@+id/editTextAnContraEditar"
+            android:id="@+id/etPassRegis"
             android:layout_width="wrap_content"
             android:layout_height="31dp"
             android:layout_marginTop="8dp"
@@ -173,8 +173,8 @@
             android:textColor="#024A44"
             android:textStyle="bold"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/editTextAnContraEditar"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAnContraEditar" />
+            app:layout_constraintStart_toStartOf="@+id/etPassRegis"
+            app:layout_constraintTop_toBottomOf="@+id/etPassRegis" />
 
         <EditText
             android:id="@+id/editTextNuContraEditar"
@@ -215,7 +215,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewReNuevaContra" />
 
         <Button
-            android:id="@+id/btnGuardarCambios"
+            android:id="@+id/btnRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Guardar Cambios"
@@ -247,8 +247,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="¿Quieres cambiar tu contraseña?"
-            app:layout_constraintStart_toStartOf="@+id/editTextTelefonoEditar"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTelefonoEditar" />
+            app:layout_constraintStart_toStartOf="@+id/etTelefonoRegis"
+            app:layout_constraintTop_toBottomOf="@+id/etTelefonoRegis" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -20,7 +20,7 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private Boolean isAutobusero;
-    private int edad;
+    private String fechaNacimiento;
     private String matricula;
     private String telefono;
     private String password;
@@ -35,20 +35,20 @@ public class Usuario {
      * @param nombre
      * @param apellidos
      * @param isAutobusero
-     * @param edad
+     * @param fechaNacimiento
      * @param matricula
      * @param telefono
      * @param password
      *
      * id:Z,mail:Texto,nombre:Texto,apellidos:Texto,isAutobusero:VoF,edad:Z,matricula:Texto,telefono:Texto -> constructor()
      */
-    public Usuario(int id, String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password, int id_sensor) {
+    public Usuario(int id, String mail, String nombre, String apellidos, Boolean isAutobusero, String fechaNacimiento, String matricula, String telefono, String password, int id_sensor) {
         this.id = id;
         this.mail = mail;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.isAutobusero = isAutobusero;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.matricula = matricula;
         this.telefono = telefono;
         this.password = password;
@@ -74,18 +74,18 @@ public class Usuario {
      * @param mail
      * @param nombre
      * @param apellidos
-     * @param edad
+     * @param fechaNacimiento
      * @param telefono
      * @param password
      *
      * id:Z,mail:Texto,nombre:Texto,apellidos:Texto,edad:Z,telefono:Texto -> constructor()
      */
-    public Usuario(int id, String mail, String nombre, String apellidos, int edad, String telefono, String password) {
+    public Usuario(int id, String mail, String nombre, String apellidos, String fechaNacimiento, String telefono, String password) {
         this.id = id;
         this.mail = mail;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.password = password;
         this.isAutobusero = false;
@@ -101,19 +101,19 @@ public class Usuario {
      * @param nombre
      * @param apellidos
      * @param isAutobusero
-     * @param edad
+     * @param fechaNacimiento
      * @param matricula
      * @param telefono
      * @param password
      *
      * id:Z,mail:Texto,nombre:Texto,apellidos:Texto,isAutobusero:VoF,edad:Z,matricula:Texto,telefono:Texto -> constructor()
      */
-    public Usuario( String mail, String nombre, String apellidos, Boolean isAutobusero, int edad, String matricula, String telefono, String password) {
+    public Usuario( String mail, String nombre, String apellidos, Boolean isAutobusero, String fechaNacimiento, String matricula, String telefono, String password) {
         this.mail = mail;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.isAutobusero = isAutobusero;
-        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
         this.matricula = matricula;
         this.telefono = telefono;
         this.password = password;
@@ -169,12 +169,12 @@ public class Usuario {
     }
 
     //edad
-    public int getEdad() {
-        return edad;
+    public String getfechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setEdad(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     //matricula
@@ -221,7 +221,7 @@ public class Usuario {
         json.put("nombre", nombre);
         json.put("apellidos",apellidos);
         json.put("isAutobusero",isAutobusero);
-        json.put("edad",edad);
+        json.put("fechaNacimiento",fechaNacimiento);
         json.put("matricula",matricula);
         json.put("telefono",telefono);
         json.put("password",password);
