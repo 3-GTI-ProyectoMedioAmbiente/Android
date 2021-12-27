@@ -93,6 +93,8 @@ public class Medicion {
         json.put("hora", hora);
         json.put("localizacion_lat", localizacion_lat);
         json.put("localizacion_lon", localizacion_lon);
+        json.put("id_sensor", id_sensor);
+        json.put("id_tipoMedicion", id_tipoMedicion);
         return  json;
     }
 
@@ -272,5 +274,36 @@ public class Medicion {
      */
     public void setLocalizacion_lon(float localizacion_lon) {
         this.localizacion_lon = localizacion_lon;
+    }
+
+    /**
+     * Getter de la clase Medicion que devuelve el atributo localizacion_lon de la clase
+     * @return float numero resultante
+     */
+    public int getId_tipoMedicion() {
+        return id_tipoMedicion;
+    }
+    /**
+     * Setter para modificar el valor id_tipoMedicion
+     * @param id_tipoMedicion nuevo valor para el atributo que se va ha modificar
+     */
+    public void setId_tipoMedicion(int id_tipoMedicion) {
+        this.id_tipoMedicion = id_tipoMedicion;
+    }
+
+    /**
+     * Getter de la clase Medicion que devuelve el atributo id_sensor de la clase
+     * @return int numero resultante
+     */
+    public int getId_sensor() {
+        return id_sensor;
+    }
+
+    /**
+     * Setter para modificar el valor id_sensor
+     * @param id_sensor nuevo valor para el atributo que se va ha modificar
+     */
+    public void setId_sensor(int id_sensor) {
+        this.id_sensor = id_sensor;
     }
 }

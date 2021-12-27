@@ -203,8 +203,8 @@ public class UserFragment extends Fragment {
         editTextApellidos.setText(sharedPref.getString("usuarioActivoApellidos","null"));
         editTextMail.setText(sharedPref.getString("usuarioActivoMail","null"));
 
-        //para settear la fecha
-        String lista = sharedPref.getString("usuarioActivoEdad","null");
+        //para settear la fecha usuarioActivoFechaNacimiento
+        String lista = sharedPref.getString("usuarioActivoFechaNacimiento","null");
         char a1 = lista.charAt(0);
         char a2 = lista.charAt(1);
         char a3 = lista.charAt(2);
@@ -281,8 +281,7 @@ public class UserFragment extends Fragment {
     public void guardarCambios(View v){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
         Log.d("testEdit","Entro a guardar cambios");
-        //Log.d("testEdit",editTextEdad.getText().toString());
-        //logicaFake.editarUsuario();
+
         if (sw1.isChecked()){
                 //cambiar contraseña esta activado
             if(editTextNombre.getText().toString().equals("") ||
@@ -321,6 +320,7 @@ public class UserFragment extends Fragment {
                                     editTextTelefono.getText().toString(),
                                     editTextNuevaContra.getText().toString()
                             );
+                            sharedPref.getInt(getString(R.string.usuarioActivoIdSensor),-1);
                             logicaFake.editarUsuario(usuario,this);
 
 
@@ -353,6 +353,7 @@ public class UserFragment extends Fragment {
                         editTextTelefono.getText().toString(),
                         sharedPref.getString("usuarioActivoPassword","noPass")
                 );
+                usuario.setId_sensor(sharedPref.getInt(getString(R.string.usuarioActivoIdSensor),-1));
                 logicaFake.editarUsuario(usuario,this);
 
 
@@ -375,9 +376,9 @@ public class UserFragment extends Fragment {
         //mail
         editor.putString("usuarioActivoMail",editTextMail.getText().toString());
         editor.apply();
-        //edad
+        //fechaNacimiento
         String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
-        editor.putString("usuarioActivoEdad",fecha);
+        editor.putString("usuarioActivoFechaNacimiento",fecha);
         //telefono
         editor.putString("usuarioActivoTelefono",editTextTelefono.getText().toString());
         editor.apply();
@@ -397,7 +398,7 @@ public class UserFragment extends Fragment {
         nombreUsuarioInfo.setText(sharedPref.getString("usuarioActivoNombre","noName"));
         apellidosUsuarioInfo.setText(sharedPref.getString("usuarioActivoApellidos","noName"));
         mailUsuarioInfo.setText(sharedPref.getString("usuarioActivoMail","noName"));
-        edadUsuarioInfo.setText(sharedPref.getString("usuarioActivoEdad","noEdad"));
+        edadUsuarioInfo.setText(sharedPref.getString("usuarioActivoFechaNacimiento","noEdad"));
         telefonoUsuarioInfo.setText(sharedPref.getString("usuarioActivoTelefono","noName"));
     }
     public void cSesion(){

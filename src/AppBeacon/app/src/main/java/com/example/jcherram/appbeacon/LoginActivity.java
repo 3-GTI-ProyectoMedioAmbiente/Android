@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity
         editor.apply();
         //edad
 
-        editor.putString(getString(R.string.usuarioActivoEdad), usuario.getfechaNacimiento());
+        editor.putString(getString(R.string.usuarioActivoFechaNacimiento), usuario.getfechaNacimiento());
         editor.apply();
         //isAutobusero
         editor.putBoolean(getString(R.string.usuarioActivoIsAutobusero), usuario.getAutobusero());
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity
         editor.apply();
 
         //id_sensor
-        editor.putString(getString(R.string.usuarioActivoIdSensor), usuario.getPassword());
+        editor.putInt(getString(R.string.usuarioActivoIdSensor), usuario.getId_sensor());
         editor.apply();
 
         Intent intent = new Intent(this, MainActivity.class);
