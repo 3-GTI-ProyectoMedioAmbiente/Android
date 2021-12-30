@@ -1,6 +1,11 @@
 
 package com.example.jcherram.appbeacon.controlador;
 
+import android.os.AsyncTask;
+import android.util.Log;
+
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -8,8 +13,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import android.os.AsyncTask;
-import android.util.Log;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
@@ -23,7 +26,7 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
      * Interfaz que se utilizara para gestionar la respuesta mediante Callback de las peticiones REST
      */
     public interface RespuestaREST {
-        void callback (int codigo, String cuerpo);
+        void callback (int codigo, String cuerpo) throws JSONException;
     }
 
     private String elMetodo;
@@ -140,7 +143,11 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
     protected void onPostExecute(Boolean comoFue) {
         // llamado tras doInBackground()
         Log.d("clienterestandroid", "onPostExecute() comoFue = " + comoFue);
-        this.laRespuesta.callback(this.codigoRespuesta, this.cuerpoRespuesta);
+        try {
+            this.laRespuesta.callback(this.codigoRespuesta, this.cuerpoRespuesta);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

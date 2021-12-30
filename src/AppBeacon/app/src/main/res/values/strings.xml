@@ -50,6 +50,8 @@
     <string name="usuarioActivoMatricula">usuarioActivoMatricula</string>
     <string name="usuarioActivoTelefono">usuarioActivoTelefono</string>
     <string name="usuarioActivoPassword">usuarioActivoPassword</string>
-    <string name="usuarioActivoIdSensor">usuarioActivoIdSensor</string>
+    <string name="usuarioActivoIdSensor">usuarioActivoIdSensor</string>.
+
+    <string name="horaAlEntrar">horaAlEntrar</string>
 
 </resources>
