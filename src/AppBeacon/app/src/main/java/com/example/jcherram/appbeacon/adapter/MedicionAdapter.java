@@ -30,7 +30,7 @@ public class MedicionAdapter extends RecyclerView.Adapter<MedicionAdapter.ViewHo
 
 
 
-    private List<Medicion> medicionList;
+    public static List<Medicion> medicionList;
     private Context context;
 
     // -----------------------------------------------------------------------------------
