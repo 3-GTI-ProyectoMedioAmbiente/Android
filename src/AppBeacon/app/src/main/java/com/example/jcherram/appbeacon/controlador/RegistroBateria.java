@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * RegistroBateriaSensor.java
- * @author Ruben Pardo Casanova
+ * @author Aberto Valls
  * 04/11/2021
  * Representa un registro de bateria de un sensor
  */
