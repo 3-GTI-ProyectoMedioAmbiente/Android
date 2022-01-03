@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity  {
 
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
-    private static final String DIRECCION_SERVIDOR = "http://192.168.204.31:5000/";
     private BottomNavigationView navigationView;
+    public long horaAlEntrar ;
     /**
      * Constructor de vista principal
      * @param savedInstanceState instancia del main activity
@@ -44,11 +44,18 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         setFragment(new MapaFragment());
 
+
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String res = sharedPref.getString(getString(R.string.usuarioActivoTelefono), "noNombre");
+        String res = sharedPref.getString(getString(R.string.usuarioActivoNombre), "noNombre");
         Log.d("entroAMain",res);
 
-        guardarDireccionIP();
+        //Obtener la hora a la que inicia sesión
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putLong("horaAlEntrar",System.currentTimeMillis());
+        editor.apply();
+
+
 
         navigationView = findViewById(R.id.bottom_navigation);
 
@@ -98,27 +105,12 @@ public class MainActivity extends AppCompatActivity  {
 
     private boolean comprobarSiExisteSensorVinculado(){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String res = sharedPref.getString(getString(R.string.preferenceIdSensor), "noId");
+        int res = sharedPref.getInt(getString(R.string.usuarioActivoIdSensor), -1);
         boolean sensorVinculado = false;
-        if(!res.equals("noId")){
+        if(res!=-1){
             sensorVinculado=true;
         }
         return sensorVinculado;
-    }
-
-    // -----------------------------------------------------------------------------------
-    // -----------------------------------------------------------------------------------
-
-    /**
-     * Almacena la direccion IP en las shared Preferences
-     * guardarDireccionIP()
-     */
-    private void guardarDireccionIP(){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(getString(R.string.preferenceIpServidor), DIRECCION_SERVIDOR);
-        editor.apply();
     }
 
     // -----------------------------------------------------------------------------------

@@ -21,7 +21,15 @@ import androidx.preference.PreferenceManager;
 import com.example.jcherram.appbeacon.LoginActivity;
 import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
+import com.example.jcherram.appbeacon.modelo.Medicion;
 import com.example.jcherram.appbeacon.modelo.Usuario;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,7 +77,7 @@ public class UserFragment extends Fragment {
     Switch sw1;
     Button btnGuardarCambios;
 
-
+    double distanciaRecorrida;
 
 
 
@@ -203,8 +211,8 @@ public class UserFragment extends Fragment {
         editTextApellidos.setText(sharedPref.getString("usuarioActivoApellidos","null"));
         editTextMail.setText(sharedPref.getString("usuarioActivoMail","null"));
 
-        //para settear la fecha
-        String lista = sharedPref.getString("usuarioActivoEdad","null");
+        //para settear la fecha usuarioActivoFechaNacimiento
+        String lista = sharedPref.getString("usuarioActivoFechaNacimiento","null");
         char a1 = lista.charAt(0);
         char a2 = lista.charAt(1);
         char a3 = lista.charAt(2);
@@ -281,8 +289,7 @@ public class UserFragment extends Fragment {
     public void guardarCambios(View v){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
         Log.d("testEdit","Entro a guardar cambios");
-        //Log.d("testEdit",editTextEdad.getText().toString());
-        //logicaFake.editarUsuario();
+
         if (sw1.isChecked()){
                 //cambiar contraseña esta activado
             if(editTextNombre.getText().toString().equals("") ||
@@ -310,7 +317,20 @@ public class UserFragment extends Fragment {
                             Toast.makeText(this.getActivity().getApplicationContext(), "La contraseña antigua es incorrecta", Toast.LENGTH_SHORT).show();
 
                         }else{
-                            String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
+                            //cambiamos el formato de la fecha si es necesario
+                            int mes = dpEdadEditar.getMonth()+1;
+                            String mesStr = String.valueOf(mes);
+                            if (mes<10){
+                                mesStr = 0 + String.valueOf(mes);
+                            }
+
+                            int dia = dpEdadEditar.getDayOfMonth();
+                            String diaStr = String.valueOf(dia);
+                            if (dia<10){
+                                diaStr = 0 + String.valueOf(dia);
+                            }
+
+                            String fecha = dpEdadEditar.getYear() + "-"+ mesStr +"-"+diaStr;
                             //caso correcto
                             Usuario usuario = new Usuario(
                                     sharedPref.getInt("usuarioActivoId",-1),
@@ -321,6 +341,8 @@ public class UserFragment extends Fragment {
                                     editTextTelefono.getText().toString(),
                                     editTextNuevaContra.getText().toString()
                             );
+
+                            usuario.setId_sensor(sharedPref.getInt(getString(R.string.usuarioActivoIdSensor),-1));
                             logicaFake.editarUsuario(usuario,this);
 
 
@@ -342,7 +364,20 @@ public class UserFragment extends Fragment {
             ){
                 Toast.makeText(this.getActivity().getApplicationContext(), "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
             }else {
-                String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
+                //cambiamos el formato de la fecha si es necesario
+                int mes = dpEdadEditar.getMonth()+1;
+                String mesStr = String.valueOf(mes);
+                if (mes<10){
+                    mesStr = 0 + String.valueOf(mes);
+                }
+
+                int dia = dpEdadEditar.getDayOfMonth();
+                String diaStr = String.valueOf(dia);
+                if (dia<10){
+                    diaStr = 0 + String.valueOf(dia);
+                }
+
+                String fecha = dpEdadEditar.getYear() + "-"+ mesStr +"-"+diaStr;
                 //caso correcto
                 Usuario usuario = new Usuario(
                         sharedPref.getInt("usuarioActivoId",-1),
@@ -353,6 +388,7 @@ public class UserFragment extends Fragment {
                         editTextTelefono.getText().toString(),
                         sharedPref.getString("usuarioActivoPassword","noPass")
                 );
+                usuario.setId_sensor(sharedPref.getInt(getString(R.string.usuarioActivoIdSensor),-1));
                 logicaFake.editarUsuario(usuario,this);
 
 
@@ -375,9 +411,22 @@ public class UserFragment extends Fragment {
         //mail
         editor.putString("usuarioActivoMail",editTextMail.getText().toString());
         editor.apply();
-        //edad
-        String fecha = dpEdadEditar.getYear() + "-"+dpEdadEditar.getMonth()+"-"+dpEdadEditar.getDayOfMonth();
-        editor.putString("usuarioActivoEdad",fecha);
+        //fechaNacimiento
+
+            //cambiamos el formato de la fecha si es necesario
+            int mes = dpEdadEditar.getMonth()+1;
+            String mesStr = String.valueOf(mes);
+            if (mes<10){
+                mesStr = 0 + String.valueOf(mes);
+            }
+
+            int dia = dpEdadEditar.getDayOfMonth();
+            String diaStr = String.valueOf(dia);
+            if (dia<10){
+                diaStr = 0 + String.valueOf(dia);
+            }
+        String fecha = dpEdadEditar.getYear() + "-"+ mesStr +"-"+diaStr;
+        editor.putString("usuarioActivoFechaNacimiento",fecha);
         //telefono
         editor.putString("usuarioActivoTelefono",editTextTelefono.getText().toString());
         editor.apply();
@@ -397,12 +446,82 @@ public class UserFragment extends Fragment {
         nombreUsuarioInfo.setText(sharedPref.getString("usuarioActivoNombre","noName"));
         apellidosUsuarioInfo.setText(sharedPref.getString("usuarioActivoApellidos","noName"));
         mailUsuarioInfo.setText(sharedPref.getString("usuarioActivoMail","noName"));
-        edadUsuarioInfo.setText(sharedPref.getString("usuarioActivoEdad","noEdad"));
+        edadUsuarioInfo.setText(sharedPref.getString("usuarioActivoFechaNacimiento","noEdad"));
         telefonoUsuarioInfo.setText(sharedPref.getString("usuarioActivoTelefono","noName"));
+        Log.d("testFecha",sharedPref.getString("usuarioActivoFechaNacimiento","noEdad"));
     }
     public void cSesion(){
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
+        logicaFake.obtenerMedicionesConPeriodoPorUsuario("dia",sharedPref.getInt("usuarioActivoId",-1),this);
+
+    }
+
+    /**
+     *
+     * Metodo para calcular la distancia que ha recorrido un usuario en 24 h
+     *
+     * @param listaMediciones - Lista de mediciones que hay que calcular su distancia
+     */
+
+    public void prepararInfoPrivada(ArrayList<Medicion> listaMediciones) throws JSONException {
+        //Log.d("testCalcularDistancia", listaMediciones.get(0).toString());
+        distanciaRecorrida =0;
+        if (listaMediciones.isEmpty()){
+            distanciaRecorrida = 0;
+        }else{
+            //la lista no esta vacia
+            //Log.d("testCalcularDistancia", listaMediciones.get(0).ge.toString());
+
+            for(int i = 0;i<=listaMediciones.size()-1;i++){
+                if (i+1 >= listaMediciones.size()){
+
+                }else{
+                    double R = 6371; //radio de la tierra en km
+                    double lat1Rad = Math.toRadians(listaMediciones.get(i).getLocalizacion_lat());
+                    double lat2Rad = Math.toRadians(listaMediciones.get(i+1).getLocalizacion_lat());
+                    double increLat = Math.toRadians(listaMediciones.get(i+1).getLocalizacion_lat() - listaMediciones.get(i).getLocalizacion_lat());
+                    double increLong = Math.toRadians(listaMediciones.get(i+1).getLocalizacion_lon() - listaMediciones.get(i).getLocalizacion_lon());
+
+                    double a = Math.sin(increLat/2) * Math.sin(increLat/2) +
+                            Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+                                    Math.sin(increLong/2) * Math.sin(increLong/2);
+
+                    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                    distanciaRecorrida = distanciaRecorrida + (c*R);
+
+
+                }
+
+
+            }
+
+        }
+
+
+        //Minutos Activo
+        //Restamos las horas para obtener el tiempo que ha estado el usuario activo
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
+        long horaDeInicio = sharedPref.getLong("horaAlEntrar",-1);
+        long horaActual = System.currentTimeMillis();
+        long diferenciaHoras = horaActual - horaDeInicio;
+
+        double minutos = diferenciaHoras * 0.0000166667;
+        BigDecimal bigDecimal = new BigDecimal(minutos).setScale(2, RoundingMode.HALF_UP);
+        double minutos_red = bigDecimal.doubleValue();
+        //Log.d("testHora",minutos + "");
+
+        JSONObject jsonInfo = new JSONObject();
+        jsonInfo.put("id_usuario",sharedPref.getInt("usuarioActivoId",-1));
+        jsonInfo.put("id_sensor",sharedPref.getInt("usuarioActivoIdSensor",-1));
+        jsonInfo.put("telefono",sharedPref.getString("usuarioActivoTelefono","noTelefono"));
+        jsonInfo.put("distancia_recorrida",distanciaRecorrida);
+        jsonInfo.put("nombre",sharedPref.getString("usuarioActivoNombre","noName"));
+        jsonInfo.put("minutos_activo",minutos_red);
+
+        logicaFake.publicarInfoPrivada(jsonInfo);
+
         Intent intent = new Intent(this.getActivity().getApplicationContext(), LoginActivity.class);
         startActivity(intent);
     }
-
 }

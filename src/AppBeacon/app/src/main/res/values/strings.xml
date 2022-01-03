@@ -45,11 +45,13 @@
     <string name="usuarioActivoNombre">usuarioActivoNombre</string>
     <string name="usuarioActivoApellidos">usuarioActivoApellidos</string>
     <string name="usuarioActivoMail">usuarioActivoMail</string>
-    <string name="usuarioActivoEdad">usuarioActivoEdad</string>
+    <string name="usuarioActivoFechaNacimiento">usuarioActivoFechaNacimiento</string>
     <string name="usuarioActivoIsAutobusero">usuarioActivoIsAutobusero</string>
     <string name="usuarioActivoMatricula">usuarioActivoMatricula</string>
     <string name="usuarioActivoTelefono">usuarioActivoTelefono</string>
     <string name="usuarioActivoPassword">usuarioActivoPassword</string>
-    <string name="usuarioActivoIdSensor">usuarioActivoIdSensor</string>
+    <string name="usuarioActivoIdSensor">usuarioActivoIdSensor</string>.
+
+    <string name="horaAlEntrar">horaAlEntrar</string>
 
 </resources>

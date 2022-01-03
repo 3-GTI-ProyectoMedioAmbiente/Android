@@ -9,10 +9,13 @@ import android.bluetooth.le.ScanFilter;
 import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.PreferenceManager;
 
+import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.modelo.TramaIBeacon;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
@@ -41,6 +44,7 @@ public class ServicioEscuharBeacons extends IntentService {
     private int iteracionesAntesLanzarNotificacion;
     private ClaseLanzarNotificaciones notificaciones;
     private boolean notificacionActiva = false;
+    private int idUltimaMedicion = -1;
     /**
      * Constructor del servicio para escuchar IBeacons
      */
@@ -198,54 +202,65 @@ public class ServicioEscuharBeacons extends IntentService {
 
         BluetoothDevice bluetoothDevice = resultado.getDevice();
         byte[] bytes = resultado.getScanRecord().getBytes();
-        int rssi = resultado.getRssi();
-        if(bluetoothDevice.getName()!=null){
-            Date currentTime = Calendar.getInstance().getTime();
-            TramaIBeacon tib = new TramaIBeacon(bytes);
-            float dato = Utilidades.bytesToInt(tib.getMinor());
-            Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 38.99698442634084f,-0.1663422921168631f );
-            mediciones.add(medicion);
+        TramaIBeacon tib = new TramaIBeacon(bytes);
+        //Para evitar leer 2 veces el mismo Beacon los identificamos por el Major
+        if(idUltimaMedicion!=Utilidades.bytesToInt(tib.getMajor())){
+            int rssi = resultado.getRssi();
+            if(bluetoothDevice.getName()!=null){
+                Date currentTime = Calendar.getInstance().getTime();
 
-            Log.d(ETIQUETA_LOG, " ****************************************************");
-            Log.d(ETIQUETA_LOG, " ****** DISPOSITIVO DETECTADO BTLE ****************** ");
-            Log.d(ETIQUETA_LOG, " ****************************************************");
-            Log.d(ETIQUETA_LOG, " nombre = " + bluetoothDevice.getName());
+                float dato = Utilidades.bytesToInt(tib.getMinor());
+                Medicion medicion = new Medicion(dato, currentTime, new Time(currentTime.getTime()), 38.99698442634084f,-0.1663422921168631f );
+                // Nuestro sensor solo mide NO2 por lo que se asignara siempre este valor por defecto
+                medicion.setId_tipoMedicion(3);
 
-            Log.d(ETIQUETA_LOG, " toString = " + bluetoothDevice.toString());
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+                int id_sensor = sharedPreferences.getInt(getString(R.string.usuarioActivoIdSensor), -1);
+                medicion.setId_sensor(id_sensor);
+                mediciones.add(medicion);
+
+                Log.d(ETIQUETA_LOG, " ****************************************************");
+                Log.d(ETIQUETA_LOG, " ****** DISPOSITIVO DETECTADO BTLE ****************** ");
+                Log.d(ETIQUETA_LOG, " ****************************************************");
+                Log.d(ETIQUETA_LOG, " nombre = " + bluetoothDevice.getName());
+
+                Log.d(ETIQUETA_LOG, " toString = " + bluetoothDevice.toString());
 
 
-            Log.d(ETIQUETA_LOG, " dirección = " + bluetoothDevice.getAddress());
-            Log.d(ETIQUETA_LOG, " rssi = " + rssi );
+                Log.d(ETIQUETA_LOG, " dirección = " + bluetoothDevice.getAddress());
+                Log.d(ETIQUETA_LOG, " rssi = " + rssi );
 
-            Log.d(ETIQUETA_LOG, " bytes = " + new String(bytes));
-            Log.d(ETIQUETA_LOG, " bytes (" + bytes.length + ") = " + Utilidades.bytesToHexString(bytes));
+                Log.d(ETIQUETA_LOG, " bytes = " + new String(bytes));
+                Log.d(ETIQUETA_LOG, " bytes (" + bytes.length + ") = " + Utilidades.bytesToHexString(bytes));
 
-            Log.d(ETIQUETA_LOG, " ----------------------------------------------------");
-            Log.d(ETIQUETA_LOG, " prefijo  = " + Utilidades.bytesToHexString(tib.getPrefijo()));
-            Log.d(ETIQUETA_LOG, "          advFlags = " + Utilidades.bytesToHexString(tib.getAdvFlags()));
-            Log.d(ETIQUETA_LOG, "          advHeader = " + Utilidades.bytesToHexString(tib.getAdvHeader()));
-            Log.d(ETIQUETA_LOG, "          companyID = " + Utilidades.bytesToHexString(tib.getCompanyID()));
-            Log.d(ETIQUETA_LOG, "          iBeacon type = " + Integer.toHexString(tib.getiBeaconType()));
-            Log.d(ETIQUETA_LOG, "          iBeacon length 0x = " + Integer.toHexString(tib.getiBeaconLength()) + " ( "
-                    + tib.getiBeaconLength() + " ) ");
-            Log.d(ETIQUETA_LOG, " uuid  = " + Utilidades.bytesToHexString(tib.getUUID()));
-            Log.d(ETIQUETA_LOG, " uuid  = " + Utilidades.bytesToString(tib.getUUID()));
-            Log.d(ETIQUETA_LOG, " major  = " + Utilidades.bytesToHexString(tib.getMajor()) + "( "
-                    + Utilidades.bytesToInt(tib.getMajor()) + " ) ");
-            Log.d(ETIQUETA_LOG, " minor  = " + Utilidades.bytesToHexString(tib.getMinor()) + "( "
-                    + Utilidades.bytesToInt(tib.getMinor()) + " ) ");
-            Log.d(ETIQUETA_LOG, " txPower  = " + Integer.toHexString(tib.getTxPower()) + " ( " + tib.getTxPower() + " )");
-            Log.d(ETIQUETA_LOG, " ****************************************************");
-            Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de rssi("+rssi+") txtPower("+tib.getTxPower()+"):  " + calculateDistance(tib.getTxPower(), rssi));
-            sendMessageToActivity(calculateDistance(tib.getTxPower(), rssi));
-            if(Utilidades.bytesToInt(tib.getMinor())>252){
-                String currentDateTimeString = new SimpleDateFormat("HH:mm").format(new Date());
-                notificaciones.crearNotificacion("La alerta se ha registrado a las "+currentDateTimeString,"¡Alerta! Aire perjudicial para la salud");
-                notificacionActiva = true;
-            }else{
-                if(notificacionActiva){
-                    notificaciones.crearNotificacion("Has dejado atras una zona perjudicial para tu saluda. Revisa el historial de notificaciones para mas información.","¡Vuelves ha respirar aire no perjudicial!");
-                    notificacionActiva=false;
+                Log.d(ETIQUETA_LOG, " ----------------------------------------------------");
+                Log.d(ETIQUETA_LOG, " prefijo  = " + Utilidades.bytesToHexString(tib.getPrefijo()));
+                Log.d(ETIQUETA_LOG, "          advFlags = " + Utilidades.bytesToHexString(tib.getAdvFlags()));
+                Log.d(ETIQUETA_LOG, "          advHeader = " + Utilidades.bytesToHexString(tib.getAdvHeader()));
+                Log.d(ETIQUETA_LOG, "          companyID = " + Utilidades.bytesToHexString(tib.getCompanyID()));
+                Log.d(ETIQUETA_LOG, "          iBeacon type = " + Integer.toHexString(tib.getiBeaconType()));
+                Log.d(ETIQUETA_LOG, "          iBeacon length 0x = " + Integer.toHexString(tib.getiBeaconLength()) + " ( "
+                        + tib.getiBeaconLength() + " ) ");
+                Log.d(ETIQUETA_LOG, " uuid  = " + Utilidades.bytesToHexString(tib.getUUID()));
+                Log.d(ETIQUETA_LOG, " uuid  = " + Utilidades.bytesToString(tib.getUUID()));
+                Log.d(ETIQUETA_LOG, " major  = " + Utilidades.bytesToHexString(tib.getMajor()) + "( "
+                        + Utilidades.bytesToInt(tib.getMajor()) + " ) ");
+                Log.d(ETIQUETA_LOG, " minor  = " + Utilidades.bytesToHexString(tib.getMinor()) + "( "
+                        + Utilidades.bytesToInt(tib.getMinor()) + " ) ");
+                Log.d(ETIQUETA_LOG, " txPower  = " + Integer.toHexString(tib.getTxPower()) + " ( " + tib.getTxPower() + " )");
+                Log.d(ETIQUETA_LOG, " ****************************************************");
+                Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de rssi("+rssi+") txtPower("+tib.getTxPower()+"):  " + calculateDistance(tib.getTxPower(), rssi));
+                sendMessageToActivity(calculateDistance(tib.getTxPower(), rssi));
+                idUltimaMedicion=Utilidades.bytesToInt(tib.getMajor());
+                if(Utilidades.bytesToInt(tib.getMinor())>252){
+                    String currentDateTimeString = new SimpleDateFormat("HH:mm").format(new Date());
+                    notificaciones.crearNotificacion("La alerta se ha registrado a las "+currentDateTimeString,"¡Alerta! Aire perjudicial para la salud");
+                    notificacionActiva = true;
+                }else{
+                    if(notificacionActiva){
+                        notificaciones.crearNotificacion("Has dejado atras una zona perjudicial para tu saluda. Revisa el historial de notificaciones para mas información.","¡Vuelves ha respirar aire no perjudicial!");
+                        notificacionActiva=false;
+                    }
                 }
             }
         }

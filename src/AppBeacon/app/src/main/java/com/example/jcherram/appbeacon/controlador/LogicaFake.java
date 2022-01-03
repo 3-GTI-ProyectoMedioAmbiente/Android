@@ -1,12 +1,16 @@
 package com.example.jcherram.appbeacon.controlador;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.preference.PreferenceManager;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
 import com.example.jcherram.appbeacon.LoginActivity;
 import com.example.jcherram.appbeacon.RegisterActivity;
 import com.example.jcherram.appbeacon.Utilidades;
+import com.example.jcherram.appbeacon.VincularDispositivoFragment;
 import com.example.jcherram.appbeacon.fragment.IndiceCalidadAireFragment;
 import com.example.jcherram.appbeacon.fragment.UserFragment;
 import com.example.jcherram.appbeacon.modelo.Medicion;
@@ -28,7 +32,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://172.20.10.9:5000/";
+    private final String direccionIpServidor = "http://192.168.1.35:5000/";
     public LogicaFake(){
     }
 
@@ -173,39 +177,15 @@ public class LogicaFake {
                             }else{
                                 //aqui proceso los datos de la bd
                                 Log.d("cuerpoPeticion",cuerpo);
-
                                 try {
                                     Log.d("cuerpoPeticion","Entro al try");
-                                    JSONObject json = new JSONObject(cuerpo);
-
-                                    //Creamos un usuario con la info que nos llega de la base de datos
-                                    //Usuario us = new Usuario(1,"@","Sergi","SirventSempere",false,21,"1234hgt","321321321","hola123");
-
-                                    if (json.getInt("isAutobusero") == 0){
-
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),false,json.getString("fechaNacimiento"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
-                                        activity.settearUsuarioActivo(usuarioRecibido);
-
-                                    }else{
-
-                                        Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),true,json.getString("fechaNacimiento"), json.getString("matricula"),json.getString("telefono"), json.getString("password"), -1 );
-                                        activity.settearUsuarioActivo(usuarioRecibido);
-
-                                    }
-                                    //Usuario usuarioRecibido = new Usuario(json.getInt("id"),json.getString("mail"),json.getString("nombre"),json.getString("apellidos"),json.getBoolean("isAutobusero"),json.getInt("edad"), json.getString("matricula"),json.getString("telefono"), json.getString("password") );
-                                    Log.d("test","entroen el try");
-                                    //guardamos el usuario en shared preferences
-
-
-
+                                    Usuario user = crearUsuarioDeJsonString(cuerpo);
+                                    activity.settearUsuarioActivo(user);
                                 } catch (JSONException e) {
                                     Log.d("ErrorJSON","Algo va mal en el json de login");
                                     e.printStackTrace();
                                 }
-
                             }
-
-
                         }else{
                             Log.d("ResultadoBDLogin","Algo ha ido mal, res != 200");
                         }
@@ -213,6 +193,36 @@ public class LogicaFake {
 
                 });
 
+    }
+
+    /**
+     * Metodo que trara los datos json antes de crear un usuario
+     * @param jsonUsuario string que contiene el json del usuario
+     * @return Usuario creado a partir del JSON
+     * @throws JSONException por si falla algo en el formato del JSON
+     */
+    private Usuario crearUsuarioDeJsonString(String jsonUsuario) throws JSONException {
+        JSONObject json = new JSONObject(jsonUsuario);
+        int id_usuario = json.getInt("id");
+        String nombre = json.getString("nombre");
+        String apellidos = json.getString("apellidos");
+        String mail = json.getString("mail");
+        String matricula = json.getString("matricula");
+        String password = json.getString("password");
+        String telefono = json.getString("telefono");
+
+        int isAutobusero = json.getInt("isAutobusero");
+        boolean autobuseroBool = false;
+        if (isAutobusero == 1){
+            autobuseroBool = true;
+        }
+        String fechaNacimiento = json.getString("fechaNacimiento");
+
+        int id_sensor=-1;
+        if(!json.isNull("id_sensor")){
+            id_sensor = json.getInt("id_sensor");
+        }
+        return new Usuario(id_usuario,mail, nombre, apellidos, autobuseroBool, fechaNacimiento,matricula,telefono,password,id_sensor);
     }
 
     /**
@@ -270,7 +280,7 @@ public class LogicaFake {
      * @param fragment -Fragment desde donde se lanza el usuario
      */
     public void editarUsuario(Usuario usuario,UserFragment fragment){
-
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(fragment.getActivity().getApplicationContext());
         JSONObject jsonUsuario = new JSONObject();
         try {
 
@@ -281,6 +291,12 @@ public class LogicaFake {
             jsonUsuario.put("fechaNacimiento",usuario.getfechaNacimiento());
             jsonUsuario.put("telefono",usuario.getTelefono());
             jsonUsuario.put("password",usuario.getPassword());
+            if (usuario.getId_sensor() == -1){
+                jsonUsuario.put("id_sensor","null");
+            }else{
+                jsonUsuario.put("id_sensor",usuario.getId_sensor());
+            }
+
 
         } catch (JSONException e) {
             Log.d("json","Algo va mal en la creacion de json de editar usuario");
@@ -300,4 +316,79 @@ public class LogicaFake {
 
     }
 
+
+    /**
+     * Metodo que recibe una mac y devuelvo la id del sensor
+     * @param mac -mac del sensor del que se desea sacar la mac
+     */
+    public void obtenerIdSensorMedianteMac(String qr,String mac, VincularDispositivoFragment activity){
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET", direccionIpServidor + "obtenerIdSensorMedianteMac?mac="+mac, "",
+                new PeticionarioREST.RespuestaREST() {
+
+                    @Override
+                    public void callback(int codigo, String cuerpo) {
+                        //aqui lo que me devuelva la base de datos
+                        if (codigo == 200){
+                            if (cuerpo.equals("-1")){
+                                Toast.makeText(activity.getContext(), "Dirección mac incorrecta", Toast.LENGTH_SHORT).show();
+                            }else{
+                                activity.vincularNodo(Integer.parseInt(cuerpo),qr);
+                            }
+                        }else{
+                            Log.d("ResultadoBDLogin","Algo ha ido mal, res != 200");
+                        }
+                    }
+
+                });
+
+    }
+
+    /**
+     * Meotodo que se encarga de publicar la info en la base de datos privada
+     * id-usuario
+     * id_sensor
+     * telefono
+     * distancia_recorrida
+     * nombre
+     * horas_activo
+     * @param jsonInfo - Json que contiene la info necesaria del usuario
+     *
+     *
+     */
+    public void publicarInfoPrivada(JSONObject jsonInfo){
+       PeticionarioREST peticionarioREST = new PeticionarioREST();
+       peticionarioREST.hacerPeticionREST("POST", direccionIpServidor + "publicarInfoPrivada", jsonInfo.toString(),
+               new PeticionarioREST.RespuestaREST() {
+                   @Override
+                   public void callback(int codigo, String cuerpo) {
+                       if (Integer.valueOf(cuerpo) == 1){
+                           Log.d("controlPublicarInfo","Todo ha ido bien");
+                       }else{
+                           Log.d("controlPublicarInfo","Algo ha ido mal");
+                       }
+                   }
+               });
+    }
+
+    /**
+     * Metodo al que se le indica un periodo y un usuario y te devuelve las mediciones correspondientes
+     * @param id_usuario {Z} - Id del usuario que queremos acceder
+     * @param periodo {Texto} - Periodo de tiempo que queremos filtrar las mediciones
+     */
+
+    public void obtenerMedicionesConPeriodoPorUsuario(String periodo, int id_usuario , UserFragment userFragment){
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET", direccionIpServidor + "obtenerMedicionesConPeriodoPorUsuario?periodo=" + periodo + "&idUsuario=" + id_usuario, "",
+                new PeticionarioREST.RespuestaREST() {
+                    @Override
+                    public void callback(int codigo, String cuerpo) throws JSONException {
+
+                        if (!cuerpo.isEmpty()){
+                            //si todo ha ido bien
+                            userFragment.prepararInfoPrivada(parsearJsonToArrayMediciones(cuerpo));
+                        }
+                    }
+                });
+    }
 }
