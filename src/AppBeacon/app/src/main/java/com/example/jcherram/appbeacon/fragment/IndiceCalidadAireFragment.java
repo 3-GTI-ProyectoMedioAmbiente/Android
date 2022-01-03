@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
@@ -30,12 +31,26 @@ import java.util.ArrayList;
  */
 public class IndiceCalidadAireFragment extends Fragment {
 
-    private TextView textViewMedia;
+    private TextView textViewMediaCalidadAire;
     private TextView textViewTextoMedia;
 
     private TextView textViewValorUltima;
     private TextView textViewHoraUltima;
     private TextView textViewMedicionUltima;
+
+    private ImageView imageViewConsejo1;
+    private ImageView imageViewConsejo2;
+    private ImageView imageViewICA;
+
+    private TextView textViewIndiceHoy;
+    private TextView textViewConsejo1;
+    private TextView textViewConsejo2;
+
+
+    //Fondo de las CardViews
+    private ConstraintLayout constraintFondo;
+    private ConstraintLayout constraintFondoFuerte;
+
 
     private Medicion ultimaMedicion;
     private LogicaFake logicaFake;
@@ -53,7 +68,6 @@ public class IndiceCalidadAireFragment extends Fragment {
      */
     public static IndiceCalidadAireFragment newInstance(String param1, String param2) {
         IndiceCalidadAireFragment fragment = new IndiceCalidadAireFragment();
-
         return fragment;
     }
 
@@ -70,7 +84,7 @@ public class IndiceCalidadAireFragment extends Fragment {
         logicaFake = new LogicaFake();
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
         int res = sharedPref.getInt(getString(R.string.usuarioActivoId), 1);
-        logicaFake.obtenerMedicionesUltimas24h("2021-12-17","dia",res,this);
+        logicaFake.obtenerMedicionesUltimas24h("dia",res,this);
     }
 
     // -----------------------------------------------------------------------------------
@@ -89,13 +103,21 @@ public class IndiceCalidadAireFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_beacons2, container, false);
         Button buttonVerHistorial = v.findViewById(R.id.buttonVerHistorial);
         ImageView buttonConfigurarNodo = v.findViewById(R.id.imageViewConfigurarNodo);
-        textViewMedia = v.findViewById(R.id.textViewMediaCalidadAire);
+        textViewMediaCalidadAire = v.findViewById(R.id.textViewMediaCalidadAire);
+        textViewIndiceHoy = v.findViewById(R.id.textViewIndiceHoy);
         textViewTextoMedia = v.findViewById(R.id.textViewTextoMediaCalidadAire);
 
         textViewHoraUltima = v.findViewById(R.id.textViewHoraUltima);
         textViewValorUltima = v.findViewById(R.id.textViewValorUtima);
         textViewMedicionUltima = v.findViewById(R.id.textViewMedicionUltima);
+        textViewConsejo1 = v.findViewById(R.id.textViewConsejo1);
+        textViewConsejo2 = v.findViewById(R.id.textViewConsejo2);
+        constraintFondo = v.findViewById(R.id.constraitFonfoDebil);
+        constraintFondoFuerte = v.findViewById(R.id.constraintFondoFuerte);
 
+        imageViewConsejo1 = v.findViewById(R.id.imageViewConsejo1);
+        imageViewConsejo2 = v.findViewById(R.id.imageViewConsejo2);
+        imageViewICA = v.findViewById(R.id.imageViewICA);
         buttonConfigurarNodo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,18 +175,81 @@ public class IndiceCalidadAireFragment extends Fragment {
                 res+=list.get(i).getMedicion();
             }
             res= res/list.size();
-
+            actualizarConsesjosSegunMedia(res);
             ultimaMedicion = list.get(list.size()-1);
+            textViewMediaCalidadAire.setText(String.format("%.0f", res));
 
-            textViewMedia.setText(String.format("%.02f", res));
-            textViewTextoMedia.setText(ultimaMedicion.getValor());
 
+            if(ultimaMedicion.getMedicion()>40 && ultimaMedicion.getMedicion()<100){
+                textViewValorUltima.setTextColor(getResources().getColor(R.color.naranjaICA, null));
+            }else if(ultimaMedicion.getMedicion()>=100){
+                textViewValorUltima.setTextColor(getResources().getColor(R.color.rojoICA, null));
+            }
             textViewValorUltima.setText(ultimaMedicion.getValor());
             textViewHoraUltima.setText(Utilidades.TimeToString(ultimaMedicion.getHora()));
             textViewMedicionUltima.setText(String.format("%.02f", ultimaMedicion.getMedicion())+" µg/m3");
         }
 
 
+    }
+
+    /**
+     * actualzizar los colores y la informacion segun su ICA
+     * @param media
+     */
+    private void actualizarConsesjosSegunMedia(float media){
+        int colorFuerte=R.color.verdeICAFuerte;
+        int colorDebil=R.color.verdeICA;
+        int colorLetra = R.color.verdeLetraICA;
+        int image = R.drawable.ic_cool;
+        int imageConsejo1 = R.drawable.ic_open_window;
+        int imageConsejo2 = R.drawable.ic_soccer;
+        int textoConsejo1 = R.string.consejoAireSaludable1;
+        int textoConsejo2 = R.string.consejoAireSaludable2;
+        String textoCalidaAire = "No perjudicial";
+        if(media>40 && media <100){
+            //Indice de calidad Perjudicial
+            colorDebil = R.color.naranjaICA;
+            colorFuerte = R.color.naranjaICAFuerte;
+            colorLetra = R.color.naranjaLetraICA;
+            image = R.drawable.ic_confused;
+            imageConsejo1 = R.drawable.ic_ic_health_window_red;
+            textoConsejo1 = R.string.consejoAirePerjudicial1;
+            textoConsejo2 = R.string.consejoAirePerjudicial2;
+            textoCalidaAire="Perjudicial";
+        }else if(media>100){
+            //Indice de calidad Muy perjudidicial
+           colorDebil = R.color.rojoICA;
+           colorFuerte = R.color.rojoICAFuerte;
+           colorLetra = R.color.rojoLetraICA;
+           image = R.drawable.ic_face_red;
+           imageConsejo1 = R.drawable.ic_ic_health_window_red;
+           imageConsejo2 = R.drawable.ic_health_mask_red;
+           textoConsejo1 = R.string.consejoAireMuyPerjudicial1;
+           textoConsejo2 = R.string.consejoAireMuyPerjudicial2;
+           textoCalidaAire="Muy perjudicial";
+        }
+        textViewTextoMedia.setText(textoCalidaAire);
+        imageViewICA.setImageDrawable(getResources().getDrawable(image,null));
+        if (media > 40) {
+            //El color se cambia solo en estado perjudicial y muy perjudicail.
+            imageViewICA.setColorFilter(getResources().getColor(colorLetra,null));
+        }
+
+
+        imageViewConsejo1.setImageDrawable(getResources().getDrawable(imageConsejo1,null));
+        imageViewConsejo1.setColorFilter(getResources().getColor(colorDebil,null));
+
+        imageViewConsejo2.setImageDrawable(getResources().getDrawable(imageConsejo2,null));
+        imageViewConsejo2.setColorFilter(getResources().getColor(colorDebil,null));
+
+        textViewConsejo1.setText(getResources().getString(textoConsejo1));
+        textViewConsejo2.setText(getResources().getString(textoConsejo2));
+
+        textViewTextoMedia.setTextColor(getResources().getColor(colorLetra, null));
+        textViewIndiceHoy.setTextColor(getResources().getColor(colorLetra, null));
+        constraintFondoFuerte.setBackgroundColor(getResources().getColor(colorFuerte, null));
+        constraintFondo.setBackgroundColor(getResources().getColor(colorDebil, null));
     }
 
 }

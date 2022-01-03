@@ -59,8 +59,6 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(medicionAdapter);
-
-
     }
 
 

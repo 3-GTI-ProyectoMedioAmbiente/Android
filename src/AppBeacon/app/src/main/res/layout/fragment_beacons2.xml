@@ -41,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView26">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraitFonfoDebil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#7FD15D">
@@ -56,7 +57,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
+                    android:id="@+id/constraintFondoFuerte"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#368839"
@@ -91,7 +92,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageViewICA"
                 android:layout_width="78dp"
                 android:layout_height="84dp"
                 android:layout_marginEnd="16dp"
@@ -110,19 +111,19 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewICA"
                 app:layout_constraintStart_toEndOf="@+id/cardView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewIndiceHoy" />
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/textViewIndiceHoy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Índice de hoy"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewICA"
                 app:layout_constraintStart_toEndOf="@+id/cardView4"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -233,27 +234,27 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView48"
+                android:id="@+id/textViewConsejo1"
                 android:layout_width="230dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="16dp"
                 android:gravity="center"
                 android:text="Abra las ventanas para traer aire fresco y limpio en el interior"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+                app:layout_constraintStart_toEndOf="@+id/imageViewConsejo1"
+                app:layout_constraintTop_toTopOf="@+id/imageViewConsejo1" />
 
             <TextView
-                android:id="@+id/textView49"
+                android:id="@+id/textViewConsejo2"
                 android:layout_width="230dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="16dp"
                 android:gravity="center"
                 android:text="Disfruta de actividades al aire libre"
-                app:layout_constraintStart_toEndOf="@+id/imageView11"
-                app:layout_constraintTop_toTopOf="@+id/imageView11" />
+                app:layout_constraintStart_toEndOf="@+id/imageViewConsejo2"
+                app:layout_constraintTop_toTopOf="@+id/imageViewConsejo2" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imageViewConsejo1"
                 android:layout_width="62dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="16dp"
@@ -264,13 +265,13 @@
                 app:tint="#7FD15D" />
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/imageViewConsejo2"
                 android:layout_width="66dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewConsejo1"
                 app:srcCompat="@drawable/ic_soccer"
                 app:tint="#7FD15D" />
         </androidx.constraintlayout.widget.ConstraintLayout>

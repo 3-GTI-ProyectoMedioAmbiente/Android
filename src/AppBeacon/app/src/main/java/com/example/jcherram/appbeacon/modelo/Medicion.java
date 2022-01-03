@@ -41,7 +41,7 @@ public class Medicion {
 
         if(medicion <=40 ){
             valor="No perjudicial";
-        }else if (medicion>40 && medicion<200){
+        }else if (medicion>40 && medicion<=100){
             valor="Perjudicial";
         }else{
             valor = "Muy perjudial";
