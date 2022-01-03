@@ -116,7 +116,6 @@ public class LoginActivity extends AppCompatActivity
         editor.putString(getString(R.string.usuarioActivoMail), usuario.getMail());
         editor.apply();
         //edad
-
         editor.putString(getString(R.string.usuarioActivoFechaNacimiento), usuario.getfechaNacimiento());
         editor.apply();
         //isAutobusero

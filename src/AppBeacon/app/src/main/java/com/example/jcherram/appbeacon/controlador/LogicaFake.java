@@ -1,7 +1,10 @@
 package com.example.jcherram.appbeacon.controlador;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.preference.PreferenceManager;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
 import com.example.jcherram.appbeacon.LoginActivity;
@@ -29,7 +32,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.100.5:5000/";
+    private final String direccionIpServidor = "http://192.168.1.35:5000/";
     public LogicaFake(){
     }
 
@@ -207,15 +210,18 @@ public class LogicaFake {
         String password = json.getString("password");
         String telefono = json.getString("telefono");
 
-        boolean isAutobusero = false;
-        //TODO: Cambiar fecha por la real
-        String fechaNacimiento = "2021/12/25";
+        int isAutobusero = json.getInt("isAutobusero");
+        boolean autobuseroBool = false;
+        if (isAutobusero == 1){
+            autobuseroBool = true;
+        }
+        String fechaNacimiento = json.getString("fechaNacimiento");
 
         int id_sensor=-1;
         if(!json.isNull("id_sensor")){
             id_sensor = json.getInt("id_sensor");
         }
-        return new Usuario(id_usuario,mail, nombre, apellidos, isAutobusero, fechaNacimiento,matricula,telefono,password,id_sensor);
+        return new Usuario(id_usuario,mail, nombre, apellidos, autobuseroBool, fechaNacimiento,matricula,telefono,password,id_sensor);
     }
 
     /**
@@ -273,7 +279,7 @@ public class LogicaFake {
      * @param fragment -Fragment desde donde se lanza el usuario
      */
     public void editarUsuario(Usuario usuario,UserFragment fragment){
-
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(fragment.getActivity().getApplicationContext());
         JSONObject jsonUsuario = new JSONObject();
         try {
 
@@ -284,7 +290,12 @@ public class LogicaFake {
             jsonUsuario.put("fechaNacimiento",usuario.getfechaNacimiento());
             jsonUsuario.put("telefono",usuario.getTelefono());
             jsonUsuario.put("password",usuario.getPassword());
-            jsonUsuario.put("id_sensor",usuario.getId_sensor());
+            if (usuario.getId_sensor() == -1){
+                jsonUsuario.put("id_sensor","null");
+            }else{
+                jsonUsuario.put("id_sensor",usuario.getId_sensor());
+            }
+
 
         } catch (JSONException e) {
             Log.d("json","Algo va mal en la creacion de json de editar usuario");
@@ -332,4 +343,51 @@ public class LogicaFake {
 
     }
 
+    /**
+     * Meotodo que se encarga de publicar la info en la base de datos privada
+     * id-usuario
+     * id_sensor
+     * telefono
+     * distancia_recorrida
+     * nombre
+     * horas_activo
+     * @param jsonInfo - Json que contiene la info necesaria del usuario
+     *
+     *
+     */
+    public void publicarInfoPrivada(JSONObject jsonInfo){
+       PeticionarioREST peticionarioREST = new PeticionarioREST();
+       peticionarioREST.hacerPeticionREST("POST", direccionIpServidor + "publicarInfoPrivada", jsonInfo.toString(),
+               new PeticionarioREST.RespuestaREST() {
+                   @Override
+                   public void callback(int codigo, String cuerpo) {
+                       if (Integer.valueOf(cuerpo) == 1){
+                           Log.d("controlPublicarInfo","Todo ha ido bien");
+                       }else{
+                           Log.d("controlPublicarInfo","Algo ha ido mal");
+                       }
+                   }
+               });
+    }
+
+    /**
+     * Metodo al que se le indica un periodo y un usuario y te devuelve las mediciones correspondientes
+     * @param id_usuario {Z} - Id del usuario que queremos acceder
+     * @param periodo {Texto} - Periodo de tiempo que queremos filtrar las mediciones
+     */
+
+    public void obtenerMedicionesConPeriodoPorUsuario(String periodo, int id_usuario , UserFragment userFragment){
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET", direccionIpServidor + "obtenerMedicionesConPeriodoPorUsuario?periodo=" + periodo + "&idUsuario=" + id_usuario, "",
+                new PeticionarioREST.RespuestaREST() {
+                    @Override
+                    public void callback(int codigo, String cuerpo) throws JSONException {
+
+                        if (!cuerpo.isEmpty()){
+                            //si todo ha ido bien
+                            userFragment.prepararInfoPrivada(parsearJsonToArrayMediciones(cuerpo));
+                        }
+                    }
+                });
+    }
 }

@@ -50,7 +50,9 @@
     <string name="usuarioActivoMatricula">usuarioActivoMatricula</string>
     <string name="usuarioActivoTelefono">usuarioActivoTelefono</string>
     <string name="usuarioActivoPassword">usuarioActivoPassword</string>
-    <string name="usuarioActivoIdSensor">usuarioActivoIdSensor</string>
+    <string name="usuarioActivoIdSensor">usuarioActivoIdSensor</string>.
+
+    <string name="horaAlEntrar">horaAlEntrar</string>
 
     <!-- Consejos salud -->
     <string name="consejoAireSaludable1">Abra las ventanas para traer aire fresco y limpio en el interior</string>
