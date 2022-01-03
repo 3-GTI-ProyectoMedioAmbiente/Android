@@ -72,13 +72,12 @@ public class LogicaFake {
 
     /**
      * Metodo para recoger las mediciones de hoy mediante peticion REST
-     * @param fecha pasamos la fecha en la que queremos recoger las mediciones
      * @param beaconsFragment le pasamos el fragment de beacons
      *
      * Texto, BeaconsFragment->obtenerMedicionesUltimas24h()
      */
 
-    public void obtenerMedicionesUltimas24h(String fecha,String tipo, int idUsuario, IndiceCalidadAireFragment beaconsFragment){
+    public void obtenerMedicionesUltimas24h(String tipo, int idUsuario, IndiceCalidadAireFragment beaconsFragment){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
         peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo="+tipo+"&idUsuario="+idUsuario,"",

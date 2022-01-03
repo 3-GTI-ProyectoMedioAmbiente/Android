@@ -54,4 +54,15 @@
 
     <string name="horaAlEntrar">horaAlEntrar</string>
 
+    <!-- Consejos salud -->
+    <string name="consejoAireSaludable1">Abra las ventanas para traer aire fresco y limpio en el interior</string>
+    <string name="consejoAireSaludable2">Disfruta de actividades al aire libre</string>
+
+    <string name="consejoAirePerjudicial1">Cierre sus ventanas para evitar el aire perjudicial de fuera</string>
+    <string name="consejoAirePerjudicial2">Los grupos sensibles deben reducir el ejercicio en el exterior</string>
+
+    <string name="consejoAireMuyPerjudicial1">Cierre sus ventanas para evitar el aire perjudicial de fuera</string>
+    <string name="consejoAireMuyPerjudicial2">Lleve mascarilla en exteriores</string>
+
+
 </resources>

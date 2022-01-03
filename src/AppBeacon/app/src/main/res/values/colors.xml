@@ -13,4 +13,15 @@
     <color name="naranja">#e67812</color>
     <color name="rojo">#ad0c1a</color>
 
+
+    <color name="verdeICA">#7FD15D</color>
+    <color name="verdeICAFuerte">#368839</color>
+    <color name="verdeLetraICA">#FFFFFFFF</color>
+    <color name="naranjaICA">#fdd64b</color>
+    <color name="naranjaICAFuerte">#efbe1d</color>
+    <color name="naranjaLetraICA">#8c6c1d</color>
+
+    <color name="rojoICA">#fe6a69</color>
+    <color name="rojoICAFuerte">#e84b50</color>
+    <color name="rojoLetraICA">#942431</color>
 </resources>
