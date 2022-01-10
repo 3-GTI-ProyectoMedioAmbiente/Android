@@ -1,10 +1,5 @@
 package com.example.jcherram.appbeacon;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,24 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.jcherram.appbeacon.modelo.Medicion;
-import com.example.jcherram.appbeacon.adapter.MedicionAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+
 import com.example.jcherram.appbeacon.controlador.LogicaFake;
-import com.example.jcherram.appbeacon.controlador.PeticionarioREST;
+import com.example.jcherram.appbeacon.modelo.Medicion;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.Series;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -42,24 +33,27 @@ import java.util.List;
 
 //----------------------------------------------------------------
 //----------------------------------------------------------------
-public class ActivityHistorialMediciones extends AppCompatActivity {
+public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
 
     private List<Medicion> elements;
     private LogicaFake logicaFake;
     private Button buttonMensual;
     private Button buttonSemanal;
+    private Medicion ultimaMedicion;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial_mediciones);
+        setContentView(R.layout.activity_historial_mediciones_semanal);
 
 
         logicaFake = new LogicaFake();
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int res = sharedPref.getInt(getString(R.string.usuarioActivoId), 1);
-        logicaFake.obtenerTodasLasMediciones(this,res,"mes");
+        logicaFake.obtenerTodasLasMedicionesSemanales(this,res,"mes");
 
         buttonMensual = findViewById(R.id.buttonMensual);
         buttonMensual.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +68,7 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
         buttonSemanal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivitySemanal();
+                openActivity24h();
             }
         });
     }
@@ -84,10 +78,40 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openActivitySemanal(){
-        Intent intent= new Intent(this, ActivityHistorialMedicionesSemanal.class);
+    public void openActivity24h(){
+        Intent intent= new Intent(this, ActivityHistorialMediciones.class);
         startActivity(intent);
     }
+
+
+    /**
+     *
+     * @param list
+     */
+
+
+
+
+    public void calcularMedia(ArrayList<Medicion> list) {
+        if (!list.isEmpty()) {
+            float res = 0;
+            for (int i = 0; i < list.size(); i++) {
+
+                res += list.get(i).getMedicion();
+            }
+            res = res / list.size();
+
+
+        }
+
+
+    }
+
+
+
+
+
+
 
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
@@ -102,19 +126,22 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
     public void loadMediciones(ArrayList<Medicion> mediciones){
         elements = mediciones;
 
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.graphSemanal);
 
         Medicion medicion;
+        Date ultimoDia;
 
 
 
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-        for (int i=elements.size()-14;i<elements.size();i++) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM");
+        for (int i=0;i<6;i++) {
             medicion = elements.get(i);
-            Time x =medicion.getHora();
+
+            Date x =medicion.getFecha();
             float y = medicion.getMedicion();
+
             series.appendData(new DataPoint(x,y),false,24);
 
         }
@@ -150,10 +177,9 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
         });
 
-        graph.getGridLabelRenderer().setNumHorizontalLabels(5);
+        graph.getGridLabelRenderer().setNumHorizontalLabels(4);
+        //graph.getViewport().setMinX();
     }
-
-
 
 
 

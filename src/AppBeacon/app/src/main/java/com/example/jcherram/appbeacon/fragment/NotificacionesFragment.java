@@ -94,10 +94,10 @@ public class NotificacionesFragment extends Fragment  {
      */
     private void llenarLista(){
 
-        listaNotificacion.add(new Notificacion("Bateria baja", "Hace 2 horas",R.drawable.battery));
+       // listaNotificacion.add(new Notificacion("Bateria baja", "Hace 2 horas",R.drawable.battery));
 
-        listaNotificacion.add(new Notificacion("Nivel de CO2 alto!", "Hace 6 horas",R.drawable.alert));
-        listaNotificacion.add(new Notificacion("Alerta de prueba", "Hace 9 horas",R.drawable.info));
+        //listaNotificacion.add(new Notificacion("Nivel de CO2 alto!", "Hace 6 horas",R.drawable.alert));
+       // listaNotificacion.add(new Notificacion("Alerta de prueba", "Hace 9 horas",R.drawable.info));
     }
 
 }

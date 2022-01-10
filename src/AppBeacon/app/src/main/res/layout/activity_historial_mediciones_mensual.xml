@@ -11,18 +11,19 @@
         android:id="@+id/textView15"
         android:layout_width="71dp"
         android:layout_height="25dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/montserrat"
         android:text="ug/m3"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/graph"
+        app:layout_constraintBottom_toTopOf="@+id/graphMensual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
+        android:id="@+id/graphMensual"
         android:layout_width="0dp"
         android:layout_height="387dp"
         android:layout_marginTop="55dp"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:fontFamily="@font/montserrat"
-        android:text="Historial de Mediciones 24h"
+        android:text="Historial de Mediciones  Mensual"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -51,13 +52,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/montserrat"
-        android:text="Horas"
+        android:text="Dias"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph" />
+        app:layout_constraintTop_toBottomOf="@+id/graphMensual" />
 
     <Button
         android:id="@+id/buttonSemanal"
@@ -80,7 +81,7 @@
         android:layout_marginTop="55dp"
         android:layout_marginEnd="15dp"
         android:backgroundTint="#09275C"
-        android:text="Historial mensual"
+        android:text="Historial 24h"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"

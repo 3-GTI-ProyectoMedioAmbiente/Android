@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.preference.PreferenceManager;
 
@@ -19,6 +20,7 @@ import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.modelo.TramaIBeacon;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
+import com.google.type.DateTime;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -45,6 +47,8 @@ public class ServicioEscuharBeacons extends IntentService {
     private ClaseLanzarNotificaciones notificaciones;
     private boolean notificacionActiva = false;
     private int idUltimaMedicion = -1;
+    private boolean estaDesactivado;
+
     /**
      * Constructor del servicio para escuchar IBeacons
      */
@@ -78,6 +82,38 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
+    /**
+     *
+     * @param resultado
+     */
+
+    private boolean estaDesactivado(ScanResult resultado){
+
+        estaDesactivado=false;
+        Date currentTime = Calendar.getInstance().getTime();
+
+        if(resultado.getRssi()==0 && currentTime== ){
+
+            estaDesactivado=true;
+        }else{
+
+            estaDesactivado=false;
+        }
+
+        if(estaDesactivado==true){
+
+            notificaciones.crearNotificacion("El sensor ha sido desactivado", "Sensor Desactivado");
+            notificacionActiva = true;
+        }else{
+            notificaciones.crearNotificacion("El sensor ha sido activado", "Sensor Activado");
+            notificacionActiva = false;
+
+        }
+
+
+    }
+
+
 
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
@@ -103,11 +139,16 @@ public class ServicioEscuharBeacons extends IntentService {
         String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
         int id_sensor = intent.getIntExtra("usuarioActivoIdSensor",3);
         LogicaFake logicaFake = new LogicaFake();
+        boolean estaDesactivado;
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
         long contador = 1;
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: empieza : thread=" + Thread.currentThread().getId() );
+
+        if(contador==5 &&  ){
+            
+        }
 
         try {
 
@@ -252,13 +293,16 @@ public class ServicioEscuharBeacons extends IntentService {
                 Log.d("dato:-------->", "El dispositivo se encuentra a una distancia de rssi("+rssi+") txtPower("+tib.getTxPower()+"):  " + calculateDistance(tib.getTxPower(), rssi));
                 sendMessageToActivity(calculateDistance(tib.getTxPower(), rssi));
                 idUltimaMedicion=Utilidades.bytesToInt(tib.getMajor());
+
+
+
                 if(Utilidades.bytesToInt(tib.getMinor())>252){
                     String currentDateTimeString = new SimpleDateFormat("HH:mm").format(new Date());
                     notificaciones.crearNotificacion("La alerta se ha registrado a las "+currentDateTimeString,"¡Alerta! Aire perjudicial para la salud");
                     notificacionActiva = true;
                 }else{
                     if(notificacionActiva){
-                        notificaciones.crearNotificacion("Has dejado atras una zona perjudicial para tu saluda. Revisa el historial de notificaciones para mas información.","¡Vuelves ha respirar aire no perjudicial!");
+                        notificaciones.crearNotificacion("Has dejado atras una zona perjudicial para tu saluda. Revisa el historial de notificaciones para mas información.","¡Vuelves a respirar aire no perjudicial!");
                         notificacionActiva=false;
                     }
                 }
@@ -325,5 +369,7 @@ public class ServicioEscuharBeacons extends IntentService {
         intent.putExtra("distancia", distanciaSensor);
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
+
+
 
 }

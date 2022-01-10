@@ -7,6 +7,8 @@ import android.widget.Toast;
 import androidx.preference.PreferenceManager;
 
 import com.example.jcherram.appbeacon.ActivityHistorialMediciones;
+import com.example.jcherram.appbeacon.ActivityHistorialMedicionesMensual;
+import com.example.jcherram.appbeacon.ActivityHistorialMedicionesSemanal;
 import com.example.jcherram.appbeacon.LoginActivity;
 import com.example.jcherram.appbeacon.RegisterActivity;
 import com.example.jcherram.appbeacon.Utilidades;
@@ -32,7 +34,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.1.49:5000/";
+    private final String direccionIpServidor = "http://192.168.4.219:5000/";
     public LogicaFake(){
     }
 
@@ -98,7 +100,7 @@ public class LogicaFake {
      * Metodo para recoger todas las mediciones de la bbdd mediante peticion REST
      * @param activity le pasamos la activity que recibirá las mediciones
      */
-    public void obtenerTodasLasMediciones(ActivityHistorialMediciones activity, int idUsuario, String tipo){
+    public void obtenerTodasLasMediciones(ActivityHistorialMediciones activity,  int idUsuario, String tipo){
 
         PeticionarioREST peticionarioREST = new PeticionarioREST();
         peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo="+tipo+"&idUsuario="+idUsuario,"",
@@ -106,6 +108,7 @@ public class LogicaFake {
                     @Override
                     public void callback(int codigo, String cuerpo) {
                         activity.loadMediciones(parsearJsonToArrayMediciones(cuerpo));
+
                     }
                 }
         );
@@ -390,4 +393,41 @@ public class LogicaFake {
                     }
                 });
     }
+
+
+    /**
+     * Metodo para recoger todas las mediciones de la bbdd mediante peticion REST
+     * @param activity le pasamos la activity que recibirá las mediciones
+     */
+    public void obtenerTodasLasMedicionesSemanales(ActivityHistorialMedicionesSemanal activity,  int idUsuario, String tipo){
+
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo="+tipo+"&idUsuario="+idUsuario,"",
+                new PeticionarioREST.RespuestaREST () {
+                    @Override
+                    public void callback(int codigo, String cuerpo) {
+                        activity.loadMediciones(parsearJsonToArrayMediciones(cuerpo));
+
+                    }
+                }
+        );
+    }
+
+    public void obtenerTodasLasMedicionesMensuales(ActivityHistorialMedicionesMensual activity,  int idUsuario, String tipo){
+
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("GET",  direccionIpServidor+"obtenerMedicionesConPeriodoPorUsuario?periodo="+tipo+"&idUsuario="+idUsuario,"",
+                new PeticionarioREST.RespuestaREST () {
+                    @Override
+                    public void callback(int codigo, String cuerpo) {
+                        activity.loadMediciones(parsearJsonToArrayMediciones(cuerpo));
+
+                    }
+                }
+        );
+    }
+
 }
+
+
+
