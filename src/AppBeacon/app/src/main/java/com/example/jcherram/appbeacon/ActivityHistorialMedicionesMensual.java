@@ -41,7 +41,11 @@ public class ActivityHistorialMedicionesMensual extends AppCompatActivity {
     private Button buttonSemanal;
 
 
-
+    /**
+     * Método onCreate
+     * @param savedInstanceState guardamos la instancia de la página
+     * Bundle->onCreate()
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +77,19 @@ public class ActivityHistorialMedicionesMensual extends AppCompatActivity {
     }
 
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+    //Para abrir el historial semanal
+
+
     public void openActivitySemanal(){
         Intent intent= new Intent(this, ActivityHistorialMedicionesSemanal.class);
         startActivity(intent);
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+    //Para abrir el historial 24h
 
     public void openActivity24h(){
         Intent intent= new Intent(this, ActivityHistorialMediciones.class);

@@ -42,7 +42,11 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
     private Medicion ultimaMedicion;
 
 
-
+    /**
+     * Método onCreate
+     * @param savedInstanceState guardamos la instancia de la página
+     * Bundle->onCreate()
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +77,18 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
         });
     }
 
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+    //Para abrir el historial mensual
+
     public void openActivityMensual(){
         Intent intent= new Intent(this, ActivityHistorialMedicionesMensual.class);
         startActivity(intent);
     }
+
+    // -----------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------
+    //Para abrir el historial 24h
 
     public void openActivity24h(){
         Intent intent= new Intent(this, ActivityHistorialMediciones.class);
@@ -84,13 +96,13 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
     }
 
 
+
+
     /**
-     *
-     * @param list
+     * Metodo para calcular la media de las mediciones y mostrarlas en el grafico
+     * @param list lista de mediciones para calcular la media
+     * <Medicion>->calcularMedia()
      */
-
-
-
 
     public void calcularMedia(ArrayList<Medicion> list) {
         if (!list.isEmpty()) {

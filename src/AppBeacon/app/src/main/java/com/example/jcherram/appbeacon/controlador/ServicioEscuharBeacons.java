@@ -82,38 +82,6 @@ public class ServicioEscuharBeacons extends IntentService {
 
     }
 
-    /**
-     *
-     * @param resultado
-     */
-
-    private boolean estaDesactivado(ScanResult resultado){
-
-        estaDesactivado=false;
-        Date currentTime = Calendar.getInstance().getTime();
-
-        if(resultado.getRssi()==0 && currentTime== ){
-
-            estaDesactivado=true;
-        }else{
-
-            estaDesactivado=false;
-        }
-
-        if(estaDesactivado==true){
-
-            notificaciones.crearNotificacion("El sensor ha sido desactivado", "Sensor Desactivado");
-            notificacionActiva = true;
-        }else{
-            notificaciones.crearNotificacion("El sensor ha sido activado", "Sensor Activado");
-            notificacionActiva = false;
-
-        }
-
-
-    }
-
-
 
     // -----------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------
@@ -139,15 +107,32 @@ public class ServicioEscuharBeacons extends IntentService {
         String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
         int id_sensor = intent.getIntExtra("usuarioActivoIdSensor",3);
         LogicaFake logicaFake = new LogicaFake();
-        boolean estaDesactivado;
+        boolean estaDesactivado=false;
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
         long contador = 1;
+        long contadorDesactivado=0;
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: empieza : thread=" + Thread.currentThread().getId() );
 
-        if(contador==5 &&  ){
-            
+        //Para notificar que el sensor esta desactivado
+        
+        if(mediciones.size()==0){
+            contadorDesactivado++;
+        }
+
+        if(contadorDesactivado==200){
+            estaDesactivado=true;
+        }
+
+        if(estaDesactivado==true){
+
+            notificaciones.crearNotificacion("El sensor ha sido desactivado", "Sensor Desactivado");
+            notificacionActiva = true;
+        }else{
+            notificaciones.crearNotificacion("El sensor ha sido activado", "Sensor Activado");
+            notificacionActiva = false;
+
         }
 
         try {
