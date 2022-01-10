@@ -64,7 +64,8 @@ public class ServicioEscuharBeacons extends IntentService {
     // -----------------------------------------------------------------------------------
 
     /**
-     * Metodo que gestiona la parada del servio
+     * Metodo que gestiona la parada del servicio
+     * parar()
      */
     public void parar () {
 
@@ -112,32 +113,18 @@ public class ServicioEscuharBeacons extends IntentService {
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
         long contador = 1;
-        long contadorDesactivado=0;
+
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: empieza : thread=" + Thread.currentThread().getId() );
 
         //Para notificar que el sensor esta desactivado
-        
-        if(mediciones.size()==0){
-            contadorDesactivado++;
-        }
+        int contadorDesactivado=0;
 
-        if(contadorDesactivado==200){
-            estaDesactivado=true;
-        }
 
-        if(estaDesactivado==true){
-
-            notificaciones.crearNotificacion("El sensor ha sido desactivado", "Sensor Desactivado");
-            notificacionActiva = true;
-        }else{
-            notificaciones.crearNotificacion("El sensor ha sido activado", "Sensor Activado");
-            notificacionActiva = false;
-
-        }
 
         try {
 
             while ( this.seguir ) {
+
                 Thread.sleep(tiempoDeEspera);
                 buscarEsteDispositivoBTLE(nombreDispositivo);
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
@@ -146,8 +133,32 @@ public class ServicioEscuharBeacons extends IntentService {
                     mediciones= new ArrayList<>();
                 }
                 contador++;
+
+                if(mediciones.size()==0){
+                    contadorDesactivado++;
+                }else{
+                    contadorDesactivado=0;
+                    estaDesactivado=false;
+                }
+
+                if(contadorDesactivado==10){
+                    estaDesactivado=true;
+                }
+
+                if(estaDesactivado==true){
+
+                    notificaciones.crearNotificacion("El sensor ha sido desactivado", "Sensor Desactivado");
+                    notificacionActiva = true;
+                }else{
+                    notificaciones.crearNotificacion("El sensor ha sido activado", "Sensor Activado");
+                    notificacionActiva = false;
+
+                }
+
             }
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
+
+
         } catch (InterruptedException e) {
             // Restore interrupt status.
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
@@ -164,6 +175,7 @@ public class ServicioEscuharBeacons extends IntentService {
 
     /**
      * Metodo que inicia la busqueda de dispositivos Blueetoh
+     * Texto->buscarEsteDispositivoBTLE()
      */
     private void buscarEsteDispositivoBTLE(String nombreBluetooth) {
     if (callbackDelEscaneo==null){
