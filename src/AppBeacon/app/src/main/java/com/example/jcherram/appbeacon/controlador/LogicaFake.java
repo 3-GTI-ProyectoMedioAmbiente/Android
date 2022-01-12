@@ -34,7 +34,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.197.219:5000/";
+    private final String direccionIpServidor = "http://192.168.1.14:5000/";
     public LogicaFake(){
     }
 
@@ -282,7 +282,6 @@ public class LogicaFake {
      * @param fragment -Fragment desde donde se lanza el usuario
      */
     public void editarUsuario(Usuario usuario,UserFragment fragment){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(fragment.getActivity().getApplicationContext());
         JSONObject jsonUsuario = new JSONObject();
         try {
 
