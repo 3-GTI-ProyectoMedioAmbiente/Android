@@ -282,7 +282,6 @@ public class LogicaFake {
      * @param fragment -Fragment desde donde se lanza el usuario
      */
     public void editarUsuario(Usuario usuario,UserFragment fragment){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(fragment.getActivity().getApplicationContext());
         JSONObject jsonUsuario = new JSONObject();
         try {
 
