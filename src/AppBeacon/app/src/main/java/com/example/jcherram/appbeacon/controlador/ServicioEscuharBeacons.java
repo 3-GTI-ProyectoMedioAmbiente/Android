@@ -147,10 +147,10 @@ public class ServicioEscuharBeacons extends IntentService {
 
                 if(estaDesactivado==true){
 
-                    notificaciones.crearNotificacion("El sensor ha sido desactivado", "Sensor Desactivado");
+                    notificaciones.crearNotificacion("El sensor está desconectado", "Sensor Desconectado");
                     notificacionActiva = true;
                 }else{
-                    notificaciones.crearNotificacion("El sensor ha sido activado", "Sensor Activado");
+                    notificaciones.crearNotificacion("El sensor ha sido conectado", "Sensor Conectado");
                     notificacionActiva = false;
 
                 }

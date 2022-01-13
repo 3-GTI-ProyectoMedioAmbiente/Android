@@ -14,8 +14,10 @@ import com.example.jcherram.appbeacon.controlador.LogicaFake;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -111,55 +113,68 @@ public class ActivityHistorialMedicionesMensual extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graphMensual);
 
-        Medicion medicion;
+
+        LineGraphSeries<DataPoint> series3 =new LineGraphSeries<DataPoint>();
+
+        int[] Data3={92,23,55,73,49,36,41,68,59,67,41,51,81};
+        int[] Fecha3={1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+        for (int i=1;i<13;i++) {
 
 
-
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM");
-        for (int i=0;i<29;i++) {
-            medicion = elements.get(i);
-            Date x =medicion.getFecha();
-            float y = medicion.getMedicion();
-            series.appendData(new DataPoint(x,y),false,24);
+            series3.appendData(new DataPoint(Fecha3[i],Data3[i]),false,94);
 
         }
 
+        series3.setDrawDataPoints(true);
+        series3.setDataPointsRadius(15);
+        series3.setThickness(10);
+        series3.setColor(Color.RED);
+        series3.setTitle("SO");
+        graph.addSeries(series3);
+
+        LineGraphSeries<DataPoint> series2 =new LineGraphSeries<DataPoint>();
+
+        int[] Data2={82,123,35,83,29,16,61,48,99,37,81,61,41};
+        int[] Fecha2={1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+        for (int i=1;i<13;i++) {
 
 
+            series2.appendData(new DataPoint(Fecha2[i],Data2[i]),false,94);
+
+        }
+
+        series2.setDrawDataPoints(true);
+        series2.setDataPointsRadius(15);
+        series2.setThickness(10);
+        series2.setColor(Color.GREEN);
+        series2.setTitle("NO2");
+        graph.addSeries(series2);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+
+        int[] Data={102,23,32,43,25,16,71,58,19,120,31,21,11};
+        int[] Fecha={1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+        for (int i=1;i<13;i++) {
+
+
+            series.appendData(new DataPoint(Fecha[i],Data[i]),false,94);
+
+        }
+        series.setTitle("CO2");
+        series.setColor(Color.BLUE);
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(15);
         series.setThickness(10);
         graph.getGridLabelRenderer().setTextSize(35);
-
         graph.addSeries(series);
         graph.getGridLabelRenderer().setGridColor(Color.BLACK);
-        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
-        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
-        //graph.getViewport().setYAxisBoundsManual(true);
-        //graph.getViewport().setXAxisBoundsManual(true);
-
-        graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter()
-        {
-            @Override
-
-            public String formatLabel(double value, boolean isValueX){
-
-                if(isValueX){
-                    return simpleDateFormat.format(new Date((long)value));
-                }else {
-
-                    return super.formatLabel(value, isValueX);
-                }
-            }
-
-
-        });
-
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.BLUE);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.BLUE);
         graph.getGridLabelRenderer().setNumHorizontalLabels(6);
-    }
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setBackgroundColor(Color.WHITE);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
 
+    }
 
 
 

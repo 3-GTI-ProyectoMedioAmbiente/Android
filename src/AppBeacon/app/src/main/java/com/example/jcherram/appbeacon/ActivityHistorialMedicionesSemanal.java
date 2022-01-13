@@ -14,6 +14,7 @@ import com.example.jcherram.appbeacon.controlador.LogicaFake;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -141,14 +142,52 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
         GraphView graph = (GraphView) findViewById(R.id.graphSemanal);
 
         Medicion medicion;
-        Date ultimoDia;
 
 
+
+        int[] y3 ={62,86,55,43,79,83,67,45};
+        LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
+        for (int i=0;i<7;i++) {
+            medicion = elements.get(i);
+
+            Date x3 =medicion.getFecha();
+
+
+            series3.appendData(new DataPoint(x3,y3[i]),false,24);
+
+        }
+
+        series3.setDrawDataPoints(true);
+        series3.setDataPointsRadius(15);
+        series3.setThickness(10);
+        series3.setColor(Color.RED);
+        series3.setTitle("SO");
+        graph.addSeries(series3);
+
+
+        int[] y2 ={22,26,75,83,59,23,107,65};
+        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
+        for (int i=0;i<7;i++) {
+            medicion = elements.get(i);
+
+            Date x2 =medicion.getFecha();
+
+
+            series2.appendData(new DataPoint(x2,y2[i]),false,24);
+
+        }
+
+        series2.setDrawDataPoints(true);
+        series2.setDataPointsRadius(15);
+        series2.setThickness(10);
+        series2.setColor(Color.GREEN);
+        series2.setTitle("NO2");
+        graph.addSeries(series2);
 
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM");
-        for (int i=0;i<6;i++) {
+        for (int i=0;i<7;i++) {
             medicion = elements.get(i);
 
             Date x =medicion.getFecha();
@@ -159,7 +198,7 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
         }
 
 
-
+        series.setTitle("CO2");
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(15);
         series.setThickness(10);
@@ -167,10 +206,12 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
 
         graph.addSeries(series);
         graph.getGridLabelRenderer().setGridColor(Color.BLACK);
-        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
-        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
-        //graph.getViewport().setYAxisBoundsManual(true);
-        //graph.getViewport().setXAxisBoundsManual(true);
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.BLUE);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.BLUE);
+
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setBackgroundColor(Color.WHITE);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
 
         graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter()
         {
@@ -189,8 +230,9 @@ public class ActivityHistorialMedicionesSemanal extends AppCompatActivity {
 
         });
 
-        graph.getGridLabelRenderer().setNumHorizontalLabels(4);
-        //graph.getViewport().setMinX();
+
+        graph.getGridLabelRenderer().setNumHorizontalLabels(5);
+
     }
 
 
