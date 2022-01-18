@@ -34,7 +34,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.58.219:5000/";
+    private final String direccionIpServidor = "http://192.168.22.219:5000/";
     public LogicaFake(){
     }
 
@@ -425,7 +425,20 @@ public class LogicaFake {
                 }
         );
     }
-
+    /**
+     *
+     * Metodo para publicar los registros del estado del nodo
+     */
+    public void publicarRegistroNodo(JSONObject json){
+        PeticionarioREST peticionarioREST = new PeticionarioREST();
+        peticionarioREST.hacerPeticionREST("POST", direccionIpServidor + "publicarRegistroNodo", json.toString(),
+                new PeticionarioREST.RespuestaREST() {
+                    @Override
+                    public void callback(int codigo, String cuerpo) throws JSONException {
+                        Log.d("Control registro","Registro del nodo publicado");
+                    }
+                });
+    }
 }
 
 

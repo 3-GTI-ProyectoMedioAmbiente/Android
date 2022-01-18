@@ -20,12 +20,17 @@ import com.example.jcherram.appbeacon.modelo.TramaIBeacon;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 // -----------------------------------------------------------------------------------
 // @author: Juan Carlos Hernandez Ramirez
@@ -111,6 +116,8 @@ public class ServicioEscuharBeacons extends IntentService {
         int id_sensor = intent.getIntExtra("usuarioActivoIdSensor",3);
         LogicaFake logicaFake = new LogicaFake();
 
+
+
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
@@ -119,13 +126,18 @@ public class ServicioEscuharBeacons extends IntentService {
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: empieza : thread=" + Thread.currentThread().getId() );
 
         long diferenciaContadores;
+        Date currentTime = Calendar.getInstance().getTime();
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.CANADA);
+
+        
 
         boolean seHaModificado=false;
-
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         try {
 
             while ( this.seguir ) {
-
+                JSONObject elquesea=new JSONObject();
+                elquesea.put("id_sensor",sharedPreferences.getInt("usuarioActivoIdSensor",-1));
                 Thread.sleep(tiempoDeEspera);
                 buscarEsteDispositivoBTLE(nombreDispositivo);
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
@@ -140,6 +152,12 @@ public class ServicioEscuharBeacons extends IntentService {
                     notificaciones.crearNotificacion("El sensor está desconectado", "Sensor Desconectado");
                     notificacionActivaEstadoSensorDesactivado =true;
                     notificacionActivaEstadoSensorActivado=false;
+                    elquesea.put("estado", "Desconectado");
+
+                    elquesea.put("fecha",dateFormat.format(currentTime).replace('/','-') );
+                    elquesea.put("hora", new Time(currentTime.getTime()));
+                    logicaFake.publicarRegistroNodo(elquesea);
+
                 }
 
                 if(!notificacionActivaEstadoSensorActivado && diferenciaContadores<3){
@@ -147,13 +165,17 @@ public class ServicioEscuharBeacons extends IntentService {
                     notificacionActivaEstadoSensorActivado=true;
                     notificacionActivaEstadoSensorDesactivado=false;
                     contadorUltimaMedicionRecibida =0;
+                    elquesea.put("estado", "Conectado");
+                    elquesea.put("fecha",dateFormat.format(currentTime).replace('/','-') );
+                    elquesea.put("hora", new Time(currentTime.getTime()));
+                    logicaFake.publicarRegistroNodo(elquesea);
                 }
 
             }
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
 
 
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | JSONException e) {
             // Restore interrupt status.
             Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
 
@@ -230,8 +252,8 @@ public class ServicioEscuharBeacons extends IntentService {
      * Mostramos la informacion por el lo y guardamos la informacion de las mediciones en un Array de mediciones
      * @param resultado objeto que contiene la informacion que se ha de mostrar en el LOG
      */
-    private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
-
+    private void mostrarInformacionDispositivoBTLE(ScanResult resultado)  {
+        LogicaFake logicaFake = new LogicaFake();
         contadorUltimaMedicionRecibida=contador;
         BluetoothDevice bluetoothDevice = resultado.getDevice();
         byte[] bytes = resultado.getScanRecord().getBytes();
@@ -288,14 +310,17 @@ public class ServicioEscuharBeacons extends IntentService {
 
 
 
+
                 if(Utilidades.bytesToInt(tib.getMinor())>252){
                     String currentDateTimeString = new SimpleDateFormat("HH:mm").format(new Date());
                     notificaciones.crearNotificacion("La alerta se ha registrado a las "+currentDateTimeString,"¡Alerta! Aire perjudicial para la salud");
                     notificacionActiva = true;
+
                 }else{
                     if(notificacionActiva){
                         notificaciones.crearNotificacion("Has dejado atras una zona perjudicial para tu saluda. Revisa el historial de notificaciones para mas información.","¡Vuelves a respirar aire no perjudicial!");
                         notificacionActiva=false;
+
                     }
                 }
             }
