@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.preference.PreferenceManager;
 
@@ -20,7 +19,6 @@ import com.example.jcherram.appbeacon.R;
 import com.example.jcherram.appbeacon.modelo.TramaIBeacon;
 import com.example.jcherram.appbeacon.Utilidades;
 import com.example.jcherram.appbeacon.modelo.Medicion;
-import com.google.type.DateTime;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -46,6 +44,10 @@ public class ServicioEscuharBeacons extends IntentService {
     private int iteracionesAntesLanzarNotificacion;
     private ClaseLanzarNotificaciones notificaciones;
     private boolean notificacionActiva = false;
+    public boolean notificacionActivaEstadoSensorDesactivado = false;
+    public boolean notificacionActivaEstadoSensorActivado = false;
+    private long contadorUltimaMedicionRecibida = 0;
+    private long contador=0;
     private int idUltimaMedicion = -1;
     private boolean estaDesactivado;
 
@@ -108,18 +110,17 @@ public class ServicioEscuharBeacons extends IntentService {
         String nombreDispositivo = intent.getStringExtra("nombreDispositivo");
         int id_sensor = intent.getIntExtra("usuarioActivoIdSensor",3);
         LogicaFake logicaFake = new LogicaFake();
-        boolean estaDesactivado=false;
+
         notificaciones = new ClaseLanzarNotificaciones(getApplicationContext());
         this.seguir = true;
         // esto lo ejecuta un WORKER THREAD !
-        long contador = 1;
+        contador = 1;
 
         Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: empieza : thread=" + Thread.currentThread().getId() );
 
-        //Para notificar que el sensor esta desactivado
-        int contadorDesactivado=0;
+        long diferenciaContadores;
 
-
+        boolean seHaModificado=false;
 
         try {
 
@@ -133,26 +134,19 @@ public class ServicioEscuharBeacons extends IntentService {
                     mediciones= new ArrayList<>();
                 }
                 contador++;
-
-                if(mediciones.size()==0){
-                    contadorDesactivado++;
-                }else{
-                    contadorDesactivado=0;
-                    estaDesactivado=false;
-                }
-
-                if(contadorDesactivado==10){
-                    estaDesactivado=true;
-                }
-
-                if(estaDesactivado==true){
-
+                diferenciaContadores=contador-contadorUltimaMedicionRecibida;
+                Log.d("-------------------------->", "Contador:"+contador+" ContadorUltimaNotificacion="+contadorUltimaMedicionRecibida+"diferencia="+diferenciaContadores);
+                if(diferenciaContadores >= 7 && !notificacionActivaEstadoSensorDesactivado){
                     notificaciones.crearNotificacion("El sensor está desconectado", "Sensor Desconectado");
-                    notificacionActiva = true;
-                }else{
-                    notificaciones.crearNotificacion("El sensor ha sido conectado", "Sensor Conectado");
-                    notificacionActiva = false;
+                    notificacionActivaEstadoSensorDesactivado =true;
+                    notificacionActivaEstadoSensorActivado=false;
+                }
 
+                if(!notificacionActivaEstadoSensorActivado && diferenciaContadores<3){
+                    notificaciones.crearNotificacion("El sensor ha sido conectado", "Sensor Conectado");
+                    notificacionActivaEstadoSensorActivado=true;
+                    notificacionActivaEstadoSensorDesactivado=false;
+                    contadorUltimaMedicionRecibida =0;
                 }
 
             }
@@ -238,6 +232,7 @@ public class ServicioEscuharBeacons extends IntentService {
      */
     private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
 
+        contadorUltimaMedicionRecibida=contador;
         BluetoothDevice bluetoothDevice = resultado.getDevice();
         byte[] bytes = resultado.getScanRecord().getBytes();
         TramaIBeacon tib = new TramaIBeacon(bytes);

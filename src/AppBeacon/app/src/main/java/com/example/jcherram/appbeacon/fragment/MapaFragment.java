@@ -86,8 +86,8 @@ public class MapaFragment extends Fragment {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
-        webView.loadUrl("http://192.168.204.31/test.html");
-        //webView.loadUrl("https://poocoin.app/tokens/0x24802247bd157d771b7effa205237d8e9269ba8a");
+        webView.loadUrl("http://192.168.58.31/test.html");
+
 
         ImageButton btninfo =  view.findViewById(R.id.btninfo);
         btninfo.setOnClickListener(new View.OnClickListener() {

@@ -121,7 +121,7 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
         LineGraphSeries<DataPoint> series3 = new LineGraphSeries<DataPoint>();
 
-        for (int i=elements.size()-14;i<elements.size();i++) {
+        for (int i=586;i<600;i++) {
             medicion = elements.get(i);
             Time x3 =medicion.getHora();
             float y3=medicion.getMedicion()*3;
@@ -140,7 +140,7 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<DataPoint>();
 
-        for (int i=elements.size()-14;i<elements.size();i++) {
+        for (int i=586;i<600;i++) {
             medicion = elements.get(i);
             Time x2 =medicion.getHora();
             float y2=medicion.getMedicion()*3+15;
@@ -158,7 +158,7 @@ public class ActivityHistorialMediciones extends AppCompatActivity {
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-        for (int i=elements.size()-14;i<elements.size();i++) {
+        for (int i=586;i<600;i++) {
             medicion = elements.get(i);
             Time x =medicion.getHora();
             float y = medicion.getMedicion();
