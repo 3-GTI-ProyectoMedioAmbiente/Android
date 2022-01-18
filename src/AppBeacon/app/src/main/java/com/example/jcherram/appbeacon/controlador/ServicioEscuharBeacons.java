@@ -132,57 +132,100 @@ public class ServicioEscuharBeacons extends IntentService {
         
 
         boolean seHaModificado=false;
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        try {
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 
-            while ( this.seguir ) {
-                JSONObject elquesea=new JSONObject();
-                elquesea.put("id_sensor",sharedPreferences.getInt("usuarioActivoIdSensor",-1));
-                Thread.sleep(tiempoDeEspera);
-                buscarEsteDispositivoBTLE(nombreDispositivo);
-                Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
-                if(mediciones.size() >=MEDICIONES_A_ENVIAR){
-                    logicaFake.guardarMediciones(new ArrayList<>(mediciones), id_sensor);
-                    mediciones= new ArrayList<>();
-                }
-                contador++;
-                diferenciaContadores=contador-contadorUltimaMedicionRecibida;
-                Log.d("-------------------------->", "Contador:"+contador+" ContadorUltimaNotificacion="+contadorUltimaMedicionRecibida+"diferencia="+diferenciaContadores);
-                if(diferenciaContadores >= 7 && !notificacionActivaEstadoSensorDesactivado){
-                    notificaciones.crearNotificacion("El sensor está desconectado", "Sensor Desconectado");
-                    notificacionActivaEstadoSensorDesactivado =true;
-                    notificacionActivaEstadoSensorActivado=false;
-                    elquesea.put("estado", "Desconectado");
+        if(id_sensor==2){
+            try {
+                while ( this.seguir ) {
 
-                    elquesea.put("fecha",dateFormat.format(currentTime).replace('/','-') );
-                    elquesea.put("hora", new Time(currentTime.getTime()));
-                    logicaFake.publicarRegistroNodo(elquesea);
-
+                    Thread.sleep(10000);
+                    Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
+                    if(mediciones.size() >=MEDICIONES_A_ENVIAR){
+                        logicaFake.guardarMediciones(new ArrayList<>(mediciones), id_sensor);
+                        mediciones= new ArrayList<>();
+                    }
+                    contador++;
+                    Medicion medicion = new Medicion(-1, currentTime, new Time(currentTime.getTime()), 38.99698442634084f,-0.1663422921168631f );
+                    // Nuestro sensor solo mide NO2 por lo que se asignara siempre este valor por defecto
+                    medicion.setId_tipoMedicion(3);
+                    medicion.setId_sensor(id_sensor);
+                    mediciones.add(medicion);
                 }
 
-                if(!notificacionActivaEstadoSensorActivado && diferenciaContadores<3){
-                    notificaciones.crearNotificacion("El sensor ha sido conectado", "Sensor Conectado");
-                    notificacionActivaEstadoSensorActivado=true;
-                    notificacionActivaEstadoSensorDesactivado=false;
-                    contadorUltimaMedicionRecibida =0;
-                    elquesea.put("estado", "Conectado");
-                    elquesea.put("fecha",dateFormat.format(currentTime).replace('/','-') );
-                    elquesea.put("hora", new Time(currentTime.getTime()));
-                    logicaFake.publicarRegistroNodo(elquesea);
-                }
+            } catch (InterruptedException e) {
+                // Restore interrupt status.
+                Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
 
+                Thread.currentThread().interrupt();
             }
-            Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
+            detenerBusquedaDispositivosBTLE();
+
+        }else if(id_sensor==3){
+            try {
+                while ( this.seguir ) {
+
+                    Thread.sleep(10000);
+                    Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
+                    if(mediciones.size() >=MEDICIONES_A_ENVIAR){
+                        logicaFake.guardarMediciones(new ArrayList<>(mediciones), id_sensor);
+                        mediciones= new ArrayList<>();
+                    }
+                    contador++;
+                    Medicion medicion = new Medicion(-2, currentTime, new Time(currentTime.getTime()), 38.99698442634084f,-0.1663422921168631f );
+                    // Nuestro sensor solo mide NO2 por lo que se asignara siempre este valor por defecto
+                    medicion.setId_tipoMedicion(3);
+                    medicion.setId_sensor(id_sensor);
+                    mediciones.add(medicion);
+                }
+
+            } catch (InterruptedException e) {
+                // Restore interrupt status.
+                Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
+
+                Thread.currentThread().interrupt();
+            }
+            detenerBusquedaDispositivosBTLE();
+        }else{
+            try {
+                while ( this.seguir ) {
+
+                    Thread.sleep(tiempoDeEspera);
+                    buscarEsteDispositivoBTLE(nombreDispositivo);
+                    Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent: tras la espera:  " + contador );
+                    if(mediciones.size() >=MEDICIONES_A_ENVIAR){
+                        logicaFake.guardarMediciones(new ArrayList<>(mediciones), id_sensor);
+                        mediciones= new ArrayList<>();
+                    }
+                    contador++;
+                    diferenciaContadores=contador-contadorUltimaMedicionRecibida;
+                    Log.d("-------------------------->", "Contador:"+contador+" ContadorUltimaNotificacion="+contadorUltimaMedicionRecibida+"diferencia="+diferenciaContadores);
+                    if(diferenciaContadores >= 7 && !notificacionActivaEstadoSensorDesactivado){
+                        notificaciones.crearNotificacion("El sensor está desconectado", "Sensor Desconectado");
+                        notificacionActivaEstadoSensorDesactivado =true;
+                        notificacionActivaEstadoSensorActivado=false;
+                    }
+
+                    if(!notificacionActivaEstadoSensorActivado && diferenciaContadores<3){
+                        notificaciones.crearNotificacion("El sensor ha sido conectado", "Sensor Conectado");
+                        notificacionActivaEstadoSensorActivado=true;
+                        notificacionActivaEstadoSensorDesactivado=false;
+                        contadorUltimaMedicionRecibida =0;
+                    }
+
+                }
+                Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
 
 
-        } catch (InterruptedException | JSONException e) {
-            // Restore interrupt status.
-            Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
+            } catch (InterruptedException e) {
+                // Restore interrupt status.
+                Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
 
-            Thread.currentThread().interrupt();
+                Thread.currentThread().interrupt();
+            }
+            detenerBusquedaDispositivosBTLE();
+            Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: termina");
         }
-        detenerBusquedaDispositivosBTLE();
-        Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: termina");
+
 
     }
 
