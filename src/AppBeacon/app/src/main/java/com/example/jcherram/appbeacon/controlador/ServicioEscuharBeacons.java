@@ -132,7 +132,8 @@ public class ServicioEscuharBeacons extends IntentService {
         
 
         boolean seHaModificado=false;
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        JSONObject elquesea = new JSONObject();
 
         if(id_sensor==2){
             try {
@@ -203,6 +204,11 @@ public class ServicioEscuharBeacons extends IntentService {
                         notificaciones.crearNotificacion("El sensor está desconectado", "Sensor Desconectado");
                         notificacionActivaEstadoSensorDesactivado =true;
                         notificacionActivaEstadoSensorActivado=false;
+                        elquesea.put("estado", "Desconectado");
+
+                        elquesea.put("fecha",dateFormat.format(currentTime).replace('/','-') );
+                        elquesea.put("hora", new Time(currentTime.getTime()));
+                        logicaFake.publicarRegistroNodo(elquesea);
                     }
 
                     if(!notificacionActivaEstadoSensorActivado && diferenciaContadores<3){
@@ -210,13 +216,17 @@ public class ServicioEscuharBeacons extends IntentService {
                         notificacionActivaEstadoSensorActivado=true;
                         notificacionActivaEstadoSensorDesactivado=false;
                         contadorUltimaMedicionRecibida =0;
+                        elquesea.put("estado", "Conectado");
+                        elquesea.put("fecha",dateFormat.format(currentTime).replace('/','-') );
+                        elquesea.put("hora", new Time(currentTime.getTime()));
+                        logicaFake.publicarRegistroNodo(elquesea);
                     }
 
                 }
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleIntent : tarea terminada ( tras while(true) )" );
 
 
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | JSONException e) {
                 // Restore interrupt status.
                 Log.d(ETIQUETA_LOG, " ServicioEscucharBeacons.onHandleItent: problema con el thread");
 
