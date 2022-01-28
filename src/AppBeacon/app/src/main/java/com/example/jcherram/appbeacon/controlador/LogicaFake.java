@@ -34,7 +34,7 @@ import java.util.Date;
 // -----------------------------------------------------------------------------------
 
 public class LogicaFake {
-    private final String direccionIpServidor = "http://192.168.22.219:5000/";
+    private final String direccionIpServidor = "http://192.168.1.14:5000/";
     public LogicaFake(){
     }
 
