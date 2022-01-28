@@ -86,7 +86,7 @@ public class MapaFragment extends Fragment {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
-        webView.loadUrl("http://192.168.58.31/test.html");
+        webView.loadUrl("http://192.168.1.14/test.html");
 
 
         ImageButton btninfo =  view.findViewById(R.id.btninfo);
